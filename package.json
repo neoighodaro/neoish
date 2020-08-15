@@ -1,0 +1,12 @@
+{
+  "entry_script": "start",
+  "entry_file": "pages/index.js",
+  "scripts": {
+    "start": "next dev -p 3450"
+  },
+  "dependencies": {
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
