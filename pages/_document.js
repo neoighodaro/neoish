@@ -25,11 +25,10 @@ class MyDocument extends Document {
 	       <meta property="og:description" content="Software engineer working at ABOUTYOU" />
 
 	       <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,700" rel="stylesheet" />
-	       <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
 	       <link href="/assets/style.css" rel="stylesheet" />
 	       <link href="/assets/favicon.ico" rel="shortcut icon" />        
         </Head>
-        <body>
+        <body className="dark-mode:bg-gray-900">
           <Main />
           <NextScript />
         </body>

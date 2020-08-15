@@ -16,8 +16,8 @@ export default function Home() {
           </div>
             
           <div className="flex flex-col items-center md:items-start">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 leading-tight">Neo is a Software Engineer</h1>
-            <span className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-normal">&hellip;and occasional <a href="https://medium.com/@neo" target="_blank" rel="noopener" title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500">technical writer</a>.</span>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight">Neo is a Software Engineer</h1>
+            <span className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal">&hellip;and occasional <a href="https://medium.com/@neo" target="_blank" rel="noopener" title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500">technical writer</a>.</span>
           </div>
             
           <div className="mt-4 md:mt-8">
@@ -46,9 +46,9 @@ export default function Home() {
           </div>
         </header>
 	   
-        <section className="text-md sm:text-lg text-gray-800 leading-loose">
+        <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
           <p><span className="font-medium">Hoodie</span><sup>†</sup> wearing ambivert currently working at <a href="https://aboutyou.de" title="ABOUT YOU GmbH" target="_blank" rel="noopener" className="font-medium text-indigo-500">ABOUTYOU</a> in Hamburg, Germany. Before that, he worked as the Chief Technical Officer at <a href="https://hotels.ng" title="Hotels Booking Limited" className="font-medium text-indigo-500">Hotels Booking Limited</a> and <a href="https://creativitykills.co" title="CreativityKills" className="font-medium text-indigo-500">CreativityKills</a> with both companies based in Lagos, Nigeria.</p>
-          <p className="mt-5 text-sm text-gray-600"><sup>†</sup> Has been known to wear shirts from time to time.</p>
+          <p className="mt-5 text-sm text-gray-600 dark-mode:text-gray-500"><sup>†</sup> Has been known to wear shirts from time to time.</p>
         </section>
      </div>
     </div>
