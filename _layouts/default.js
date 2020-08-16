@@ -9,7 +9,7 @@ export default function DefaultLayout(props) {
       </Head>
       
       <div className="bg-indigo-800 h-1 md:h-2 w-full pin-t pin-l fixed"></div>
-      <div className="max-w-3xl mx-auto w-full px-8">
+      <div className="max-w-4xl mx-auto w-full px-8">
         {props.children}
       </div>
     </main>

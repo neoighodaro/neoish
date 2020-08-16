@@ -10,6 +10,10 @@ module.exports = {
       }
     }
   },
-  variants: {},
-  plugins: [],
+  variants: {
+    padding: ['responsive', 'odd'],
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

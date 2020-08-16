@@ -12,6 +12,7 @@ export async function getAllPosts() {
     posts.push({
       title: meta.data.title,
       slug: post.replace('.md', ''),
+      meta: meta.data
     })
   }
   return posts;
@@ -27,6 +28,7 @@ export async function getPostBySlug(slug) {
   const content = marked(meta.content)     
   return {
     title: meta.data.title, 
+    meta: meta.data,
     content: content
   }
 }
