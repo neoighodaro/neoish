@@ -9,13 +9,9 @@ export async function getAllPosts() {
     const post = key.slice(2);
     const content = await import(`../_posts/${post}`);
     const meta = matter(content.default)
-    
-    let parts = post.replace('.md', '').split('-');
-    parts.push(parts.shift());
-  
     posts.push({
       title: meta.data.title,
-      slug: parts.join('-'),
+      slug: post.replace('.md'),
     })
   }
   return posts;
@@ -26,15 +22,9 @@ export async function getConfig() {
   return yaml.safeLoad(config.default)
 } 
 export async function getPostBySlug(slug) {
-  let parts = post.split('-');
-  parts.unshift(parts.pop());
-  
-//  const file = parts.join('-') + '.md';
-  const file = '1-remaking-my-website-again.md';
-  const fileContent = await import(`../_posts/${file}`)
+  const fileContent = await import(`../_posts/${slug}.md`)
   const meta = matter(fileContent.default)
-  const content = marked(meta.content)   
-   
+  const content = marked(meta.content)     
   return {
     title: meta.data.title, 
     content: content
