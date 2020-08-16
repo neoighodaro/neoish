@@ -1,4 +1,8 @@
 module.exports = {
+  purge: [
+    './pages/**/*.js',
+    './_layouts/**/*.js',
+  ],
   theme: {
     extend: {
       screens: {
