@@ -13,7 +13,7 @@ Recently, for the first time, since I can remember, I fell very ill. Due to this
 
 I eventually was able to overcome this minor setback. I’ll share steps I took to do this, findings from people I reached out to and some other interesting musings about life. Here’s to tackling feelings of inadequacy and figuring life out! 💪🏾
 
-# Views on Impostor Syndrome from others
+## Views on Impostor Syndrome from others
 
 I reached out to friends in my circle on their views about it. I’ll share their responses before I share mine.
 
@@ -85,7 +85,7 @@ Their views generally centered around not comparing yourself to people around yo
 
 It’s good to look up to people and be inspired by them, but don’t over indulge to the position of self-doubt.
 
-# My view on Impostor Syndrome
+## My view on Impostor Syndrome
 
 One thing that makes me feel less competent is when over a period of time, I’m unable to deliver on said plans/goals I’ve made. Generally, I used to keep a mental note of things I have to do, but as I’ve grown, my tasks and plans tend to increase at an exponential rate. When things become so scattered up in my head, I’m unable to function adequately. The thought of other things I may/may not have to do distract me and I just keep trying to constantly plan. Sometimes I’m able to do some of the things I have planned but then other times, I get busy/tired and then I realize that I’ve made plans to do stuff with people and totally forgotten about it. This is where the judgy voice comes up in my head — you na scam!
 
@@ -101,7 +101,7 @@ Focusing on the present helps you be your most productive self as all your energ
 
 I tried this and I realized that my productivity levels increased. This makes me feel more confident in my ability to perform and do what I say I can do — so Impostor Syndrome can like to jump out the window 😂.
 
-# Finding your mojo / Coming Up with a Routine
+## Finding your mojo / Coming Up with a Routine
 
 The human brain associates and works best when it identifies patterns in activities we engage with. This explains why it’s a lot harder to learn how to drive a car / ride a bike at first and then once we get used to it, you wonder why you thought it difficult.
 
