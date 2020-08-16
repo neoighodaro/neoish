@@ -9,13 +9,17 @@
   },
   "dependencies": {
     "autoprefixer": "^9.8.6",
-    "next": "9.3.5",
-    "next-on-netlify": "latest",
+    "next": "^9.3.5",
+    "next-on-netlify": "^2.3.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
   "devDependencies": {
+    "gray-matter": "^4.0.2",
+    "js-yaml": "^3.14.0",
+    "marked": "^1.1.1",
     "postcss-preset-env": "^6.7.0",
+    "raw-loader": "^4.0.1",
     "tailwindcss": "^1.6.2"
   }
 }
