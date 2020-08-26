@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Head from "next/head";
+import moment from "moment";
 import DefaultLayout from "../_layouts/default";
 import { getConfig, getAllPosts } from "../api";
+import { truncateString } from "../helpers";
 
 // -----------------------------------------------------------------------------
 // List Posts Section
@@ -21,12 +22,12 @@ function ListPostsSection({ posts }) {
                 <li key={idx} className="w-full md:w-1/2 flex flex-col px-3 mb-8">
                   <div className="flex flex-col">
                     <Link href={`/posts/${post.slug}`}>
-                      <a className="font-medium text-lg sm:text-xl leading-normal text-gray-800 dark-mode:text-gray-400 hover:text-indigo-700 transition-all ease-in-out duration-100 dark-mode:text-indigo-300">
+                      <a className="font-medium text-lg sm:text-xl leading-normal text-gray-800 dark-mode:text-gray-400 hover:text-indigo-700 transition-all ease-in-out duration-100">
                         {post.title}
                       </a>
                     </Link>
-                    <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">{post.meta.date}</span>
-                    <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">{post.meta.description}&hellip;</div>
+                    <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">{moment(post.meta.date).fromNow()}</span>
+                    <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">{truncateString(post.meta.description)}</div>
                   </div>
                 </li>
               );
@@ -53,13 +54,13 @@ export default function Home({ title, description, posts }) {
             Neo is a Software Engineer
           </h1>
           <span className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal">
-            &hellip;and occasional{" "}
+            &hellip;and occasional&nbsp;
             <Link href="/posts">
               <a title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500 hover:text-indigo-700">
                 writer
               </a>
-            </Link>{" "}
-            and speaker.
+            </Link>
+            &nbsp;and speaker.
           </span>
         </div>
 
@@ -106,7 +107,7 @@ export default function Home({ title, description, posts }) {
       <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
         <p>
           <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at{" "}
+          <sup>†</sup> wearing ambivert currently working at&nbsp;
           <a
             href="https://aboutyou.de"
             title="ABOUT YOU GmbH"
@@ -114,8 +115,8 @@ export default function Home({ title, description, posts }) {
             rel="noopener"
             className="font-medium text-indigo-500 hover:text-indigo-700">
             ABOUTYOU
-          </a>{" "}
-          in Hamburg, Germany. Before that, he worked as the Chief Technical Officer at{" "}
+          </a>
+          &nbsp;in Hamburg, Germany. Before that, he worked as the Chief Technical Officer at&nbsp;
           <a
             href="https://hotels.ng"
             title="Hotels Booking Limited"
@@ -123,8 +124,8 @@ export default function Home({ title, description, posts }) {
             rel="noopener"
             className="font-medium text-indigo-500 hover:text-indigo-700">
             Hotels Booking Limited
-          </a>{" "}
-          and{" "}
+          </a>
+          &nbsp;and&nbsp;
           <a
             href="https://creativitykills.co"
             title="CreativityKills"
@@ -132,8 +133,8 @@ export default function Home({ title, description, posts }) {
             rel="noopener"
             className="font-medium text-indigo-500 hover:text-indigo-700">
             CreativityKills
-          </a>{" "}
-          with both companies based in Lagos, Nigeria.
+          </a>
+          &nbsp;with both companies based in Lagos, Nigeria.
         </p>
         <p className="mt-5 text-sm text-gray-600 dark-mode:text-gray-500">
           <sup>†</sup> Has been known to wear shirts from time to time.
