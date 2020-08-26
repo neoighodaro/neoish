@@ -35,7 +35,7 @@ function BreadCrumbs() {
   );
 }
 
-export default function Posts({ title, description, posts }) {
+export default function Posts({ title, posts }) {
   const router = useRouter();
   const postsPerPage = 16;
   const page = parseInt(router.query.page) || 1;
@@ -50,7 +50,7 @@ export default function Posts({ title, description, posts }) {
   const nextPage = paginate(posts, postsPerPage, page + 1).length === 0 ? null : page + 1;
 
   return (
-    <DefaultLayout title={title} description={description}>
+    <DefaultLayout title={title} description="Read writings from Neo, software engineer at ABOUTYOU" path="/posts">
       <BreadCrumbs />
       <header className="flex flex-col justify-start md:flex-row-reverse md:justify-between md:items-center pt-16 md:py-18">
         <div className="mb-8 md:mb-0">
@@ -69,7 +69,6 @@ export default function Posts({ title, description, posts }) {
               className="font-medium text-indigo-500 hover:text-indigo-700">
               Medium
             </a>
-            .
           </span>
           <div className="flex items-center mt-4">
             <a
@@ -152,7 +151,6 @@ export async function getStaticProps() {
     props: {
       title: config.title,
       posts: allPosts,
-      description: config.description,
     },
   };
 }

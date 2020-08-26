@@ -9,36 +9,34 @@ import { truncateString } from "../helpers";
 // -----------------------------------------------------------------------------
 
 function ListPostsSection({ posts }) {
-  let postsSection;
-
-  if (posts.length > 0) {
-    postsSection = (
-      <section className="mt-12 md:mt-24 overflow-hidden bg-gray-100 dark-mode:bg-gray-800 absolute w-full left-0 pt-12 pb-8">
-        <div className="max-w-4xl mx-auto w-full px-8">
-          <h3 className="uppercase text-sm md:text-md text-gray-600 dark-mode:text-gray-500 leading-normal font-medium">Recent Posts</h3>
-          <ul className="mt-4 flex flex-wrap -mx-3">
-            {posts.map(function (post, idx) {
-              return (
-                <li key={idx} className="w-full md:w-1/2 flex flex-col px-3 mb-8">
-                  <div className="flex flex-col">
-                    <Link href={`/posts/${post.slug}`}>
-                      <a className="font-medium text-lg sm:text-xl leading-normal text-gray-800 dark-mode:text-gray-400 hover:text-indigo-700 transition-all ease-in-out duration-100">
-                        {post.title}
-                      </a>
-                    </Link>
-                    <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">{moment(post.meta.date).fromNow()}</span>
-                    <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">{truncateString(post.meta.description)}</div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
-    );
+  if (posts.length <= 0) {
+    return null;
   }
 
-  return postsSection;
+  return (
+    <section className="mt-12 md:mt-24 overflow-hidden bg-gray-100 dark-mode:bg-gray-800 absolute w-full left-0 pt-12 pb-8">
+      <div className="max-w-4xl mx-auto w-full px-8">
+        <h3 className="uppercase text-sm md:text-md text-gray-600 dark-mode:text-gray-500 leading-normal font-medium">Recent Posts</h3>
+        <ul className="mt-4 flex flex-wrap -mx-3">
+          {posts.map(function (post, idx) {
+            return (
+              <li key={idx} className="w-full md:w-1/2 flex flex-col px-3 mb-8">
+                <div className="flex flex-col">
+                  <Link href={`/posts/${post.slug}`}>
+                    <a className="font-medium text-lg sm:text-xl leading-normal text-gray-800 dark-mode:text-gray-400 hover:text-indigo-700 transition-all ease-in-out duration-100">
+                      {post.title}
+                    </a>
+                  </Link>
+                  <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">{moment(post.meta.date).fromNow()}</span>
+                  <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">{truncateString(post.meta.description)}</div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
 }
 
 export default function Home({ title, description, posts }) {

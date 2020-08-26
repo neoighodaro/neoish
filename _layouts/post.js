@@ -1,22 +1,17 @@
-import Head from "next/head";
 import Link from "next/link";
 import DefaultLayout from "./default";
+import { useRouter } from "next/router";
 
-export default function PostLayout(props) {
+export default function PostLayout({ title, content, meta: { description, image } }) {
+  title = `${title} | Neo Ighodaro`;
+
   return (
-    <DefaultLayout>
-      <Head>
-        <title>{props.title}</title>
-      </Head>
-
+    <DefaultLayout title={title} description={description} path={useRouter().asPath} image={image}>
       <div className="pt-12 md:pt-16">
         <nav className="sm:hidden flex breadcrumbs">
           <Link href="/posts">
             <a title="Posts" className="crumb">
-              <svg
-                className="flex-shrink-0 -ml-1 mr-1 h-5 w-5 dark-mode:text-gray-600 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor">
+              <svg className="flex-shrink-0 -ml-1 mr-1 h-5 w-5 dark-mode:text-gray-600 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                 <path
                   fillRule="evenodd"
                   d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -39,10 +34,7 @@ export default function PostLayout(props) {
               Home
             </a>
           </Link>
-          <svg
-            className="flex-shrink-0 mx-2 h-5 w-5 dark-mode:text-gray-600 text-gray-400"
-            viewBox="0 0 20 20"
-            fill="currentColor">
+          <svg className="flex-shrink-0 mx-2 h-5 w-5 dark-mode:text-gray-600 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
               d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -54,24 +46,21 @@ export default function PostLayout(props) {
               Posts
             </a>
           </Link>
-          <svg
-            className="flex-shrink-0 mx-2 h-5 w-5 dark-mode:text-gray-600 text-gray-400"
-            viewBox="0 0 20 20"
-            fill="currentColor">
+          <svg className="flex-shrink-0 mx-2 h-5 w-5 dark-mode:text-gray-600 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
               d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
               clipRule="evenodd"
             />
           </svg>
-          <span className="active-crumb">{props.title}</span>
+          <span className="active-crumb">{title}</span>
         </nav>
       </div>
 
       <article className="py-12 md:py-16 prose lg:prose-lg dark-mode:prose-dark">
-        <h1>{props.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: props.content }} />
-        <div>
+        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <div className="mt-10">
           <Link href="/">
             <a>Home</a>
           </Link>
