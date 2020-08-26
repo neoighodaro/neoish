@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "prettier.prettierPath": "./vendor/prettier",
+  "prettier.jsxBracketSameLine": true,
+  "editor.formatOnSave": true,
+  "search.useIgnoreFiles": true,
+  "editor.wordSeparators": "`~!-@#%^&*()=+[{]}\\|;:'\",.<>/?"
+}

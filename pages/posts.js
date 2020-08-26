@@ -1,78 +1,158 @@
-import Link from 'next/link'
-import Head from 'next/head'
-import DefaultLayout from '../_layouts/default'
-import { getConfig, getAllPosts } from '../api'
+import Link from "next/link";
+import { useRouter } from "next/router";
+import DefaultLayout from "../_layouts/default";
+import { getConfig, getAllPosts } from "../api";
+import Card from "../_layouts/components/posts/card";
+
+function paginate(array, page_size, page_number) {
+  return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+function BreadCrumbs() {
+  return (
+    <div className="pt-6 md:pt-12">
+      <nav className="flex sm:hidden breadcrumbs">
+        <Link href="/">
+          <a title="Home" className="crumb">
+            Home
+          </a>
+        </Link>
+      </nav>
+      <nav className="hidden sm:flex breadcrumbs">
+        <Link href="/">
+          <a className="crumb">Home</a>
+        </Link>
+        <svg className="flex-shrink-0 mx-2 h-5 w-5 dark-mode:text-gray-600 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fillRule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <span className="active-crumb">Posts</span>
+      </nav>
+    </div>
+  );
+}
 
 export default function Posts({ title, description, posts }) {
-  const mediumFollowersCount = '1.2K';
-  
+  const router = useRouter();
+  const postsPerPage = 16;
+  const page = parseInt(router.query.page) || 1;
+  const mediumFollowersCount = "1.2K";
+
+  const pagePosts = paginate(posts, postsPerPage, page);
+  if (pagePosts.length === 0) {
+    router.push("/posts");
+  }
+
+  const previousPage = page > 1 ? page - 1 : null;
+  const nextPage = paginate(posts, postsPerPage, page + 1).length === 0 ? null : page + 1;
+
   return (
     <DefaultLayout title={title} description={description}>
-    
-      <div className="pt-6">
-        <nav className="sm:hidden flex">
-          <Link href='/'>
-            <a title="Home" className="flex items-center text-sm leading-5 font-medium dark-mode:text-gray-400 text-gray-700 hover:text-indigo-700 transition duration-150 ease-in-out">
-             Home
-            </a>
-          </Link>
-        </nav>
-        <nav className="hidden sm:flex items-center text-sm leading-5 font-medium">
-          <Link href='/'>        
-           <a className="dark-mode:text-gray-400 text-gray-700 hover:text-indigo-700 transition duration-150 ease-in-out">Home</a>
-          </Link>            
-          <svg className="flex-shrink-0 mx-2 h-5 w-5 dark-mode:text-gray-600 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-          </svg>
-          <span className="text-gray-600">Posts</span>
-        </nav>
-      </div>
-
-
+      <BreadCrumbs />
       <header className="flex flex-col justify-start md:flex-row-reverse md:justify-between md:items-center pt-16 md:py-18">
         <div className="mb-8 md:mb-0">
-          <img className="block mx-auto md:mx-0 h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 border-4 border-white rounded-full border-indigo-700 dark-mode:border-indigo-500" src="/assets/neo.GIF" alt="Neo" />
+          <img className="avatar" src="/assets/neo.GIF" alt="Neo" />
         </div>
-          
+
         <div className="flex flex-col items-center md:items-start">
           <h1 className="mb-1 text-xl sm:text-xl md:text-2xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight">Neo Ighodaro</h1>
-          <span className="text-md sm:text-lg text-gray-600 dark-mode:text-gray-400 leading-normal">I write articles here and also on <a href="https://medium.com/@neo" title="Articles on Medium" target="_blank" rel="noopener" className="font-medium text-indigo-500 hover:text-indigo-700">Medium</a>.</span>
+          <span className="text-md sm:text-lg text-gray-600 dark-mode:text-gray-400 leading-normal">
+            I write articles here and also on&nbsp;
+            <a
+              href="https://medium.com/@neo"
+              title="Articles on Medium"
+              target="_blank"
+              rel="noopener"
+              className="font-medium text-indigo-500 hover:text-indigo-700">
+              Medium
+            </a>
+            .
+          </span>
           <div className="flex items-center mt-4">
-            <a href="https://medium.com/@neo" title="Articles on Medium" target="_blank" rel="noopener" className="text-sm font-medium bg-gray-200 dark-mode:bg-white px-2 md:px-6 py-1 rounded-sm hover:bg-indigo-600 hover:text-white transition duration-200 ease-in-out">Follow</a>
+            <a
+              href="https://medium.com/@neo"
+              title="Articles on Medium"
+              target="_blank"
+              rel="noopener"
+              className="text-sm font-medium bg-gray-200 dark-mode:bg-white px-2 md:px-6 py-1 rounded-md hover:bg-gray-600 hover:text-white transition duration-200 ease-in-out">
+              Follow
+            </a>
             <span className="px-3 text-gray-800 dark-mode:text-white font-bold text-md leading-loose">&bull;</span>
-            <span className="text-gray-600 dark-mode:text-white text-sm font-medium">{mediumFollowersCount} Followers</span>
+            <span className="text-gray-600 dark-mode:text-white text-sm font-medium">
+              <Link href="https://medium.com/@neo/followers">
+                <a target="_blank" rel="noopener" className="hover:underline">
+                  {mediumFollowersCount} Followers
+                </a>
+              </Link>
+            </span>
           </div>
         </div>
       </header>
-      
+
       <hr className="dark-mode:border-gray-800 my-10" />
-      
-      <div className="rounded-md dark-mode:bg-gray-900 overflow-hidden">
-        <Link href="/">
-          <a title="Post title">
-            <div className="h-32 md:h-64 dark-mode:bg-gray-800">
-              <img src="https://miro.medium.com/max/1400/1*Cbn9fgwjzMGSgXOilm6-pQ.png" className="w-full h-32 md:h-64 object-cover" />
-            </div>
-            <div className="p-1">
-              <h2 className="text-gray-700 dark-mode:text-white font-medium text-xl md:text-2xl">This is the articles title</h2>
-            </div>
-          </a>
-        </Link> 
+
+      <div className="px-4 pt-10">
+        <div className="flex flex-wrap -mx-4">
+          {pagePosts.map((post) => (
+            <Card post={post} key={post.slug} />
+          ))}
+        </div>
       </div>
 
+      <div className="px-4 pt-10 pb-16 flex items-center justify-between sm:px-0">
+        <div className="w-0 flex-1 flex">
+          <Link href={{ pathname: "/posts", query: { page: previousPage } }}>
+            <a
+              className={
+                (previousPage ? "" : "pointer-events-none ") +
+                "-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150"
+              }>
+              <svg className="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Previous
+            </a>
+          </Link>
+        </div>
+        <div className="w-0 flex-1 flex justify-end">
+          <Link href={{ pathname: "/posts", query: { page: nextPage } }}>
+            <a
+              className={
+                (nextPage ? "" : "pointer-events-none ") +
+                `-mt-px border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150`
+              }>
+              Next
+              <svg className="ml-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </a>
+          </Link>
+        </div>
+      </div>
     </DefaultLayout>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const config = await getConfig()
-  const allPosts = await getAllPosts()
-  
+  const config = await getConfig();
+  const allPosts = await getAllPosts();
+
   return {
     props: {
       title: config.title,
       posts: allPosts,
       description: config.description,
-    }
-  }
+    },
+  };
 }

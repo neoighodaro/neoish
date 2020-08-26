@@ -1,15 +1,15 @@
 ---
-slug: "remaking-my-website-again"
-title:  "Remaking my website...again"
-image: "https://miro.medium.com/max/1400/1*Cbn9fgwjzMGSgXOilm6-pQ.png"
+slug: "1-remaking-my-website-again"
+title: "Remaking my website...again"
+image: "https://images.unsplash.com/photo-1558980394-4c7c9299fe96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
 description: "From the beginning, Discord has been an early adopter of Elixir. Let's discuss more about how to use it'"
 date: "2020-08-13 12:35:44"
+reading_minutes: 3
 ---
-
 
 ![](https://miro.medium.com/max/8303/1*yQL4TC5P2XgQc2_DW4St7A.jpeg)
 
-Recently, for the first time, since I can remember, I fell very ill. Due to this, I was unable to perform at my best — 200% percent uno 😂. It was the first time since I started writing code seriously in 2015 that I felt “powerless” because I was falling behind deadlines I had set earlier for various projects. I felt like a scam. People have this idea that you’re doing amazing, writing code and enjoying life. Meanwhile, you’re staring at your *VIM editor* in "Insert mode" for hours — days — waiting for the motivation to create those models. I felt I was experiencing a bout of impostor syndrome.
+Recently, for the first time, since I can remember, I fell very ill. Due to this, I was unable to perform at my best — 200% percent uno 😂. It was the first time since I started writing code seriously in 2015 that I felt “powerless” because I was falling behind deadlines I had set earlier for various projects. I felt like a scam. People have this idea that you’re doing amazing, writing code and enjoying life. Meanwhile, you’re staring at your _VIM editor_ in "Insert mode" for hours — days — waiting for the motivation to create those models. I felt I was experiencing a bout of impostor syndrome.
 
 I eventually was able to overcome this minor setback. I’ll share steps I took to do this, findings from people I reached out to and some other interesting musings about life. Here’s to tackling feelings of inadequacy and figuring life out! 💪🏾
 
@@ -27,7 +27,7 @@ She went on to explain detail:
 >
 > Other times, it’s someone more knowledgeable. When I see someone with more experience who has seen more, done more. If I compare myself to them, It’ll only have me thinking I should know what they do. I could, but I don’t, and I should learn and seek more experience at the level I’m currently at.
 >
-> So, finally, sometimes, people reach a little too far up. Relax, learn, do the work. *That lump in your throat is not impostor syndrome. It’s what you haven’t learned yet, but know that you can. That’s what’s biting you and makes you question the things you already know*
+> So, finally, sometimes, people reach a little too far up. Relax, learn, do the work. _That lump in your throat is not impostor syndrome. It’s what you haven’t learned yet, but know that you can. That’s what’s biting you and makes you question the things you already know_
 >
 > But this isn’t always the case. It could be impostor syndrome for real sometimes. But not when it’s someone who started coding last night and wants to be as good as an engineer with 6+ years of active coding by morning” — Jenny
 
@@ -51,7 +51,7 @@ I also spoke with,[ Lynda Chiwetelu(@lyndachiwetelu)](https://twitter.com/lyndac
 >
 > Because right now, I hardly, for example, feel like an impostor about work or anything. I just know when it’s a case of not knowing or having worked on something before” —[Lynda Chiwetelu](https://twitter.com/lyndachiwetelu)
 
-[Jessica(@jessicaiwu_)](https://mobile.twitter.com/jessicaiwu_) also added:
+[Jessica(@jessicaiwu\_)](https://mobile.twitter.com/jessicaiwu_) also added:
 
 > “I used to get overwhelmed by the things I do not yet know, and feel insecure about the things that I expect I should know, but don’t.
 >
@@ -89,9 +89,9 @@ It’s good to look up to people and be inspired by them, but don’t over indul
 
 One thing that makes me feel less competent is when over a period of time, I’m unable to deliver on said plans/goals I’ve made. Generally, I used to keep a mental note of things I have to do, but as I’ve grown, my tasks and plans tend to increase at an exponential rate. When things become so scattered up in my head, I’m unable to function adequately. The thought of other things I may/may not have to do distract me and I just keep trying to constantly plan. Sometimes I’m able to do some of the things I have planned but then other times, I get busy/tired and then I realize that I’ve made plans to do stuff with people and totally forgotten about it. This is where the judgy voice comes up in my head — you na scam!
 
-In the past year, a friend introduced me to *[Todoist](https://todoist.com/)*, which I started to use to plan and note down my tasks — not just in my head anymore. You may wonder how this helps me. Since I know I forget some tasks when they become too many, noting them makes it easy for me actually visualize which tasks are important and which ones aren’t.
+In the past year, a friend introduced me to _[Todoist](https://todoist.com/)_, which I started to use to plan and note down my tasks — not just in my head anymore. You may wonder how this helps me. Since I know I forget some tasks when they become too many, noting them makes it easy for me actually visualize which tasks are important and which ones aren’t.
 
-Noting my tasks with *[Todoist](https://todoist.com/)* frees up my brain’s RAM (internal constant storage in the brain, in a real world, brains don’t have physical RAMs, machines do 😂) and now I’m able to focus on the task I’m performing at a certain time. Now you may be wondering:
+Noting my tasks with _[Todoist](https://todoist.com/)_ frees up my brain’s RAM (internal constant storage in the brain, in a real world, brains don’t have physical RAMs, machines do 😂) and now I’m able to focus on the task I’m performing at a certain time. Now you may be wondering:
 
 > “ah ahn, OG, you want me to note everything single task down?”
 
@@ -109,6 +109,6 @@ For this same reason, I tried to come up with a routine/structure for me getting
 
 I was scrolling through twitter recently and Jack Dorsey shared a[ link](https://www.youtube.com/watch?v=C-Cvl3_CH2A) to a[ youtube video](https://www.youtube.com/watch?v=C-Cvl3_CH2A) that I can vibe with on many levels. This is why I believe we all need some semblance of a routine to find out when we do our best work and then do that often. Once the brain is used to performing productive tasks, it becomes a habit. Imagine having a habit of *produktivity*🔥
 
-Take time to figure out what works best for you, nobody knows you better than you know yourself — apart from Spotify’s and Medium’s recommendation engines 😅. Took me a while before I could form a good routine and stick to it. Try different methods and use what works. 
+Take time to figure out what works best for you, nobody knows you better than you know yourself — apart from Spotify’s and Medium’s recommendation engines 😅. Took me a while before I could form a good routine and stick to it. Try different methods and use what works.
 
 Update (1.5years after): It's perfectly okay for methods to lose 'effect' over time. That's why we're human, we'd figure out what works next & keep iterating :)

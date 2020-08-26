@@ -1,7 +1,58 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
-* {
-	font-family: 'Barlow', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+html {
+  @apply font-body;
 }
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+/* Custom Components -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+.breadcrumbs {
+  @apply items-center text-sm leading-5 font-medium;
+}
+
+.breadcrumbs a.crumb {
+  @apply flex items-center text-sm leading-5 font-medium text-gray-700 transition duration-150 ease-in-out;
+}
+
+.breadcrumbs a.crumb:hover {
+  @apply text-indigo-700;
+}
+
+@screen dark-mode {
+  .breadcrumbs a.crumb {
+    @apply text-gray-400;
+  }
+}
+
+.breadcrumbs .active-crumb {
+  @apply text-gray-600;
+}
+
+.avatar {
+  @apply block mx-auto h-20 w-20 border-4 border-white rounded-full border-indigo-700;
+}
+
+@screen sm {
+  @apply h-24 w-24;
+}
+
+@screen md {
+  .avatar {
+    @apply mx-0 h-32 w-32;
+  }
+}
+
+@screen dark-mode {
+  .avatar {
+    @apply border-indigo-500;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+/* Custom Components -------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------------- */
+
+@tailwind utilities;
