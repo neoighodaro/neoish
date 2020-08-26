@@ -2,11 +2,10 @@ import Link from "next/link";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
 
-export default function PostLayout({ title, content, meta: { description, image } }) {
-  title = `${title} | Neo Ighodaro`;
-
+export default function PostLayout({ title, content, meta }) {
+  let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
   return (
-    <DefaultLayout title={title} description={description} path={useRouter().asPath} image={image}>
+    <DefaultLayout title={seotitle} meta={meta} description={meta.description} path={useRouter().asPath} image={meta.image}>
       <div className="pt-12 md:pt-16">
         <nav className="sm:hidden flex breadcrumbs">
           <Link href="/posts">
@@ -57,7 +56,7 @@ export default function PostLayout({ title, content, meta: { description, image 
         </nav>
       </div>
 
-      <article className="py-12 md:py-16 prose lg:prose-lg dark-mode:prose-dark">
+      <article className="py-12 md:py-16 max-w-full prose lg:prose-lg dark-mode:prose-dark">
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: content }} />
         <div className="mt-10">
