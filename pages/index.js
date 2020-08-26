@@ -3,15 +3,21 @@ import Head from 'next/head'
 import DefaultLayout from '../_layouts/default'
 import { getConfig, getAllPosts } from '../api'
 
-export default function Home(props) {
+
+// -----------------------------------------------------------------------------
+// List Posts Section
+// -----------------------------------------------------------------------------
+
+function ListPostsSection({ posts }) {
   let postsSection;
-  if (props.posts.length > 0) {
+  
+  if (posts.length > 0) {
     postsSection = (
       <section className="mt-12 md:mt-24 overflow-hidden bg-gray-100 dark-mode:bg-gray-800 absolute w-full left-0 pt-12 pb-8">
         <div className="max-w-4xl mx-auto w-full px-8">
           <h3 className="uppercase text-sm md:text-md text-gray-600 dark-mode:text-gray-500 leading-normal font-medium">Recent Posts</h3>
           <ul className="mt-4 flex flex-wrap -mx-3">
-            {props.posts.map(function (post, idx) {            
+            {posts.map(function (post, idx) {            
               return (
                 <li key={idx} className="w-full md:w-1/2 flex flex-col px-3 mb-8">
                  <div className="flex flex-col">
@@ -31,12 +37,17 @@ export default function Home(props) {
         </div>
      </section>
     );
-  }
-  
-  
-  
+  }  
+
+  return postsSection;
+}
+
+
+
+
+export default function Home({ title, description, posts }) {  
   return (
-    <DefaultLayout title={props.title} description={props.description}>
+    <DefaultLayout title={title} description={description}>
 
       <header className="flex flex-col pt-16 md:pt-18 pb-10 justify-start">
         <div className="mb-8">
@@ -45,7 +56,7 @@ export default function Home(props) {
           
         <div className="flex flex-col items-center md:items-start">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight">Neo is a Software Engineer</h1>
-          <span className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal">&hellip;and occasional <a href="https://medium.com/@neo" target="_blank" rel="noopener" title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500 hover:text-indigo-700">technical writer</a>.</span>
+          <span className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal">&hellip;and occasional <Link href="/posts"><a title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500 hover:text-indigo-700">writer</a></Link> and speaker.</span>
         </div>
           
         <div className="mt-4 md:mt-8">
@@ -79,7 +90,7 @@ export default function Home(props) {
         <p className="mt-5 text-sm text-gray-600 dark-mode:text-gray-500"><sup>†</sup> Has been known to wear shirts from time to time.</p>
       </section>
       
-      {postsSection} 
+      <ListPostsSection posts={posts} /> 
      
     </DefaultLayout>  
   );
@@ -92,9 +103,9 @@ export async function getStaticProps() {
   
   return {
     props: {
-      posts: allPosts.slice(0, 2),
       title: config.title,
-      description: config.description
+      posts: allPosts.slice(0, 2),
+      description: config.description,
     }
   }
 }

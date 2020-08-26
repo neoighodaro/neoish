@@ -5,6 +5,9 @@ const color = (color, shade) => ({ color: defaultTheme.colors[color][shade] });
 
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   purge: [
     './pages/**/*.js',
     './_layouts/**/*.js',

@@ -12,21 +12,10 @@ class MyDocument extends Document {
         <Head>
           <base href="/" />
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-          <meta name="description" content="Software engineer working at ABOUT YOU." />
-          <meta itemProp="name" content="Neo Ighodaro – Software Engineer" />
-	       <meta itemProp="description" content="Software engineer working at ABOUTYOU" />
-	       <meta name="twitter:card" content="summary_large_image" />
-	       <meta name="twitter:title" content="Neo Ighodaro – Software Engineer" />
-	       <meta name="twitter:description" content="Software engineer working at ABOUTYOU" />
-	       <meta property="og:url" content="https://neoighodaro.com/" />
-	       <meta property="og:type" content="website" />
-  	       <meta property="og:title" content="Neo Ighodaro – Software Engineer" />
-	       <meta property="og:description" content="Software engineer working at ABOUTYOU" />
-
-	       <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,700" rel="stylesheet" />
-	       <link href="/assets/style.css" rel="stylesheet" />
-	       <link href="/assets/favicon.ico" rel="shortcut icon" />        
+          <meta name="viewport" content="viewport-fit=cover" />
+          <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,700" rel="stylesheet" />  
+          <link href="/assets/style.css" rel="stylesheet" />
+          <link href="/assets/favicon.ico" rel="shortcut icon" />        
         </Head>
         <body className="dark-mode:bg-gray-900">
           <Main />
