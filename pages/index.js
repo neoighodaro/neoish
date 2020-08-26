@@ -14,27 +14,19 @@ function ListPostsSection({ posts }) {
     postsSection = (
       <section className="mt-12 md:mt-24 overflow-hidden bg-gray-100 dark-mode:bg-gray-800 absolute w-full left-0 pt-12 pb-8">
         <div className="max-w-4xl mx-auto w-full px-8">
-          <h3 className="uppercase text-sm md:text-md text-gray-600 dark-mode:text-gray-500 leading-normal font-medium">
-            Recent Posts
-          </h3>
+          <h3 className="uppercase text-sm md:text-md text-gray-600 dark-mode:text-gray-500 leading-normal font-medium">Recent Posts</h3>
           <ul className="mt-4 flex flex-wrap -mx-3">
             {posts.map(function (post, idx) {
               return (
-                <li
-                  key={idx}
-                  className="w-full md:w-1/2 flex flex-col px-3 mb-8">
+                <li key={idx} className="w-full md:w-1/2 flex flex-col px-3 mb-8">
                   <div className="flex flex-col">
                     <Link href={`/posts/${post.slug}`}>
                       <a className="font-medium text-lg sm:text-xl leading-normal text-gray-800 dark-mode:text-gray-400 hover:text-indigo-700 transition-all ease-in-out duration-100 dark-mode:text-indigo-300">
                         {post.title}
                       </a>
                     </Link>
-                    <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">
-                      {post.meta.date}
-                    </span>
-                    <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">
-                      {post.meta.description}&hellip;
-                    </div>
+                    <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">{post.meta.date}</span>
+                    <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">{post.meta.description}&hellip;</div>
                   </div>
                 </li>
               );
@@ -53,7 +45,7 @@ export default function Home({ title, description, posts }) {
     <DefaultLayout title={title} description={description}>
       <header className="flex flex-col pt-16 md:pt-18 pb-10 justify-start">
         <div className="mb-8">
-          <img className="avatar" src="/assets/neo.GIF" alt="Neo" />
+          <img className="avatar" src="/assets/neoi.gif" alt="Neo" />
         </div>
 
         <div className="flex flex-col items-center md:items-start">
@@ -63,9 +55,7 @@ export default function Home({ title, description, posts }) {
           <span className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal">
             &hellip;and occasional{" "}
             <Link href="/posts">
-              <a
-                title="Technical Articles by Neo Ighodaro"
-                className="font-medium text-indigo-500 hover:text-indigo-700">
+              <a title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500 hover:text-indigo-700">
                 writer
               </a>
             </Link>{" "}
@@ -75,24 +65,14 @@ export default function Home({ title, description, posts }) {
 
         <div className="mt-4 md:mt-8">
           <div className="flex justify-center md:justify-start md:items-start md:order-2">
-            <a
-              href="https://twitter.com/neoighodaro"
-              target="_blank"
-              rel="noopener"
-              title="Twitter"
-              className="text-gray-400 hover:text-gray-500">
+            <a href="https://twitter.com/neoighodaro" target="_blank" rel="noopener" title="Twitter" className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">Twitter</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
             </a>
 
-            <a
-              href="https://github.com/neoighodaro"
-              target="_blank"
-              rel="noopener"
-              title="GitHub"
-              className="ml-3 text-gray-400 hover:text-gray-500">
+            <a href="https://github.com/neoighodaro" target="_blank" rel="noopener" title="GitHub" className="ml-3 text-gray-400 hover:text-gray-500">
               <span className="sr-only">GitHub</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -110,11 +90,7 @@ export default function Home({ title, description, posts }) {
               title="GitHub"
               className="ml-3 text-gray-400 hover:text-gray-500">
               <span className="sr-only">Email</span>
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -139,8 +115,7 @@ export default function Home({ title, description, posts }) {
             className="font-medium text-indigo-500 hover:text-indigo-700">
             ABOUTYOU
           </a>{" "}
-          in Hamburg, Germany. Before that, he worked as the Chief Technical
-          Officer at{" "}
+          in Hamburg, Germany. Before that, he worked as the Chief Technical Officer at{" "}
           <a
             href="https://hotels.ng"
             title="Hotels Booking Limited"
