@@ -5,7 +5,7 @@ import yaml from "js-yaml";
 export async function getAllPosts() {
   const context = require.context("../_posts", false, /\.md$/);
   const posts = [];
-  for (const key of context.keys()) {
+  for (const key of context.keys().reverse()) {
     const post = key.slice(2);
     const content = await import(`../_posts/${post}`);
     const meta = matter(content.default);
