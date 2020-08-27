@@ -2,7 +2,7 @@
 slug: "2-running-reactjs-nextjs-on-my-ipad"
 title: "Running ReactJS and Deploying from my iPad"
 seo_title: "Running ReactJS, NextJS on my iPad"
-image: "https://paper.dropbox.com/ep/redirect/image?url=https%3A%2F%2Fpaper-attachments.dropbox.com%2Fs_0D429FF75C9F8F37DBFEA461FA2D1385C9FA98E0828E67A55AFEB8DE50A81014_1598510827836_AE5EB548-77A2-4942-B0CE-409FDC8A4872.png&hmac=QBbwAxeuRwXp%2FHr02v0UXTyK1s4x5K%2BNJme9LDy%2BK%2Fs%3D&width=1490"
+image: "https://paper-attachments.dropbox.com/s_0D429FF75C9F8F37DBFEA461FA2D1385C9FA98E0828E67A55AFEB8DE50A81014_1598510827836_AE5EB548-77A2-4942-B0CE-409FDC8A4872.png"
 description: "In this article, I explain how I managed to run ReactJS and deploy it from just the iPad."
 date: "2020-08-27 08:20:00"
 reading_minutes: 5
