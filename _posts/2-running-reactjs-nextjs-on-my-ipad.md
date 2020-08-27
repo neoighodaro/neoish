@@ -1,5 +1,4 @@
-----------
-
+---
 slug: "2-running-reactjs-nextjs-on-my-ipad"
 title: "Running ReactJS and Deploying from my iPad"
 seo_title: "Running ReactJS, NextJS on my iPad"
@@ -8,8 +7,7 @@ description: "In this article, I explain how I managed to run ReactJS and deploy
 date: "2020-08-27 08:20:00"
 reading_minutes: 5
 tags: reactjs, nextjs, deployment, development
-
-----------
+---
 
 Before this redesign, I had had my personal blog rocking the same design for over 4 years. That's a very long time ago. The good ol' days where we could gather in groups and shake hands to our hearts desire.
 
