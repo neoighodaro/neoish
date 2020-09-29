@@ -117,11 +117,11 @@ export default function Home({ title, description, posts }) {
           &nbsp;in Hamburg, Germany. Before that, he worked as the Chief Technical Officer at&nbsp;
           <a
             href="https://hotels.ng"
-            title="Hotels Booking Limited"
+            title="Hotel Booking Limited"
             target="_blank"
             rel="noopener"
             className="font-medium text-indigo-500 hover:text-indigo-700">
-            Hotels Booking Limited
+            Hotel Booking Limited
           </a>
           &nbsp;and&nbsp;
           <a
