@@ -56,7 +56,7 @@ Though the play.js application comes with itâ€™s own Git client, I actually
 
 ![](https://paper-attachments.dropbox.com/s_0D429FF75C9F8F37DBFEA461FA2D1385C9FA98E0828E67A55AFEB8DE50A81014_1598513367606_022839DC-4930-436D-A3DC-0C5EF330F9E0.png)
 
-Ignore the commit messages ðŸ˜•
+Ignore the commit messages :P
 
 After setting up my Netlify and Git, I could then develop and commit and for every push, there is a Netlify build which is deployed automatically.
 
