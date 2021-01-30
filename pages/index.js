@@ -105,7 +105,7 @@ export default function Home({ title, description, posts }) {
       <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
         <p>
           <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a lead software engineer in Hamburg, Germany.</p>
+          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a Lead Software Engineer in Hamburg, Germany.</p>
           <p className="mt-3">Before that, he worked as a Senior Software Engineer at           <a
             href="https://aboutyou.de"
             title="ABOUT YOU GmbH"
