@@ -55,7 +55,7 @@ export default function Home({ title, description, posts }) {
             &hellip;and occasional&nbsp;
             <Link href="/posts">
               <a title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500 hover:text-indigo-700">
-                writer
+                blogger
               </a>
             </Link>
             &nbsp;and speaker.
