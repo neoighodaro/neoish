@@ -54,7 +54,7 @@ export default function Posts({ title, posts }) {
       <BreadCrumbs />
       <header className="flex flex-col justify-start md:flex-row-reverse md:justify-between md:items-center pt-16 md:py-18">
         <div className="mb-8 md:mb-0">
-          <img className="avatar" src="/assets/neoi.gif" alt="Neo" />
+          <img className="avatar" src="/assets/neo.jpg" alt="Neo" />
         </div>
 
         <div className="flex flex-col items-center md:items-start">
