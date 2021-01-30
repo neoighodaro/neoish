@@ -105,17 +105,15 @@ export default function Home({ title, description, posts }) {
       <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
         <p>
           <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at&nbsp;
-          <a
+          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a lead software engineer in Hamburg, Germany.</p>
+          <p className="mt-3">Before that, he worked as a Senior Software Engineer at           <a
             href="https://aboutyou.de"
             title="ABOUT YOU GmbH"
             target="_blank"
             rel="noopener"
             className="font-medium text-indigo-500 hover:text-indigo-700">
-            ABOUTYOU
-          </a>
-          &nbsp;in Hamburg, Germany. Before that, he worked as the Chief Technical Officer at&nbsp;
-          <a
+            ABOUT YOU GmbH
+          </a> in Hamburg, CTO at <a
             href="https://hotels.ng"
             title="Hotel Booking Limited"
             target="_blank"
@@ -123,7 +121,7 @@ export default function Home({ title, description, posts }) {
             className="font-medium text-indigo-500 hover:text-indigo-700">
             Hotel Booking Limited
           </a>
-          &nbsp;and&nbsp;
+          &nbsp;and &nbsp;
           <a
             href="https://creativitykills.co"
             title="CreativityKills"
