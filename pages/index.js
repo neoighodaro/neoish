@@ -44,7 +44,7 @@ export default function Home({ title, description, posts }) {
     <DefaultLayout title={title} description={description}>
       <header className="flex flex-col pt-16 md:pt-18 pb-10 justify-start">
         <div className="mb-8">
-          <img className="avatar" src="/assets/neoi.gif" alt="Neo" />
+          <img className="avatar" src="/assets/neo.jpg" alt="Neo" />
         </div>
 
         <div className="flex flex-col items-center md:items-start">
