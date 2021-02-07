@@ -136,6 +136,13 @@ export default function Home({ title, description, posts }) {
           <sup>†</sup> Has been known to wear shirts from time to time.
         </p>
       </section>
+      
+      <section className="mt-6">
+        <h3 className="mb-3 font-medium text-white text-xl capitalize">
+          My Story
+        </h3>
+        <iframe className="rounded-lg" height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/c1b727e9-b0b8-440a-bf44-78adef07217c?dark="></iframe>    
+      </section>
 
       <ListPostsSection posts={posts} />
     </DefaultLayout>
