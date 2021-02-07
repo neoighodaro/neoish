@@ -1,7 +1,6 @@
 import Link from "next/link";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
-//import {Helmet} from 'react-helmet';
 
 export default function PostLayout({ title, content, meta }) {
   let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
@@ -62,15 +61,6 @@ export default function PostLayout({ title, content, meta }) {
       <article className="py-12 md:py-16 max-w-full prose lg:prose-lg dark-mode:prose-dark">
         <h1>{title}</h1>
         <div class="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
-//        <Helmet>
-//          <script src="https://utteranc.es/client.js"
-//            repo="neoighodaro/neoish-comments"
-//            issue-term="title"
-//            theme="preferred-color-scheme"
-//            crossorigin="anonymous"
-//            async>
-//          </script>
-//        </Helmet>
         <div className="mt-10">
           <Link href="/">
             <a>Home</a>
