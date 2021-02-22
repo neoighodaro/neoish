@@ -83,7 +83,7 @@ export default function Home({ title, description, posts }) {
             </a>
 
             <a
-              href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6E%65%6F%40%6E%65%6F%69%2E%73%68"
+              href="&#104;&#101;&#121;&#64;&#110;&#101;&#111;&#105;&#46;&#115;&#104;"
               target="_blank"
               rel="noopener"
               title="GitHub"
@@ -105,15 +105,20 @@ export default function Home({ title, description, posts }) {
       <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
         <p>
           I'm a <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a Lead Software Engineer in Hamburg, Germany.</p>
-          <p className="mt-3">Before that, I worked as a Senior Software Engineer at           <a
+          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a Lead Software Engineer in Hamburg, Germany.
+        </p>
+        <p className="mt-3">
+          Before that, I worked as a Senior Software Engineer at{" "}
+          <a
             href="https://aboutyou.de"
             title="ABOUT YOU GmbH"
             target="_blank"
             rel="noopener"
             className="font-medium text-indigo-500 hover:text-indigo-700">
             ABOUT YOU GmbH
-          </a> in Hamburg, CTO at <a
+          </a>{" "}
+          in Hamburg, CTO at{" "}
+          <a
             href="https://hotels.ng"
             title="Hotel Booking Limited"
             target="_blank"
@@ -136,12 +141,17 @@ export default function Home({ title, description, posts }) {
           <sup>†</sup> Has been known to wear shirts from time to time.
         </p>
       </section>
-      
+
       <section className="mt-6">
-        <h3 className="mb-3 font-medium text-white text-xl capitalize">
-          My Story
-        </h3>
-        <iframe className="rounded-lg" height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/c1b727e9-b0b8-440a-bf44-78adef07217c?dark="></iframe>    
+        <h3 className="mb-3 font-medium text-white text-xl capitalize">My Story</h3>
+        <iframe
+          className="rounded-lg"
+          height="200px"
+          width="100%"
+          frameborder="no"
+          scrolling="no"
+          seamless
+          src="https://player.simplecast.com/c1b727e9-b0b8-440a-bf44-78adef07217c?dark="></iframe>
       </section>
 
       <ListPostsSection posts={posts} />
