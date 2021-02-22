@@ -83,7 +83,7 @@ export default function Home({ title, description, posts }) {
             </a>
 
             <a
-              href="&#104;&#101;&#121;&#64;&#110;&#101;&#111;&#105;&#46;&#115;&#104;"
+              href="mailto:&#104;&#101;&#121;&#64;&#110;&#101;&#111;&#105;&#46;&#115;&#104;"
               target="_blank"
               rel="noopener"
               title="GitHub"
