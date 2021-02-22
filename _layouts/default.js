@@ -27,7 +27,6 @@ export default function DefaultLayout({ description, title, children, path, imag
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="description" content={description} />
         <meta name="name" content={title} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
