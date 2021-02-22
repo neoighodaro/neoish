@@ -55,8 +55,10 @@ export default function PostLayout({ title, content, meta }) {
           <span className="active-crumb">{title}</span>
         </nav>
       </div>
-      
-      
+
+      <div className="text-center">
+        <img src={meta.image} alt={meta.seo_title} />
+      </div>
 
       <article className="py-12 md:py-16 max-w-full prose lg:prose-lg dark-mode:prose-dark">
         <h1>{title}</h1>
