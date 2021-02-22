@@ -2,21 +2,24 @@ import Head from "next/head";
 
 export default function DefaultLayout({ description, title, children, path, image }) {
   let jsonLd = JSON.stringify({
-    "@context": "http://schema.org/",
+    "@context": "https://schema.org/",
     "@type": "Person",
     name: "Neo Ighodaro",
-    jobTitle: "Software Engineer",
-    url: "http://neoighodaro.com",
+    url: "https://neoighodaro.com",
     image: "https://neoighodaro.com/assets/neo.jpg",
     sameAs: [
-      "https://dev.to/neo",
       "https://medium.com/@neo",
       "https://github.com/neoighodaro",
-      "https://twitter.com/NeoIghodaro",
+      "https://twitter.com/neoighodaro",
       "https://instagram.com/neoighodaro",
-      "https://www.linkedin.com/in/neoighodaro",
+      "https://de.linkedin.com/in/neoighodaro",
       "https://www.youtube.com/channel/UCswNxJGBTEQY2yHMdyfGC6A",
     ],
+    jobTitle: "Lead Software Engineer",
+    worksFor: {
+      "@type": "Organization",
+      name: "deineBAUSTOFFE",
+    },
   });
 
   return (
