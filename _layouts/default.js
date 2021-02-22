@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 export default function DefaultLayout({ description, title, children, path, image }) {
-  let jsonLd = {
+  let jsonLd = JSON.stringify({
     "@context": "http://schema.org/",
     "@type": "Person",
     name: "Neo Ighodaro",
@@ -17,7 +17,7 @@ export default function DefaultLayout({ description, title, children, path, imag
       "https://www.linkedin.com/in/neoighodaro",
       "https://www.youtube.com/channel/UCswNxJGBTEQY2yHMdyfGC6A",
     ],
-  };
+  });
 
   return (
     <main>
