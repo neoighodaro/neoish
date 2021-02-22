@@ -40,6 +40,10 @@ export default function DefaultLayout({ description, title, children, path, imag
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image || "https://neoighodaro.com/assets/neo.jpg"} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `${jsonLd}` }} />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       <div className="bg-indigo-800 h-1 md:h-2 w-full pin-t pin-l fixed"></div>
