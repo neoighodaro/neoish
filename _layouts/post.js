@@ -56,11 +56,11 @@ export default function PostLayout({ title, content, meta }) {
         </nav>
       </div>
 
-      <div className="text-center">
-        <img src={meta.image} alt={meta.seo_title} />
+      <div className="text-center my-6 md:my-12">
+        <img src={meta.image} className="rounded-md" alt={meta.seo_title} />
       </div>
 
-      <article className="py-12 md:py-16 max-w-full prose lg:prose-lg dark-mode:prose-dark">
+      <article className="max-w-full prose lg:prose-lg dark-mode:prose-dark">
         <h1>{title}</h1>
         <div class="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
         <div className="mt-10">
