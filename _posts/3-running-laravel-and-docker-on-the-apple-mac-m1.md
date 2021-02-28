@@ -1,56 +1,20 @@
 ---
-slug: "3-running-laravel-and-docker-on-the-apple-mac-m1"
-title: "Running Laravel in Docker on the Apple M1 Mac"
-seo_title: "Running Laravel in Docker on the Apple M1 Mac"
-image: "https://neoish.s3-eu-west-1.amazonaws.com/3-running-laravel-and-docker-on-the-apple-mac-m1/markos-mant-0nKRq0IknHw-unsplash.jpg"
-description: "In this article, I will show how I run Laravel, Docker, and MySQL on the Apple M1 Mac"
-date: "2021-02-22 18:49:00"
+slug: "4-little-sail-an-alpine-base-for-laravel-sail"
+title: "Little Sail: alpine-based images for Laravel Sail"
+seo_title: "Little Sail: alpine-based images for Laravel Sail"
+image: "https://neoish.s3-eu-west-1.amazonaws.com/4-little-sail-an-alpine-base-for-laravel-sail/little-sail.jpeg"
+description: "Introducing little sail. An alpine-based replacement for the Laravel Sail docker runtime image"
+date: "2021-02-28 17:39:00"
 reading_minutes: 3
-tags: laravel, docker, apple, m1, mac
+tags: laravel, docker, alpine, sail
 ---
 
-Recently got the Apple MacBook Pro with the m1 chip. Of course, I wanted to immediately start developing on it. However, since the m1 is fairly new, some of the services and applications I need do not work properly on the m1.
+In my last article, it was clear I got the Apple M1 and I started using it for development. Laravel is my usual go to framework while developing and Laravel now has a little optional Docker development machine that can be added to it called [Sail](https://laravel.com/docs/sail).
 
-I thought I should share how I set up my Laravel development environment on the Apple M1 Mac.
+After [getting the M1 to work with Docker](https://neoighodaro.com/posts/3-running-laravel-and-docker-on-the-apple-mac-m1) I started using Sail and I quickly noticed the base image for the PHP runtime was over 600mb. As someone with a low storage Mac, I don't think I want to be giving Docker this much space to keep an image.
 
-To me, the fastest way to get started is using Docker. As of the time of writing this, Docker has a [preview version](https://docs.docker.com/docker-for-mac/apple-m1/) that works well for the M1 Mac.
+![Terminal Laravel Sail alpine]https://user-images.githubusercontent.com/807318/109423532-1365b580-79e0-11eb-955f-9cd51fe661f1.png]
 
-When you have Docker installed, you can continue with the following steps:
+So I decided to make [Little Sail](https://github.com/neoighodaro/little-sail). It is basically a drop-in replacement for the current Laravel Sail image runtime. Currently it only supports PHP 8.0 but I think this will change very soon as I think it should not be too hard to have an identical image for the 7.4 version of PHP (feel free to submit a PR).
 
-### Install your Laravel application
-
-To create your application, run the following command:
-
-```shell
-$ curl -s https://laravel.build/sample-app | bash # Change "sample-app"
-```
-
-> 💡 **Note**: This article is based on Laravel 8
-
-Your new application will contain a copy of Laravel Sail. “Laravel Sail is a light-weight command-line interface for interacting with Laravel's default Docker development environment. Sail provides a great starting point for building a Laravel application using PHP, MySQL, and Redis without requiring prior Docker experience.” according to [documentation](https://laravel.com/docs/8.x/sail#introduction).
-
-### Making MySQL work
-
-Unfortunately, as of the time of writing this article, MySQL does not work for the arm architecture of the M1. To get past this you will have to edit the `docker-compose.yml` file that is bundled in the application.
-
-Add `platform: 'linux/x86_64'` to the `mysql` service configuration as shown below:
-
-```yaml
-services:
-  mysql:
-    image: 'mysql:8.0'
-    platform: 'linux/x86_64'
-    ...
-```
-
-Adding this line means Docker will emulate the `linux/x86_64` architecture. This emulation might make MySQL slower especially for bigger databases. I personally do not have big databases locally and thus I don’t have any issues with the database speed.
-
-### Running your Laravel application
-
-To run your Laravel application, you need to `cd` to the applications directory and run the following command to start the docker containers:
-
-```shell
-$ ./vendor/bin/sail up
-```
-
-The initial build will take a bit but after that subsequent builds will be faster. When it’s done, go to http://localhost.
+Anyway, it is available for use now and you can report any bugs or send PRs if you think it could be better somehow. I guess the next thing to add to the package will be PHP 7.4 and smaller MySQL images.
