@@ -15,6 +15,6 @@ After [getting the M1 to work with Docker](https://neoighodaro.com/posts/3-runni
 
 ![Terminal Laravel Sail alpine](https://user-images.githubusercontent.com/807318/109423532-1365b580-79e0-11eb-955f-9cd51fe661f1.png)
 
-So I decided to make [Little Sail](https://github.com/neoighodaro/little-sail). It is basically a drop-in replacement for the current Laravel Sail image runtime. Currently it only supports PHP 8.0 but I think this will change very soon as I think it should not be too hard to have an identical image for the 7.4 version of PHP (feel free to submit a PR).
+So I decided to make [Little Sail](https://github.com/neoighodaro/little-sail). It is basically a drop-in replacement for the current Laravel Sail image runtime. ~~Currently it only supports PHP 8.0 but I think this will change very soon as I think it should not be too hard to have an identical image for the 7.4 version of PHP (feel free to submit a PR).~~ PHP 7.4 is now supported.
 
-Anyway, it is available for use now and you can report any bugs or send PRs if you think it could be better somehow. I guess the next thing to add to the package will be PHP 7.4 and smaller MySQL images.
+Anyway, it is available for use now and you can report any bugs or send PRs if you think it could be better somehow. I guess the next thing to add ~~to the package will be PHP 7.4 and~~ smaller MySQL images.
