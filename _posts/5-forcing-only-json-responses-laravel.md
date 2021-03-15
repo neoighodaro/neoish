@@ -11,7 +11,7 @@ tags: laravel, api
 
 In a case where you are trying to use Laravel as the framework for an API-only backend, you might want to force returning JSON responses.
 
-This can be useful because if the client does not specify the `Acceot: application/json` header in the request, Laravel will return a HTML response for things like validation errors.
+This can be useful because if the client does not specify the `Accept: application/json` header in the request, Laravel will return a HTML response for things like validation errors.
 
 If you would like to force JSON only responses, you should create a [global middleware](https://laravel.com/docs/master/middleware#global-middleware) and register it. Here's an example of the middleware:
 
