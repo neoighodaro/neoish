@@ -17,3 +17,8 @@
 - Run `npm install`
 - Run `npm run start`
 - That's all.
+
+
+## Adding a new Post to the Blog
+- Create a new file in the `/_posts` directory with the format: **1-slug-to-article.md**
+- ...actually, just copy one of the articles in that folder and rename it to your pleasure.
