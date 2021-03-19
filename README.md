@@ -5,10 +5,14 @@
   <p align="center">
     <h1 align="center">Neo</h1>
     <p align="center">
-      <i>This is the source code to my website, [neoi.sh](https://neoi.sh). Feel free to do with it what you please.</i>
+      <i>This is the source code to my website, <a href="https://neoi.sh>neoi.sh</a>. Feel free to do with it what you please.</i>
     </p>
   </p>
   <p>&nbsp;</p>
 </p>
 
-<p align="center"><h1 align="center">Installation</h1></p>
+## Installation
+- Clone the repo
+- Run `npm install`
+- Run `npm run dev`
+- That's all.
