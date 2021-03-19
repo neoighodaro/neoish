@@ -15,5 +15,5 @@
 
 - Clone the repo
 - Run `npm install`
-- Run `npm run dev`
+- Run `npm run start`
 - That's all.
