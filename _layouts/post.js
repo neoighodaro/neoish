@@ -63,6 +63,7 @@ export default function PostLayout({ title, content, meta }) {
       <article className="max-w-full prose lg:prose-lg dark-mode:prose-dark">
         <h1>{title}</h1>
         <div class="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
+        <blogstreak-clap></blogstreak-clap>
         <div className="mt-10">
           <Link href="/">
             <a>Home</a>
