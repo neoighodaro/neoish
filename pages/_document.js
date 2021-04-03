@@ -12,7 +12,6 @@ class MyDocument extends Document {
         <Head>
           <base href="/" />
           <meta charSet="utf-8" />
-          <meta name="viewport" content="viewport-fit=cover" />
           <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700&display=swap" rel="stylesheet" />
           <link href="/assets/style.css" rel="stylesheet" />
           <link href="/favicon.ico" rel="shortcut icon" />
