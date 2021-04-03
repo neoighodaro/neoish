@@ -2,8 +2,10 @@ import Link from "next/link";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
 import useScript from "../hooks/useScript";
+import useStyle from "../hooks/useStyle";
 
 export default function PostLayout({ title, content, meta }) {
+  useStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/dracula.min.css");
   useScript("https://blogstreak.com/static/components/clap.js");
 
   let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
