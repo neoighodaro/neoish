@@ -1,2 +1,32 @@
+name: "Neo Ighodaro"
+jobTitle: "Lead Software Engineer"
+employer: "deineBAUSTOFFE"
+baseUrl: "https://neoighodaro.com"
+logoImage: "https://neoighodaro.com/assets/neo.jpg"
+twitter: "@neoighodaro"
+github: "neoighodaro"
+
+# Will be used in JSON ld for SEO
+social:
+  - "https://medium.com/@neo"
+  - "https://github.com/neoighodaro"
+  - "https://twitter.com/neoighodaro"
+  - "https://instagram.com/neoighodaro"
+  - "https://de.linkedin.com/in/neoighodaro"
+  - "https://www.youtube.com/channel/UCswNxJGBTEQY2yHMdyfGC6A"
+
 title: "Neo Ighodaro | Software Engineer"
 description: "Neo is a Software Engineer based in Hamburg"
+postsPageDescription: "Read writings from Neo, software engineer at DeineBAUSTOFFE"
+
+links:
+  Posts: "/posts"
+
+# HTML is supported
+homepageHeadline: "Hey there, I'm Neo 👋🏽"
+homepageSubHeadline: "&hellip;a software engineer based in Hamburg"
+
+postsPerPage: 16
+
+mediumLink: "https://medium.com/@neo"
+mediumFollowersCount: "1.2K"

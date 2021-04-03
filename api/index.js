@@ -30,6 +30,7 @@ export async function getPostBySlug(slug) {
   const content = marked(meta.content, {
     highlight: (code) => require("highlight.js").highlightAuto(code).value,
   });
+
   return {
     title: meta.data.title,
     meta: meta.data,

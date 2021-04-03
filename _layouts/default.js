@@ -1,41 +1,42 @@
 import Head from "next/head";
 
-export default function DefaultLayout({ description, title, children, path, image }) {
-  let jsonLd = JSON.stringify({
-    "@context": "https://schema.org/",
-    "@type": "Person",
-    name: "Neo Ighodaro",
-    url: "https://neoighodaro.com",
-    image: "https://neoighodaro.com/assets/neo.jpg",
-    sameAs: [
-      "https://medium.com/@neo",
-      "https://github.com/neoighodaro",
-      "https://twitter.com/neoighodaro",
-      "https://instagram.com/neoighodaro",
-      "https://de.linkedin.com/in/neoighodaro",
-      "https://www.youtube.com/channel/UCswNxJGBTEQY2yHMdyfGC6A",
-    ],
-    jobTitle: "Lead Software Engineer",
-    worksFor: {
-      "@type": "Organization",
-      name: "deineBAUSTOFFE",
+export default function DefaultLayout({ description, title, children, path, image, additionalJsonLd, config }) {
+  let finalJsonLd = [
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      name: config.name,
+      url: config.baseUrl,
+      image: config.logoImage,
+      sameAs: config.social,
+      jobTitle: config.jobTitle,
+      worksFor: {
+        "@type": "Organization",
+        name: config.employer,
+      },
     },
-  });
+  ];
+
+  if (additionalJsonLd) {
+    finalJsonLd.push(additionalJsonLd);
+  }
+
+  let jsonLd = JSON.stringify(finalJsonLd);
 
   return (
     <main>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="name" content={title} />
+        <meta name="description" content={description || config.description} />
+        <meta name="name" content={title || config.title} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:site" content="@neoighodaro" />
-        <meta name="twitter:creator" content="@neoighodaro" />
-        <meta property="og:url" content={"https://neoighodaro.com" + (path || "/")} />
+        <meta name="twitter:title" content={title || config.title} />
+        <meta name="twitter:description" content={description || config.description} />
+        <meta name="twitter:site" content={config.twitter} />
+        <meta name="twitter:creator" content={config.twitter} />
+        <meta property="og:url" content={config.baseUrl + (path || "/")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={title || config.title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image || "https://neoighodaro.com/assets/neo.jpg"} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `${jsonLd}` }} />

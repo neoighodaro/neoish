@@ -1,16 +1,37 @@
 import Link from "next/link";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
-import useScript from "../hooks/useScript";
 import useStyle from "../hooks/useStyle";
+import useScript from "../hooks/useScript";
 
-export default function PostLayout({ title, content, meta }) {
-  useStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/dracula.min.css");
+export default function PostLayout({ title, content, meta, config }) {
   useScript("https://blogstreak.com/static/components/clap.js");
+  useStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/dracula.min.css");
 
+  let path = useRouter().asPath;
+  let { image, description } = meta.description;
   let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
+
+  let jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": config.baseUrl + "/posts",
+    },
+    headline: meta.seo_title ? meta.seo_title : title,
+    image: meta.image,
+    url: config.baseUrl + useRouter().asPath,
+    datePublished: new Date(meta.date).toISOString(),
+    dateModified: new Date(meta.date).toISOString(),
+    author: {
+      "@type": "Person",
+      name: config.name,
+    },
+  };
+
   return (
-    <DefaultLayout title={seotitle} meta={meta} description={meta.description} path={useRouter().asPath} image={meta.image}>
+    <DefaultLayout title={seotitle} config={config} meta={meta} description={description} path={path} image={image} additionalJsonLd={jsonLd}>
       <div className="pt-12 md:pt-16">
         <nav className="sm:hidden flex breadcrumbs">
           <Link href="/posts">
@@ -77,9 +98,9 @@ export default function PostLayout({ title, content, meta }) {
             <a className="-mt-px pr-1 inline-flex items-center leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150 no-underline">
               <svg className="mr-3 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                  clip-rule="evenodd"></path>
+                  clipRule="evenodd"></path>
               </svg>
               Posts
             </a>

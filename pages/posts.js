@@ -35,34 +35,32 @@ function BreadCrumbs() {
   );
 }
 
-export default function Posts({ title, posts }) {
+export default function Posts({ title, posts, config }) {
   const router = useRouter();
-  const postsPerPage = 16;
   const page = parseInt(router.query.page) || 1;
-  const mediumFollowersCount = "1.2K";
+  const pagePosts = paginate(posts, config.postsPerPage, page);
 
-  const pagePosts = paginate(posts, postsPerPage, page);
   if (pagePosts.length === 0) {
     router.push("/posts");
   }
 
   const previousPage = page > 1 ? page - 1 : null;
-  const nextPage = paginate(posts, postsPerPage, page + 1).length === 0 ? null : page + 1;
+  const nextPage = paginate(posts, config.postsPerPage, page + 1).length === 0 ? null : page + 1;
 
   return (
-    <DefaultLayout title={title} description="Read writings from Neo, software engineer at ABOUTYOU" path="/posts">
+    <DefaultLayout title={title} config={config} description={config.postsPageDescription} path="/posts">
       <BreadCrumbs />
       <header className="flex flex-col justify-start md:flex-row-reverse md:justify-between md:items-center pt-16 md:py-18">
         <div className="mb-8 md:mb-0">
-          <img className="avatar" src="/assets/neo.jpg" alt="Neo" />
+          <img className="avatar" src={config.logoImage} alt={config.name} />
         </div>
 
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="mb-1 text-xl sm:text-xl md:text-2xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight">Neo Ighodaro</h1>
+          <h1 className="mb-1 text-xl sm:text-xl md:text-2xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight">{config.name}</h1>
           <span className="text-md sm:text-lg text-gray-600 dark-mode:text-gray-400 leading-normal">
             I write articles here and also on&nbsp;
             <a
-              href="https://medium.com/@neo"
+              href={config.mediumLink}
               title="Articles on Medium"
               target="_blank"
               rel="noopener"
@@ -72,7 +70,7 @@ export default function Posts({ title, posts }) {
           </span>
           <div className="flex items-center mt-4">
             <a
-              href="https://medium.com/@neo"
+              href={config.mediumLink}
               title="Articles on Medium"
               target="_blank"
               rel="noopener"
@@ -83,7 +81,7 @@ export default function Posts({ title, posts }) {
             <span className="text-gray-600 dark-mode:text-white text-sm font-medium">
               <Link href="https://medium.com/@neo/followers">
                 <a target="_blank" rel="noopener" className="hover:underline">
-                  {mediumFollowersCount} Followers
+                  {config.mediumFollowersCount} Followers
                 </a>
               </Link>
             </span>
@@ -149,6 +147,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      config,
       title: config.title,
       posts: allPosts,
     },

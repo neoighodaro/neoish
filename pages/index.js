@@ -3,6 +3,7 @@ import moment from "moment";
 import DefaultLayout from "../_layouts/default";
 import { getConfig, getAllPosts } from "../api";
 import { truncateString } from "../helpers";
+import Card from "../_layouts/components/posts/card";
 
 // -----------------------------------------------------------------------------
 // List Posts Section
@@ -39,39 +40,35 @@ function ListPostsSection({ posts }) {
   );
 }
 
-export default function Home({ title, description, posts }) {
+export default function Home({ title, description, posts, config }) {
+  const githubLink = "https://github.com/" + config.github;
+  const twitterLink = "https://twitter.com/" + config.twitter.replace("@", "");
+
   return (
-    <DefaultLayout title={title} description={description}>
+    <DefaultLayout title={title} description={description} config={config}>
       <header className="flex flex-col pt-16 md:pt-18 pb-10 justify-start">
         <div className="mb-8">
-          <img className="avatar" src="/assets/neo.jpg" alt="Neo" />
+          <img className="avatar" src={config.logoImage} alt={config.name} />
         </div>
 
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight">
-            Neo is a Software Engineer
-          </h1>
-          <span className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal">
-            &hellip;and occasional&nbsp;
-            <Link href="/posts">
-              <a title="Technical Articles by Neo Ighodaro" className="font-medium text-indigo-500 hover:text-indigo-700">
-                blogger
-              </a>
-            </Link>
-            &nbsp;and speaker.
-          </span>
+          <h1
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight"
+            dangerouslySetInnerHTML={{ __html: config.homepageHeadline }}></h1>
+          <span
+            className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal"
+            dangerouslySetInnerHTML={{ __html: config.homepageSubHeadline }}></span>
         </div>
 
         <div className="mt-4 md:mt-8">
-          <div className="flex justify-center md:justify-start md:items-start md:order-2">
-            <a href="https://twitter.com/neoighodaro" target="_blank" rel="noopener" title="Twitter" className="text-gray-400 hover:text-gray-500">
+          <div className="flex align-middle items-center justify-center md:justify-start md:order-2">
+            <a href={twitterLink} target="_blank" rel="noopener" title="Twitter" className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">Twitter</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
             </a>
-
-            <a href="https://github.com/neoighodaro" target="_blank" rel="noopener" title="GitHub" className="ml-3 text-gray-400 hover:text-gray-500">
+            <a target="_blank" rel="noopener" title="GitHub" href={githubLink} className="ml-3 text-gray-400 hover:text-gray-500">
               <span className="sr-only">GitHub</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -82,22 +79,22 @@ export default function Home({ title, description, posts }) {
               </svg>
             </a>
 
-            <a
-              href="mailto:&#104;&#101;&#121;&#64;&#110;&#101;&#111;&#105;&#46;&#115;&#104;"
-              target="_blank"
-              rel="noopener"
-              title="GitHub"
-              className="ml-3 text-gray-400 hover:text-gray-500">
-              <span className="sr-only">Email</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-            </a>
+            <ul className="flex items-center">
+              {Object.keys(config.links).map((text) => {
+                return (
+                  <>
+                    <span className="px-3 text-white">•</span>
+                    <li>
+                      <span className="text-indigo-500 transition duration-150 text-lg hover:text-white font-medium">
+                        <Link href={config.links[text]}>
+                          <a title={text}>{text}</a>
+                        </Link>
+                      </span>
+                    </li>
+                  </>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </header>
@@ -105,44 +102,20 @@ export default function Home({ title, description, posts }) {
       <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
         <p>
           I'm a <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a Lead Software Engineer in Hamburg, Germany.
+          <sup>†</sup> wearing ambivert currently working at <strong>Deine Baustoffe</strong> GmbH as a Lead Software Engineer in Hamburg, Germany.
         </p>
+
         <p className="mt-3">
-          Before that, I worked as a Senior Software Engineer at{" "}
-          <a
-            href="https://aboutyou.de"
-            title="ABOUT YOU GmbH"
-            target="_blank"
-            rel="noopener"
-            className="font-medium text-indigo-500 hover:text-indigo-700">
-            ABOUT YOU GmbH
-          </a>{" "}
-          in Hamburg, CTO at{" "}
-          <a
-            href="https://hotels.ng"
-            title="Hotel Booking Limited"
-            target="_blank"
-            rel="noopener"
-            className="font-medium text-indigo-500 hover:text-indigo-700">
-            Hotel Booking Limited
-          </a>
-          &nbsp;and &nbsp;
-          <a
-            href="https://creativitykills.co"
-            title="CreativityKills"
-            target="_blank"
-            rel="noopener"
-            className="font-medium text-indigo-500 hover:text-indigo-700">
-            CreativityKills
-          </a>
-          &nbsp;with both companies based in Lagos, Nigeria.
+          Before that, I worked as a Senior Software Engineer at ABOUT YOU GmbH in Hamburg, CTO at Hotel Booking Limited and CreativityKills with both
+          companies based in Lagos, Nigeria.
         </p>
+
         <p className="mt-5 text-sm text-gray-600 dark-mode:text-gray-500">
           <sup>†</sup> Has been known to wear shirts from time to time.
         </p>
       </section>
 
-      <section className="mt-6">
+      {/* <section className="mt-6">
         <h3 className="mb-3 font-medium text-white text-xl capitalize">My Story</h3>
         <iframe
           className="rounded-lg"
@@ -152,9 +125,18 @@ export default function Home({ title, description, posts }) {
           scrolling="no"
           seamless
           src="https://player.simplecast.com/c1b727e9-b0b8-440a-bf44-78adef07217c?dark="></iframe>
-      </section>
+      </section> */}
 
-      <ListPostsSection posts={posts} />
+      <div className="mt-16">
+        <h2 className="text-gray-800 dark-mode:text-gray-100 text-xl">Recent Posts</h2>
+        <div className="pt-5">
+          <div className="flex flex-wrap -mx-4">
+            {posts.map((post) => (
+              <Card post={post} key={post.slug} />
+            ))}
+          </div>
+        </div>
+      </div>
     </DefaultLayout>
   );
 }
@@ -165,6 +147,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      config,
       title: config.title,
       posts: allPosts.slice(0, 2),
       description: config.description,
