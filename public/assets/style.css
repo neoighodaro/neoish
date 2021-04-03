@@ -5,6 +5,21 @@ html {
   @apply font-body;
 }
 
+blogstreak-clap {
+  --clap-width-height: 45px;
+  --clap-svg-width: 30px;
+  --clap-background-color: #fff;
+  --clap-color: #1a202c;
+}
+
+@media (prefers-color-scheme: dark) {
+  blogstreak-clap {
+    --clap-background-color: #1a202c;
+    --clap-color: #fff;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
 /* -------------------------------------------------------------------------------------------------------------------- */
 /* Custom Components -------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------------------------------- */

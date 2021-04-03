@@ -14,7 +14,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700" rel="stylesheet" />
           <link href="/assets/style.css" rel="stylesheet" />
-          <link href="/assets/favicon.ico" rel="shortcut icon" />
+          <link href="/favicon.ico" rel="shortcut icon" />
         </Head>
         <body className="dark-mode:bg-gray-900 bg-white">
           <Main />

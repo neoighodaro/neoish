@@ -1,8 +1,11 @@
 import Link from "next/link";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
+import useScript from "../hooks/useScript";
 
 export default function PostLayout({ title, content, meta }) {
+  useScript("https://blogstreak.com/static/components/clap.js");
+
   let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
   return (
     <DefaultLayout title={seotitle} meta={meta} description={meta.description} path={useRouter().asPath} image={meta.image}>
