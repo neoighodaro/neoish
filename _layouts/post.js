@@ -62,11 +62,11 @@ export default function PostLayout({ title, content, meta }) {
 
       <article className="max-w-full prose lg:prose-lg dark-mode:prose-dark">
         <h1>{title}</h1>
-        <div class="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
+        <div className="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
         <blogstreak-clap title={title}></blogstreak-clap>
-        <div className="mt-10">
+        <div className="mt-6 py-4">
           <Link href="/">
-            <a>Home</a>
+            <a className="text-white no-underline">Home</a>
           </Link>
         </div>
       </article>

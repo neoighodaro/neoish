@@ -148,7 +148,7 @@ export default function Home({ title, description, posts }) {
           className="rounded-lg"
           height="200px"
           width="100%"
-          frameborder="no"
+          frameBorder="no"
           scrolling="no"
           seamless
           src="https://player.simplecast.com/c1b727e9-b0b8-440a-bf44-78adef07217c?dark="></iframe>
