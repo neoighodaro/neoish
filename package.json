@@ -5,7 +5,7 @@
     "start": "next dev -p 3450",
     "dev": "next",
     "build": "next build",
-    "postbuild": "next-on-netlify"
+    "postbuild": "next-sitemap && next-on-netlify"
   },
   "dependencies": {
     "autoprefixer": "^9.8.6",
@@ -22,6 +22,7 @@
     "gray-matter": "^4.0.2",
     "js-yaml": "^3.14.0",
     "marked": "^1.1.1",
+    "next-sitemap": "^1.6.18",
     "postcss-preset-env": "^6.7.0",
     "prettier": "2.1.1",
     "raw-loader": "^4.0.1",
