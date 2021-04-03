@@ -3,10 +3,8 @@ import moment from "moment";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
 import useStyle from "../hooks/useStyle";
-import useScript from "../hooks/useScript";
 
 export default function PostLayout({ title, content, meta, config }) {
-  useScript("https://blogstreak.com/static/components/clap.js");
   useStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/dracula.min.css");
 
   let date = moment(meta.date).toISOString();
