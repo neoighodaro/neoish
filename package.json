@@ -10,7 +10,7 @@
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "highlight.js": "^10.7.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.1",
     "next": "^9.3.5",
     "next-on-netlify": "^2.3.2",
     "next-plausible": "^1.5.1",

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import moment from "moment";
 import DefaultLayout from "./default";
 import { useRouter } from "next/router";
 import useStyle from "../hooks/useStyle";
@@ -8,6 +9,7 @@ export default function PostLayout({ title, content, meta, config }) {
   useScript("https://blogstreak.com/static/components/clap.js");
   useStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/dracula.min.css");
 
+  let date = moment(meta.date).toISOString();
   let path = useRouter().asPath;
   let { image, description } = meta.description;
   let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
@@ -22,8 +24,8 @@ export default function PostLayout({ title, content, meta, config }) {
     headline: meta.seo_title ? meta.seo_title : title,
     image: meta.image,
     url: config.baseUrl + useRouter().asPath,
-    datePublished: new Date(meta.date).toISOString(),
-    dateModified: new Date(meta.date).toISOString(),
+    datePublished: date,
+    dateModified: date,
     author: {
       "@type": "Person",
       name: config.name,
