@@ -4,6 +4,7 @@ import DefaultLayout from "../_layouts/default";
 import { getConfig, getAllPosts } from "../api";
 import { truncateString } from "../helpers";
 import Card from "../_layouts/components/posts/card";
+import React from "react";
 
 // -----------------------------------------------------------------------------
 // List Posts Section
@@ -82,7 +83,7 @@ export default function Home({ title, description, posts, config }) {
             <ul className="flex items-center">
               {Object.keys(config.links).map((text) => {
                 return (
-                  <>
+                  <React.Fragment key={config.links[text]}>
                     <span className="px-3 text-white">•</span>
                     <li>
                       <span className="text-indigo-500 transition duration-150 text-lg hover:text-white font-medium">
@@ -91,7 +92,7 @@ export default function Home({ title, description, posts, config }) {
                         </Link>
                       </span>
                     </li>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </ul>

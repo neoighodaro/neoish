@@ -6,6 +6,12 @@ logoImage: "https://neoighodaro.com/assets/neo.jpg"
 twitter: "@neoighodaro"
 github: "neoighodaro"
 
+# plausible.io analytics
+plausible:
+  # Default for enabled is: process.env.NODE_ENV === 'production', so turn off explicitly if you don't need it
+  # enabled: true
+  domain: "neoighodaro.com"
+
 # Will be used in JSON ld for SEO
 social:
   - "https://medium.com/@neo"

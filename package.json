@@ -13,6 +13,7 @@
     "moment": "^2.27.0",
     "next": "^9.3.5",
     "next-on-netlify": "^2.3.2",
+    "next-plausible": "^1.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "webpack": "4.20.2"
