@@ -13,7 +13,8 @@
     "next": "^9.3.5",
     "next-on-netlify": "^2.3.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "webpack": "4.20.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.2.0",
