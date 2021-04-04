@@ -5,6 +5,25 @@ html {
   @apply font-body;
 }
 
+.prose pre code {
+  font-family: "JetBrains Mono", monospace;
+}
+
+@screen dark-mode {
+  .dark-mode\:prose-dark p code {
+    @apply text-pink-500;
+  }
+}
+
+.prose code {
+  font-family: "JetBrains Mono", monospace;
+  @apply text-blue-500;
+}
+
+/* -------------------------------------------------------------------------------------------------------------------- */
+/* Blog Streak -------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------------- */
+
 blogstreak-clap {
   --clap-width-height: 45px;
   --clap-svg-width: 30px;

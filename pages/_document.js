@@ -12,7 +12,8 @@ class MyDocument extends Document {
         <Head>
           <base href="/" />
           <meta charSet="utf-8" />
-          <link href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700&display=swap" rel="stylesheet" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
           <link href="/assets/style.css" rel="stylesheet" />
           <link href="/favicon.ico" rel="shortcut icon" />
         </Head>
