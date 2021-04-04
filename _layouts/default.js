@@ -46,7 +46,6 @@ export default function DefaultLayout({ description, title, children, path, imag
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
-          <script src="https://blogstreak.com/static/components/clap.js" type="module"></script>
         </Head>
 
         <div className="bg-indigo-800 h-1 md:h-2 w-full pin-t pin-l fixed"></div>
