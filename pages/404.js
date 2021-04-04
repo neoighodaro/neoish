@@ -82,13 +82,15 @@ export default function Custom404() {
           </g>
         </g>
       </svg>
-      <div className="flex flex-col mt-10">
-        <span className="text-white text-2xl font-semibold">Whoops! Looks like someone got lost.</span>
-        <Link href="/">
-          <a title="Go back home" className="mt-3 text-indigo-600 font-semibold block text-center">
-            Return Home
-          </a>
-        </Link>
+      <div className="flex flex-col items-center mt-10">
+        <span className="text-white dark-mode:text-gray-300 text-2xl font-semibold">Oops! That page is missing</span>
+        <span className="mt-3 text-white dark-mode:text-gray-100 block text-center">
+          It is with great shame that I ask you to
+          <Link href="/">
+            {/* prettier-ignore */}
+            <a title="Go back home" className="text-indigo-600"> restart from the homepage</a>
+          </Link>
+        </span>
       </div>
     </div>
   );
