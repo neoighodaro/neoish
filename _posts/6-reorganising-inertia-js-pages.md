@@ -54,7 +54,7 @@ createApp({
         const matched = /@(.*)::/.exec(name);
 
         if (matched === null) {
-          return require(`./Core/Pages/${name}`).default;
+          return require(`./Pages/${name}`).default;
         }
 
         const module = matched[1];
