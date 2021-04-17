@@ -84,9 +84,9 @@ export default function Home({ title, description, posts, config }) {
               {Object.keys(config.links).map((text) => {
                 return (
                   <React.Fragment key={config.links[text]}>
-                    <span className="px-3 text-white">•</span>
+                    <span className="px-3 text-gray-400 dark-mode:text-gray-100">•</span>
                     <li>
-                      <span className="text-indigo-500 transition duration-150 text-lg hover:text-white font-medium">
+                      <span className="text-indigo-500 transition duration-150 text-lg hover:text-indigo-700 font-medium">
                         <Link href={config.links[text]}>
                           <a title={text}>{text}</a>
                         </Link>
@@ -100,10 +100,10 @@ export default function Home({ title, description, posts, config }) {
         </div>
       </header>
 
-      <section className="text-md sm:text-lg text-gray-800 dark-mode:text-gray-200 leading-loose">
+      <section className="text-md sm:text-lg text-gray-700 dark-mode:text-gray-200 leading-loose">
         <p>
           I'm a <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at <strong>Deine Baustoffe</strong> GmbH as a Lead Software Engineer in Hamburg, Germany.
+          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a Lead Software Engineer in Hamburg, Germany.
         </p>
 
         <p className="mt-3">

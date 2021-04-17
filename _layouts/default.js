@@ -48,7 +48,7 @@ export default function DefaultLayout({ description, title, children, path, imag
           <link rel="manifest" href="/site.webmanifest" />
         </Head>
 
-        <div className="bg-indigo-800 h-1 md:h-2 w-full pin-t pin-l fixed"></div>
+        <div className="bg-indigo-800 h-1 md:h-2 w-full pin-t pin-l fixed z-10"></div>
         <div className="max-w-4xl mx-auto w-full px-8">{children}</div>
       </main>
     </PlausibleProvider>

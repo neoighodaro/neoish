@@ -7,7 +7,7 @@ export default function Card({ post: { title, slug, meta } }) {
 
   return (
     <Link href={`/posts/${slug}`}>
-      <a title={title} className="w-full md:w-1/2 px-4 pb-12">
+      <a title={title} className="w-full md:w-1/2 px-2 pb-12">
         <div className="relative pb-2/4 dark-mode:opacity-75">
           <img src={image} className="absolute h-full w-full object-cover shadow rounded-t-lg" />
         </div>

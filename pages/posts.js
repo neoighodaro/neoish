@@ -91,7 +91,7 @@ export default function Posts({ title, posts, config }) {
 
       <hr className="dark-mode:border-gray-800 my-10" />
 
-      <div className="px-4 pt-10">
+      <div className="px-1 pt-10">
         <div className="flex flex-wrap -mx-4">
           {pagePosts.map((post) => (
             <Card post={post} key={post.slug} />
