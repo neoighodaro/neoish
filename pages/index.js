@@ -30,7 +30,7 @@ function ListPostsSection({ posts }) {
                     </a>
                   </Link>
                   <span className="text-sm mt-1 text-gray-600 dark-mode:text-gray-600">{moment(post.meta.date).fromNow()}</span>
-                  <div className="leading-normal mt-2 text-gray-600 dark-mode:text-gray-500">{truncateString(post.meta.description, 80)}</div>
+                  <div className="leading-normalmt-2 text-gray-600 dark-mode:text-gray-500">{truncateString(post.meta.description, 80)}</div>
                 </div>
               </li>
             );
