@@ -60,7 +60,7 @@ export default {
         component = 'BarComponent'
       }
       
-      return defineAsyncComponent(() => import(`@sample/package/${loadComponent}`))
+      return defineAsyncComponent(() => import(`@sample/package/${component}`))
     }    
   }
 }
