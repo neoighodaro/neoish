@@ -1,5 +1,5 @@
 ---
-slug: "7-dynamic-model-relationships-using-macros-in-laravel"
+slug: "8-dynamic-model-relationships-using-macros-in-laravel"
 title: "Dynamic Relationships in Laravel using Eloquent Macros"
 seo_title: "Dynamic Relationships in Laravel using Eloquent Macros"
 image: "https://user-images.githubusercontent.com/807318/126615836-4dec5404-709a-4d7b-8963-9084114feac8.png"
