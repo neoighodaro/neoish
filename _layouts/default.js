@@ -36,11 +36,13 @@ export default function DefaultLayout({ description, title, children, path, imag
           <meta name="twitter:description" content={description || config.description} />
           <meta name="twitter:site" content={config.twitter} />
           <meta name="twitter:creator" content={config.twitter} />
+          <meta name="twitter:image" content={image || config.logoImage} />          
+          <meta name="twitter:image:alt" content={description || config.description} />
           <meta property="og:url" content={config.baseUrl + (path || "/")} />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={title || config.title} />
           <meta property="og:description" content={description || config.description} />
-          <meta property="og:image" content={image || config.image} />
+          <meta property="og:image" content={image || config.logoImage} />
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `${jsonLd}` }} />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
