@@ -1,7 +1,7 @@
 ---
 slug: "8-dynamically-loading-components-in-vuejs"
 title: "Dynamically Loading VueJS Components"
-seo_title: "Dynamic Relationships in Laravel using Eloquent Macros"
+seo_title: "Dynamically Loading VueJS Components"
 image: "https://user-images.githubusercontent.com/807318/129602894-3cb1f7ff-0714-42fd-a2f3-3d62d6fbf695.jpeg"
 description: "In this article, I will show how you can dynamically load components using webpacks codesplitting"
 date: "2021-08-16 18:50:00"

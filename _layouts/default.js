@@ -39,7 +39,7 @@ export default function DefaultLayout({ description, title, children, path, imag
           <meta property="og:url" content={config.baseUrl + (path || "/")} />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={title || config.title} />
-          <meta property="og:description" content={description} />
+          <meta property="og:description" content={description || config.description} />
           <meta property="og:image" content={image || config.image} />
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `${jsonLd}` }} />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

@@ -11,7 +11,7 @@ export default function PostLayout({ title, content, meta, config }) {
 
   let date = moment(meta.date).toISOString();
   let path = useRouter().asPath;
-  let { image, description } = meta.description;
+  let { image, description } = meta;
   let seotitle = `${meta.seo_title ? meta.seo_title : title} | Neo Ighodaro`;
 
   let jsonLd = {
