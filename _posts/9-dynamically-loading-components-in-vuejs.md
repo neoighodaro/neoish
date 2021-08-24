@@ -1,5 +1,5 @@
 ---
-slug: "8-dynamically-loading-components-in-vuejs"
+slug: "9-dynamically-loading-components-in-vuejs"
 title: "Dynamically Loading VueJS Components"
 seo_title: "Dynamically Loading VueJS Components"
 image: "https://user-images.githubusercontent.com/807318/129602894-3cb1f7ff-0714-42fd-a2f3-3d62d6fbf695.jpeg"

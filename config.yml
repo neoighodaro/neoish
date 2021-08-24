@@ -29,10 +29,9 @@ links:
   Posts: "/posts"
 
 # HTML is supported
-homepageHeadline: "Hey there, I'm Neo 👋🏽"
-homepageSubHeadline: "&hellip;a software engineer based in Hamburg"
+homepageHeadline: "Hi, I'm Neo 👋🏽"
+homepageSubHeadline: "Engineer &nbsp;•&nbsp;  Artist  &nbsp;•&nbsp;  Designer &nbsp;•&nbsp; Speaker"
 
-postsPerPage: 16
-
+postsPerPage: 20
 mediumLink: "https://medium.com/@neo"
 mediumFollowersCount: "1.2K"

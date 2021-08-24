@@ -57,7 +57,7 @@ export default function Home({ title, description, posts, config }) {
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark-mode:text-gray-100 leading-tight"
             dangerouslySetInnerHTML={{ __html: config.homepageHeadline }}></h1>
           <span
-            className="text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal"
+            className="block text-center md:text-left text-lg sm:text-xl md:text-2xl text-gray-600 dark-mode:text-gray-400 leading-normal"
             dangerouslySetInnerHTML={{ __html: config.homepageSubHeadline }}></span>
         </div>
 
