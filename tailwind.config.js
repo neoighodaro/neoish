@@ -5,7 +5,9 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
   },
-  purge: ["./pages/**/*.js", "./_layouts/**/*.js"],
+  purge: {
+    content: ["./pages/**/*.js", "./_layouts/**/*.js"],
+  },
   theme: {
     typography: {
       dark: {
