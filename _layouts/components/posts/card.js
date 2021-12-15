@@ -10,7 +10,7 @@ export default function Card({ post: { title, slug, meta } }) {
     <Link href={`/posts/${slug}`}>
       <a title={title} className="w-full px-2 pb-12 md:w-1/2">
         <div className="relative pb-2/4 dark-mode:opacity-75">
-          <Image src={image} alt={meta.seo_title} className="rounded-lg shadow" layout="fill" objectFit="cover" />
+          <Image src={image} alt={meta.seo_title} className="rounded-lg shadow" layout="fill" objectFit="cover" priority="true" />
         </div>
         <div className="relative px-4 -mt-16">
           <div className="p-6 bg-white rounded-lg shadow dark-mode:bg-gray-800">

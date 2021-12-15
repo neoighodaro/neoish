@@ -86,7 +86,7 @@ export default function PostLayout({ title, content, meta, config }) {
       </div>
 
       <div className="my-6 text-center md:my-12">
-        <Image src={meta.image} alt={meta.seo_title} className="rounded-md" width={meta.image_width} height={meta.image_height} />
+        <Image src={meta.image} alt={meta.seo_title} className="rounded-md" width={meta.image_width} height={meta.image_height} priority="true" />
       </div>
 
       <article className="max-w-full prose lg:prose-lg dark-mode:prose-dark">
