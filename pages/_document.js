@@ -14,10 +14,9 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
-          <link href="/assets/style.css" rel="stylesheet" />
           <link href="/favicon.ico" rel="shortcut icon" />
         </Head>
-        <body className="dark-mode:bg-gray-900 bg-white">
+        <body className="bg-white dark-mode:bg-gray-900">
           <Main />
           <NextScript />
         </body>
