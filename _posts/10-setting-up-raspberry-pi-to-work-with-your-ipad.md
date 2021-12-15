@@ -3,12 +3,13 @@ slug: "10-setting-up-raspberry-pi-to-work-with-your-ipad"
 title: "Setting up Raspberry Pi to work with your M1 iPad Pro"
 seo_title: "Setting up Raspberry Pi to work with your M1 iPad Pro"
 image: "https://user-images.githubusercontent.com/807318/130600269-2174e730-5771-4f8f-9509-505df40452af.jpg"
+image_width: 1920
+image_height: 1280
 description: "Setting up the Raspberry Pi to work with the iPad can unlock some productivity on the go if it's something you are interested in."
 date: "2021-08-24 12:50:00"
 reading_minutes: 10
 tags: ipad, raspberry pi, server
 ---
-
 
 After buying my M1 iPad Pro, I decided to use it for more of my work. However, there are many limitations that Apple has on the iPadOS that makes it very painful to work on the iPad even though it clearly has as much power (if not more) as existing laptops. So I decided to get a portable local server where I can do some local development on. Enter the Raspberry Pi.
 
@@ -18,11 +19,11 @@ In this article, I would document how I got the iPad connected to the Raspberry 
 
 The first thing to do will be to set up the Raspberry Pi by installing an operating system. For me, I decided to go with the Raspberry Pi OS 64bit version that is still in beta, but you can [choose whatever version you want](https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit). Just note that this is based on Raspberry Pi OS and other operating systems may require different steps.
 
- First, you need to download the [Raspberry Pi imager](https://www.raspberrypi.org/software/) for your computer. Connect your Pi's SD card to your computer and start the imager software.
- 
- ![IMG_0043](https://user-images.githubusercontent.com/807318/130601570-3bbeb159-7944-4b39-98da-dc77f403ef09.png)
- 
-Choose the OS to load into the SD card and select the SD card as the storage device, then click "Write". After this is done, safely eject the SD card drive from your computer then reinsert it again. 
+First, you need to download the [Raspberry Pi imager](https://www.raspberrypi.org/software/) for your computer. Connect your Pi's SD card to your computer and start the imager software.
+
+![IMG_0043](https://user-images.githubusercontent.com/807318/130601570-3bbeb159-7944-4b39-98da-dc77f403ef09.png)
+
+Choose the OS to load into the SD card and select the SD card as the storage device, then click "Write". After this is done, safely eject the SD card drive from your computer then reinsert it again.
 
 Next, open the Terminal app and run the following commands in there:
 
@@ -52,8 +53,8 @@ network={
 
 > Replace `DE` with your country short code e.g `NG` for `Nigeria`, `WIFI_NAME` and `WIFI_PASSWORD` with the appropriate values and then save the file. Now you can eject the SD card drive and insert it into your Raspberry Pi.
 
-
 ## Connecting the Raspberry Pi to the M1 iPad Pro
+
 Now that we have added the boot drive to the SD card, we can now boot up the Pi. Connect the Raspberry Pi to your iPad Pro using [a supported USB-C cable](https://www.amazon.de/-/en/gp/product/B06Y25Y6WX/ref=ppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&psc=1) as not all USB-C cables will work. Give the Pi about 2 minutes to fully boot up and connect to the WiFi.
 
 Using an SSH client for the iPad, like [Blink](https://apps.apple.com/de/app/blink-shell-mosh-ssh-client/id1156707581?l=en), connect via SSH to the Pi.
@@ -63,7 +64,6 @@ $ ssh pi@raspberrypi.local
 ```
 
 > The default password is `raspberry` but be sure to change that later. You can use `sudo raspi-config` for this or follow a guide online.
-
 
 Next, lets update Pi OS
 
@@ -201,9 +201,8 @@ $ ssh pi@10.55.0.1
 
 If you are also trying to use HTTP, you can access this IP from Safari with whatever port your Pi's HTTP exposes.
 
-
-
 ### Optional: Activating VNC
+
 If you are using the Desktop version of the Raspberry Pi OS then you might benefit from using a VNC to connect to the frontend of the Raspberry Pi. To activate VNC, run the following command:
 
 ```
@@ -213,6 +212,5 @@ $ sudo raspi-config
 ![raspi-config](https://user-images.githubusercontent.com/807318/130606937-8da552f0-5e4d-4f29-8490-4e5ed3e16f10.png)
 
 Navigate to _Interfacing Options > VNC_ and turn it on to enable this feature. Another thing you can update is your _Localisation Options_.
-
 
 Hopefully, you are able to set up your Pi and use it for some local development after this.

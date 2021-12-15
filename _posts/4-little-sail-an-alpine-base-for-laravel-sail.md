@@ -3,6 +3,8 @@ slug: "4-little-sail-an-alpine-base-for-laravel-sail"
 title: "Little Sail: alpine-based images for Laravel Sail"
 seo_title: "Little Sail: alpine-based images for Laravel Sail"
 image: "https://neoish.s3-eu-west-1.amazonaws.com/4-little-sail-an-alpine-base-for-laravel-sail/little-sail.jpeg"
+image_width: 1000
+image_height: 667
 description: "Introducing little sail. An alpine-based replacement for the Laravel Sail docker runtime image"
 date: "2021-02-28 17:39:00"
 reading_minutes: 3

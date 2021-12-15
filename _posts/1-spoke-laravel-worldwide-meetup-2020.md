@@ -3,6 +3,8 @@ slug: "1-spoke-laravel-worldwide-meetup-2020"
 title: "Using Laravel at Scale"
 seo_title: "Using Laravel at Scale | Laravel Worldwide Meetup 2020"
 image: "https://neoighodaro.com/posts/1-laravel-worldwide-meetup-2020.jpg"
+image_width: 2399
+image_height: 1439
 description: "Using Laravel at Scale is something we do at ABOUTYOU. In this talk, I will give some tips about running Laravel at Scale"
 date: "2020-08-26 13:21:44"
 reading_minutes: 1

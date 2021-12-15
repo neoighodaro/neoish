@@ -3,6 +3,8 @@ slug: "3-running-laravel-and-docker-on-the-apple-mac-m1"
 title: "Running Laravel in Docker on the Apple M1 Mac"
 seo_title: "Running Laravel in Docker on the Apple M1 Mac"
 image: "https://neoish.s3-eu-west-1.amazonaws.com/3-running-laravel-and-docker-on-the-apple-mac-m1/markos-mant-0nKRq0IknHw-unsplash.jpg"
+image_width: 1000
+image_height: 664
 description: "In this article, I will show how I run Laravel, Docker, and MySQL on the Apple M1 Mac"
 date: "2021-02-22 18:49:00"
 reading_minutes: 3

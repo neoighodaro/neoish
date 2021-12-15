@@ -3,6 +3,8 @@ slug: "6-reorganising-inertia-js-pages"
 title: "Reorganising Pages in Inertia JS"
 seo_title: "Reorganising Pages in Inertia JS"
 image: "https://neoish.s3-eu-west-1.amazonaws.com/6-reorganising-inertia-js-pages/lachlan-donald-YVT5aF2QM7M-unsplash.jpeg"
+image_width: 1000
+image_height: 625
 description: "If you have ever wanted to reorganise pages while using Inertia JS then read on"
 date: "2021-04-04 15:57:00"
 reading_minutes: 1
