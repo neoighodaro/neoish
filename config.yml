@@ -2,7 +2,10 @@ name: "Neo Ighodaro"
 jobTitle: "Lead Software Engineer"
 employer: "deineBAUSTOFFE"
 baseUrl: "https://neoighodaro.com"
-logoImage: "https://neoighodaro.com/assets/neo.jpg"
+logoImage:
+  url: "https://neoighodaro.com/assets/neo.jpg"
+  width: 500
+  height: 500
 twitter: "@neoighodaro"
 github: "neoighodaro"
 

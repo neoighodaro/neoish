@@ -3,6 +3,8 @@ slug: "8-dynamic-model-relationships-using-macros-in-laravel"
 title: "Dynamic Relationships in Laravel using Eloquent Macros"
 seo_title: "Dynamic Relationships in Laravel using Eloquent Macros"
 image: "https://user-images.githubusercontent.com/807318/126615836-4dec5404-709a-4d7b-8963-9084114feac8.png"
+image_width: 2372
+image_height: 776
 description: "Eloquent Macros are a good way to extend the functionality of your Laravel model. In this case, we will define relationships outside the model class"
 date: "2021-07-22 11:02:00"
 reading_minutes: 1

@@ -3,6 +3,8 @@ slug: "5-forcing-only-json-responses-laravel"
 title: "Forcing JSON-only responses in Laravel"
 seo_title: "Forcing JSON-only responses in Laravel"
 image: "https://neoish.s3-eu-west-1.amazonaws.com/5-forcing-only-json-responses-laravel/code.png"
+image_width: 1000
+image_height: 504
 description: "When building an API pmly service in Laravel you might want to force JSON only responses"
 date: "2021-03-14 12:31:00"
 reading_minutes: 1

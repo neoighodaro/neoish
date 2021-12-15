@@ -3,6 +3,8 @@ slug: "9-dynamically-loading-components-in-vuejs"
 title: "Dynamically Loading VueJS Components"
 seo_title: "Dynamically Loading VueJS Components"
 image: "https://user-images.githubusercontent.com/807318/129602894-3cb1f7ff-0714-42fd-a2f3-3d62d6fbf695.jpeg"
+image_width: 1671
+image_height: 754
 description: "In this article, I will show how you can dynamically load components using webpacks codesplitting"
 date: "2021-08-16 18:50:00"
 reading_minutes: 4
@@ -17,19 +19,19 @@ In cases like these, you might reach for the normal way of loading components:
 <template>
   <foo-component v-if="loadComponent === 'foo'" />
   <bar-component v-else-if="loadComponent === 'bar'" />
-  <baz-component v-else />    
+  <baz-component v-else />
 </template>
 
 <script>
 import { FooComponent, BarComponent, BazComponent } from '@sample/package'
 
-export default {  
+export default {
   components: {
     FooComponent,
     BarComponent,
     BazComponent,
   },
-  
+
   props: ['loadComponent'],
 }
 </script>
@@ -47,21 +49,21 @@ Let's try to do the same thing using a different pattern. Using [Webpack code sp
 </template>
 
 <script>
-export default {  
+export default {
   props: ['loadComponent'],
-  
+
   computed: {
     loadedComponent() {
       let component = 'BazComponent'
-      
+
       if (this.loadComponent === 'foo') {
-        component = 'FooComponent'        
+        component = 'FooComponent'
       } else if (this.loadComponent === 'bar') {
         component = 'BarComponent'
       }
-      
+
       return defineAsyncComponent(() => import(`@sample/package/${component}`))
-    }    
+    }
   }
 }
 </script>

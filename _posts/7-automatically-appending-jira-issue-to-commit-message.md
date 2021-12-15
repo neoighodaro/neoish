@@ -3,6 +3,8 @@ slug: "7-automatically-appending-jira-issue-to-commit-message"
 title: "Automatically Appending Jira Issues to Commit Messages"
 seo_title: "Automatically Appending Jira Issues to Git Commit Messages"
 image: "https://neoish.s3-eu-west-1.amazonaws.com/images/jira-issue.png"
+image_width: 1922
+image_height: 734
 description: "Jira integration with Git means you can automatically pull commits and branches from your repo. But you need to do this first."
 date: "2021-04-24 17:02:00"
 reading_minutes: 1
