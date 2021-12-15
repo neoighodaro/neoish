@@ -58,7 +58,7 @@ export default function PostLayout({ title, content, meta, config }) {
         </nav>
         <nav className="hidden sm:flex breadcrumbs">
           <Link href="/">
-            <a href="/" className="crumb">
+            <a title="Home" className="crumb">
               Home
             </a>
           </Link>

@@ -1,8 +1,8 @@
 module.exports = {
-  swcMinify: true,
-  experimental: {
-    outputStandalone: true,
-  },
+  // swcMinify: true,
+  // experimental: {
+  //   outputStandalone: true,
+  // },
   poweredByHeader: false,
   webpack: (config) => {
     config.module.rules.push({ test: /\.md$/, use: "raw-loader" });

@@ -2,9 +2,6 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const color = (color, shade) => ({ color: defaultTheme.colors[color][shade] });
 
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-  },
   purge: {
     content: ["./pages/**/*.js", "./_layouts/**/*.js"],
   },

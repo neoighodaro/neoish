@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 html {
   @apply font-body;
@@ -18,25 +19,6 @@ html {
 .prose code {
   font-family: "JetBrains Mono", monospace;
   @apply text-blue-500;
-}
-
-/* -------------------------------------------------------------------------------------------------------------------- */
-/* Blog Streak -------------------------------------------------------------------------------------------------------- */
-/* -------------------------------------------------------------------------------------------------------------------- */
-
-blogstreak-clap {
-  --clap-width-height: 45px;
-  --clap-svg-width: 30px;
-  --clap-background-color: #fff;
-  --clap-color: #1a202c;
-}
-
-@media (prefers-color-scheme: dark) {
-  blogstreak-clap {
-    --clap-background-color: #1a202c;
-    --clap-color: #fff;
-    transition: all 0.5s ease-in-out;
-  }
 }
 
 /* -------------------------------------------------------------------------------------------------------------------- */
@@ -157,11 +139,10 @@ blogstreak-clap {
 }
 
 .avatar {
-  @apply block mx-auto h-20 w-20 border-4 border-white rounded-full border-indigo-700;
-}
-
-@screen sm {
-  @apply h-24 w-24;
+  @apply block mx-auto h-20 w-20 border-4 rounded-full border-indigo-700;
+  @screen sm {
+    @apply h-24 w-24;
+  }
 }
 
 @screen md {
@@ -175,9 +156,3 @@ blogstreak-clap {
     @apply border-indigo-500;
   }
 }
-
-/* -------------------------------------------------------------------------------------------------------------------- */
-/* Custom Components -------------------------------------------------------------------------------------------------- */
-/* -------------------------------------------------------------------------------------------------------------------- */
-
-@tailwind utilities;
