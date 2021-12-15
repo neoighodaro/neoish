@@ -1,6 +1,5 @@
 module.exports = {
   swcMinify: true,
-  target: serverless,
   experimental: {
     outputStandalone: true,
   },

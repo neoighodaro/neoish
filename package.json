@@ -18,6 +18,7 @@
     "webpack": "4.20.2"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.0.0",
     "@tailwindcss/typography": "^0.2.0",
     "gray-matter": "^4.0.2",
     "js-yaml": "^3.14.0",
