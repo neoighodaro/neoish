@@ -64,7 +64,7 @@ export default function Posts({ title, posts, config }) {
               href={config.mediumLink}
               title="Articles on Medium"
               target="_blank"
-              rel="noopener"
+              rel="noreferrer"
               className="font-medium text-indigo-500 hover:text-indigo-700">
               Medium
             </a>
@@ -74,14 +74,14 @@ export default function Posts({ title, posts, config }) {
               href={config.mediumLink}
               title="Articles on Medium"
               target="_blank"
-              rel="noopener"
+              rel="noreferrer"
               className="px-2 py-1 text-sm font-medium transition duration-200 ease-in-out bg-gray-200 rounded-md dark-mode:bg-white md:px-6 hover:bg-gray-600 hover:text-white">
               Follow
             </a>
             <span className="px-3 font-bold leading-loose text-gray-800 dark-mode:text-white text-md">&bull;</span>
             <span className="text-sm font-medium text-gray-600 dark-mode:text-white">
               <Link href="https://medium.com/@neo/followers">
-                <a target="_blank" rel="noopener" className="hover:underline">
+                <a target="_blank" rel="noreferrer" className="hover:underline">
                   {config.mediumFollowersCount} Followers
                 </a>
               </Link>
