@@ -108,7 +108,7 @@ export default function Home({ title, description, posts, config }) {
         </p>
 
         <p className="mt-3">
-          Before that, I've worked as the CTO at Hotel Booking Limited and CreativityKills with both
+          Before that, I&apos;ve worked as the CTO at Hotel Booking Limited and CreativityKills with both
           companies based in Lagos, Nigeria; A tech lead at Deine Baustoffe GmbH; and a Senior Software Engineer at ABOUT YOU GmbH.
         </p>
 
