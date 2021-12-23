@@ -104,16 +104,16 @@ export default function Home({ title, description, posts, config }) {
       <section className="leading-loose text-gray-700 text-md sm:text-lg dark-mode:text-gray-200">
         <p>
           I&apos;m a <span className="font-medium">Hoodie</span>
-          <sup>†</sup> wearing ambivert currently working at Deine Baustoffe GmbH as a Lead Software Engineer in Hamburg, Germany.
+          <sup>*</sup> wearing ambivert currently working at Sauce Labs as an Engineering Manager.
         </p>
 
         <p className="mt-3">
-          Before that, I worked as a Senior Software Engineer at ABOUT YOU GmbH in Hamburg, CTO at Hotel Booking Limited and CreativityKills with both
-          companies based in Lagos, Nigeria.
+          Before that, I've worked as the CTO at Hotel Booking Limited and CreativityKills with both
+          companies based in Lagos, Nigeria; A tech lead at Deine Baustoffe GmbH; and a Senior Software Engineer at ABOUT YOU GmbH.
         </p>
 
         <p className="mt-5 text-sm text-gray-600 dark-mode:text-gray-500">
-          <sup>†</sup> Has been known to wear shirts from time to time.
+          <sup>*</sup> Has been known to wear shirts from time to time.
         </p>
       </section>
 
