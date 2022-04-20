@@ -2,6 +2,15 @@
   command   = "npm run build"
   publish   = ".next"
 
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+package = "netlify-plugin-image-optim"
+
+[[plugins]]
+package = "netlify-plugin-minify-html"
+
 [context."v1.x"]
   [[headers]]
     for = "/*"
