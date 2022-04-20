@@ -1,6 +1,6 @@
 name: "Neo Ighodaro"
-jobTitle: "Lead Software Engineer"
-employer: "deineBAUSTOFFE"
+jobTitle: "Engineering Manager"
+employer: "Sauce Labs"
 baseUrl: "https://neoighodaro.com"
 logoImage:
   url: "https://neoighodaro.com/assets/neo.jpg"
@@ -20,13 +20,10 @@ social:
   - "https://medium.com/@neo"
   - "https://github.com/neoighodaro"
   - "https://twitter.com/neoighodaro"
-  - "https://instagram.com/neoighodaro"
-  - "https://de.linkedin.com/in/neoighodaro"
-  - "https://www.youtube.com/channel/UCswNxJGBTEQY2yHMdyfGC6A"
 
-title: "Neo Ighodaro | Software Engineer"
-description: "Neo is a Software Engineer based in Hamburg"
-postsPageDescription: "Read writings from Neo, software engineer at DeineBAUSTOFFE"
+title: "Neo Ighodaro | Engineering Manager"
+description: "Neo is an Engineering Manager based in Hamburg"
+postsPageDescription: "Read writings from Neo, Engineering Manager based in Hamburg, Germany"
 
 links:
   Posts: "/posts"
