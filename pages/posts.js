@@ -23,7 +23,7 @@ function BreadCrumbs() {
         <Link href="/">
           <a className="crumb">Home</a>
         </Link>
-        <svg className="flex-shrink-0 w-5 h-5 mx-2 text-gray-400 dark-mode:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+        <svg className="flex-shrink-0 w-5 h-5 mx-2 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
           <path
             fillRule="evenodd"
             d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -51,49 +51,33 @@ export default function Posts({ title, posts, config }) {
   return (
     <DefaultLayout title={title} config={config} description={config.postsPageDescription} path="/posts">
       <BreadCrumbs />
-      <header className="flex flex-col justify-start pt-16 md:flex-row-reverse md:justify-between md:items-center md:py-18">
-        <div className="mb-8 overflow-hidden md:mb-0 avatar">
-          <Image src={config.logoImage.url} alt={config.name} width={config.logoImage.width} height={config.logoImage.height} />
+      <header className="flex flex-col justify-start pt-16 md:flex-row md:items-center md:py-18">
+        <div className="flex-1">
+          <div className="mb-8 overflow-hidden md:mb-0 avatar md:mr-8">
+            <Image src={config.logoImage.url} alt={config.name} width={config.logoImage.width} height={config.logoImage.height} />
+          </div>
         </div>
 
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="mb-1 text-xl font-bold leading-tight text-gray-800 sm:text-xl md:text-2xl dark-mode:text-gray-100">{config.name}</h1>
-          <span className="leading-normal text-gray-600 text-md sm:text-lg dark-mode:text-gray-400">
-            I write articles here and also on&nbsp;
+          <h1 className="mb-1 text-xl font-medium leading-tight text-gray-800 sm:text-xl md:text-2xl dark:text-gray-100">Some Articles</h1>
+          <span className="leading-normal text-gray-600 text-md sm:text-lg dark:text-gray-400">
+            I enjoy writing about some problems I have faced and solved. I write articles here and also on&nbsp;
             <a
               href={config.mediumLink}
               title="Articles on Medium"
               target="_blank"
               rel="noreferrer"
               className="font-medium text-indigo-500 hover:text-indigo-700">
-              Medium
+              Medium.
             </a>
           </span>
-          <div className="flex items-center mt-4">
-            <a
-              href={config.mediumLink}
-              title="Articles on Medium"
-              target="_blank"
-              rel="noreferrer"
-              className="px-2 py-1 text-sm font-medium transition duration-200 ease-in-out bg-gray-200 rounded-md dark-mode:bg-white md:px-6 hover:bg-gray-600 hover:text-white">
-              Follow
-            </a>
-            <span className="px-3 font-bold leading-loose text-gray-800 dark-mode:text-white text-md">&bull;</span>
-            <span className="text-sm font-medium text-gray-600 dark-mode:text-white">
-              <Link href="https://medium.com/@neo/followers">
-                <a target="_blank" rel="noreferrer" className="hover:underline">
-                  {config.mediumFollowersCount} Followers
-                </a>
-              </Link>
-            </span>
-          </div>
         </div>
       </header>
 
-      <hr className="my-10 dark-mode:border-gray-800" />
+      <hr className="my-24 dark:border-gray-800" />
 
-      <div className="px-1 pt-10">
-        <div className="flex flex-wrap -mx-4">
+      <div className="px-1">
+        <div className="mt-5 mx-auto grid gap-5 gap-y-8 md:grid-cols-2 lg:max-w-none">
           {pagePosts.map((post) => (
             <Card post={post} key={post.slug} />
           ))}

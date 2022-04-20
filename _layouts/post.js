@@ -39,7 +39,7 @@ export default function PostLayout({ title, content, meta, config }) {
         <nav className="flex sm:hidden breadcrumbs">
           <Link href="/posts">
             <a title="Posts" className="crumb">
-              <svg className="flex-shrink-0 w-5 h-5 mr-1 -ml-1 text-gray-400 dark-mode:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+              <svg className="flex-shrink-0 w-5 h-5 mr-1 -ml-1 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                 <path
                   fillRule="evenodd"
                   d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -49,7 +49,7 @@ export default function PostLayout({ title, content, meta, config }) {
               Posts
             </a>
           </Link>
-          <span className="px-3 text-gray-400 dark-mode:text-gray-600">|</span>
+          <span className="px-3 text-gray-400 dark:text-gray-600">|</span>
           <Link href="/">
             <a title="Home" className="crumb">
               Home
@@ -62,7 +62,7 @@ export default function PostLayout({ title, content, meta, config }) {
               Home
             </a>
           </Link>
-          <svg className="flex-shrink-0 w-5 h-5 mx-2 text-gray-400 dark-mode:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+          <svg className="flex-shrink-0 w-5 h-5 mx-2 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
               d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -74,7 +74,7 @@ export default function PostLayout({ title, content, meta, config }) {
               Posts
             </a>
           </Link>
-          <svg className="flex-shrink-0 w-5 h-5 mx-2 text-gray-400 dark-mode:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+          <svg className="flex-shrink-0 w-5 h-5 mx-2 text-gray-400 dark:text-gray-600" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
               d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -89,7 +89,7 @@ export default function PostLayout({ title, content, meta, config }) {
         <Image src={meta.image} alt={meta.seo_title} className="rounded-md" width={meta.image_width} height={meta.image_height} priority="true" />
       </div>
 
-      <article className="max-w-full prose lg:prose-lg dark-mode:prose-dark">
+      <article className="max-w-full prose prose-img:rounded-xl prose-img:w-full lg:prose-lg prose-slate dark:prose-invert">
         <h1>{title}</h1>
 
         <div className="mb-4" dangerouslySetInnerHTML={{ __html: content }} />

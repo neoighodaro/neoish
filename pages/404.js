@@ -83,8 +83,8 @@ export default function Custom404() {
         </g>
       </svg>
       <div className="flex flex-col items-center mt-10">
-        <span className="text-white dark-mode:text-gray-300 text-2xl font-semibold">Oops! That page is missing</span>
-        <span className="mt-3 text-white dark-mode:text-gray-100 block text-center">
+        <span className="text-white dark:text-gray-300 text-2xl font-semibold">Oops! That page is missing</span>
+        <span className="mt-3 text-white dark:text-gray-100 block text-center">
           It is with great shame that I ask you to
           <Link href="/">
             {/* prettier-ignore */}

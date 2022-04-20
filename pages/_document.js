@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
           <link href="/favicon.ico" rel="shortcut icon" />
         </Head>
-        <body className="bg-white dark-mode:bg-gray-900">
+        <body className="bg-white dark:bg-gray-900">
           <Main />
           <NextScript />
         </body>

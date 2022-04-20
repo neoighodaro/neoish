@@ -8,20 +8,28 @@ export default function Card({ post: { title, slug, meta } }) {
 
   return (
     <Link href={`/posts/${slug}`}>
-      <a title={title} className="w-full px-2 pb-12 md:w-1/2">
-        <div className="relative pb-2/4 dark-mode:opacity-75">
-          <Image src={image} alt={meta.seo_title} className="rounded-lg shadow" layout="fill" objectFit="cover" priority="true" />
+      <a title={title} className="flex flex-col rounded-lg shadow-lg overflow-hidden relative">
+        <div className="flex-shrink-0 overflow-hidden" style={{ maxHeight: 240 + "px" }}>
+          <Image
+            src={image}
+            alt={meta.seo_title}
+            width={image_width}
+            height={image_height}
+            className="overflow-hidden h-48 w-full object-fill"
+            priority="true"
+          />
         </div>
-        <div className="relative px-4 -mt-16">
-          <div className="p-6 bg-white rounded-lg shadow dark-mode:bg-gray-800">
-            <div className="flex items-baseline">
-              <span className="text-xs font-medium tracking-wider text-gray-500 uppercase">
-                {moment(date).fromNow()}
-                {reading_minutes && ` • ${reading_minutes} Min Read`}
-              </span>
+        <div className="flex-1 bg-white dark:bg-slate-800 p-6 flex flex-col justify-between">
+          <div className="flex-1">
+            <p className="text-xl font-semibold text-slate-900 dark:text-slate-200">{title}</p>
+            <p className="mt-3 text-base text-slate-500 dark:text-slate-400">{truncateString(description, 300)}</p>
+          </div>
+          <div className="mt-6 flex items-center">
+            <div className="flex space-x-1 text-sm text-slate-500 ">
+              <time dateTime={date}>{moment(date).fromNow()}</time>
+              <span aria-hidden="true">&middot;</span>
+              <span>{reading_minutes} mins read</span>
             </div>
-            <h2 className="my-1 text-xl font-medium leading-tight text-gray-700 truncate dark-mode:text-gray-300">{title}</h2>
-            <span className="flex text-sm text-gray-600 dark-mode:text-gray-500">{truncateString(description, 80)}</span>
           </div>
         </div>
       </a>
