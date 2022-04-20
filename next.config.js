@@ -11,6 +11,7 @@ module.exports = {
   },
   images: {
     domains: [
+      "localhost:3000",
       "neoighodaro.com",
       "neoish.s3-eu-west-1.amazonaws.com",
       // TODO: Maybe Migrate?
