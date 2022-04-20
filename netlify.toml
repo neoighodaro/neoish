@@ -4,3 +4,9 @@
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[context."v1.x"]
+  [[headers]]
+    for = "/*"
+    [headers.values]
+      X-Robots-Tag = "noindex"

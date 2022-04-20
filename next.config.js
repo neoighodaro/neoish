@@ -13,6 +13,7 @@ module.exports = {
     domains: [
       "localhost:3000",
       "neoighodaro.com",
+      "v1-x.neoighodaro.com",
       "neoish.s3-eu-west-1.amazonaws.com",
       // TODO: Maybe Migrate?
       "paper-attachments.dropbox.com",
