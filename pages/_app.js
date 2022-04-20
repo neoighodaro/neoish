@@ -1,6 +1,6 @@
 import Head from "next/head";
 // import "tailwindcss/tailwind.css";
-import "../styles/global.css";
+import "./app.css";
 
 export default function MyApp({ Component, pageProps }) {
   return (
