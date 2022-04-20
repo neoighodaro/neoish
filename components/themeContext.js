@@ -1,13 +1,14 @@
 import React, { createContext, useState } from "react";
 
+const userMedia = typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)");
+
 const getInitialTheme = (_) => {
-  if (typeof window !== "undefined" /* && window.localStorage */) {
+  if (typeof window !== undefined /* && window.localStorage */) {
     // const storedPrefs = window.localStorage.getItem("color-theme");
     // if (typeof storedPrefs === "string") {
     //   return storedPrefs;
     // }
 
-    const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
     if (userMedia.matches) {
       return "dark";
     }
@@ -15,7 +16,7 @@ const getInitialTheme = (_) => {
 
   // If you want to use light theme as the default,
   // return "light" instead
-  return "dark";
+  return "light";
 };
 
 export const ThemeContext = createContext();
@@ -39,6 +40,7 @@ export const ThemeProvider = ({ initialTheme, children }) => {
 
   React.useEffect(
     (_) => {
+      userMedia.addEventListener("change", ({ matches }) => (matches ? rawSetTheme("dark") : rawSetTheme("light")));
       rawSetTheme(theme);
     },
     [theme]

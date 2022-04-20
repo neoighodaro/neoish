@@ -11,6 +11,7 @@ module.exports = {
   },
   images: {
     domains: [
+      "neoish.test",
       "localhost:3000",
       "neoighodaro.com",
       "v1-x.neoighodaro.com",
