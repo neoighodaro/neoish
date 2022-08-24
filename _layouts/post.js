@@ -30,6 +30,7 @@ export default function PostLayout({ title, content, meta, config }) {
     author: {
       "@type": "Person",
       name: config.name,
+      url: config.baseUrl,
     },
   };
 

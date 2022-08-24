@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://neoighodaro.com
+
+# Sitemaps
+Sitemap: https://neoighodaro.com/sitemap.xml
