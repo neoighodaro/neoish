@@ -2,7 +2,7 @@
 slug: "12-changing-xcode-header-comment-templates-fileheader"
 title: "Changing XCode File Header Comment"
 seo_title: "Changing XCode File Header Comment"
-image: "https://github.com/neoighodaro/neoish/assets/807318/977128be-4e40-4833-b3cf-1cd09c9b718a"
+image: "https://neoighodaro.com/posts/12-xcode-file.png"
 image_width: 3024
 image_height: 1138
 description: "Change the file header comment for youe Swift files in Xcode by customising the FILEHEADER"
