@@ -104,11 +104,11 @@ export default function Home({ title, description, posts, config }) {
       <section className="leading-loose text-slate-600 text-md sm:text-lg dark:text-slate-200">
         <p className="leading-9">
           I&apos;m a <span className="font-medium">Hoodie</span>
-          <sup>*</sup> wearing ambivert working as a Technical & People Lead in Hamburg, Germany.
+          <sup>*</sup> wearing ambivert working as a Head of Software Engineering in Hamburg, Germany.
         </p>
 
         <p className="mt-3 leading-9">
-          I&apos;ve been in software engineering and leadership for a combined 18+ years and in this time, I have worked as a Engineer, Consultant, Technical Content Writer Lead Engineer, Engineering Manager, Chief
+          I&apos;ve been in software engineering and leadership for a combined 20+ years and in this time, I have worked as a Engineer, Technical Content Writer, Lead/Engineering Manager, Head of Engineering, Chief
           Technical Officer, and Technical Co-founder. With companies based in Hamburg, Berlin, London, and Lagos.
         </p>
 
