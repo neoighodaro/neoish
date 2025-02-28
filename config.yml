@@ -1,6 +1,6 @@
 name: "Neo Ighodaro"
-jobTitle: "Engineering Manager"
-employer: "Sauce Labs"
+jobTitle: "Head of Engineering"
+employer: "PINKTUM"
 baseUrl: "https://neoighodaro.com"
 logoImage:
   url: "https://neoighodaro.com/assets/neo.jpg"
@@ -21,16 +21,16 @@ social:
   - "https://github.com/neoighodaro"
   - "https://twitter.com/neoighodaro"
 
-title: "Neo Ighodaro | Engineering Manager"
-description: "Neo is an Engineering Manager based in Hamburg"
-postsPageDescription: "Read writings from Neo, Engineering Manager based in Hamburg, Germany"
+title: "Neo Ighodaro | Head of Engineering"
+description: "Neo is a Head of Software Engineering based in Hamburg"
+postsPageDescription: "Read writings from Neo, Head of Software Engineering based in Hamburg, Germany"
 
 links:
   Posts: "/posts"
 
 # HTML is supported
 homepageHeadline: "Hi, I'm Neo 👋🏽"
-homepageSubHeadline: "Engineering Manager &nbsp;•&nbsp;  Aspiring House Husband"
+homepageSubHeadline: "Head of Engineering &nbsp;•&nbsp;  Aspiring House Husband"
 
 postsPerPage: 20
 mediumLink: "https://medium.com/@neo"
