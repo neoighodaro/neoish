@@ -421,14 +421,19 @@
     })
 
     // ---------- tracklist (Side B): pin the screen, swap schrödingers → undone on scroll ----------
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: "#tracklist", start: "top top", end: "+=130%",
-        pin: true, scrub: 1, anticipatePin: 1,
-      },
+    // Desktop only. Below the two-column breakpoint the pin + overlapping tracks
+    // squeezes the tracklist off-screen, so there we fall back to normal stacked
+    // flow (see the max-width: 959px block in landing.css).
+    gsap.matchMedia().add("(min-width: 960px)", () => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#tracklist", start: "top top", end: "+=130%",
+          pin: true, scrub: 1, anticipatePin: 1,
+        },
+      })
+        .to("#trk-0", { autoAlpha: 0, y: -40, duration: 0.7 }, 0.2)
+        .fromTo("#trk-1", { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.5)
     })
-      .to("#trk-0", { autoAlpha: 0, y: -40, duration: 0.7 }, 0.2)
-      .fromTo("#trk-1", { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.5)
 
     // darken the fixed header the whole time the yellow expanse is on screen
     ScrollTrigger.create({

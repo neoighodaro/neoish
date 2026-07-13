@@ -593,6 +593,22 @@
   html.static .tl-stack { min-height: 0; display: flex; flex-direction: column; }
   html.static .tl-stack .player { display: flex; flex-direction: column; }
   html.static .tl-stack .player + .player { margin-top: 6vh; padding-top: 6vh; border-top: 1px solid rgba(10, 10, 12, 0.14); }
+
+  /* Side B on narrow screens: the desktop pin/track-swap is disabled (see
+     landing.js), so lay both tracks out in normal flow and shrink the album
+     art so the tracklist is fully visible instead of overlapped. */
+  @media (max-width: 959px) {
+    .tracklist { min-height: 0; }
+    .player-grid { margin-top: 6vh; }
+    .art-window { max-width: 300px; margin: 0 auto; }
+    html.js:not(.static) .tl-stack { min-height: 0; }
+    html.js:not(.static) .tl-stack .player { position: static; inset: auto; justify-content: flex-start; }
+    html.js:not(.static) #trk-1 { opacity: 1; visibility: visible; }
+    html.js:not(.static) .tl-stack .player + .player {
+      margin-top: 6vh; padding-top: 6vh;
+      border-top: 1px solid rgba(10, 10, 12, 0.14);
+    }
+  }
   .player-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
   .player-name { font-family: "Fraunces", serif; font-optical-sizing: auto; font-size: 2.5rem; line-height: 1.05; text-transform: lowercase; }
   .player-len { margin-left: auto; font-size: 12px; letter-spacing: 0.2em; color: rgba(10, 10, 12, 0.55); }
