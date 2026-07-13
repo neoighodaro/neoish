@@ -9,9 +9,30 @@ interface Props {
   description?: string
   progress?: boolean
   lang?: Lang
+  canonical?: URL
+  alternates?: { en: URL; de: URL } | null
+  image?: URL
+  ogType?: "website" | "article"
+  publishedTime?: Date
+  jsonLd?: object
 }
 
-const { title, description = "", progress = false, lang = "en" } = Astro.props
+// The build uses Astro's directory format and the sitemap emits trailing slashes,
+// so the canonical has to carry one too or it won't match its own <loc>.
+const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`)
+
+const {
+  title,
+  description = "",
+  progress = false,
+  lang = "en",
+  canonical = new URL(withSlash(Astro.url.pathname), Astro.site),
+  alternates = null,
+  image = new URL("/img/og.png", Astro.site),
+  ogType = "website",
+  publishedTime,
+  jsonLd,
+} = Astro.props
 const t = useTranslations(lang)
 const pathname = Astro.url.pathname
 ---
@@ -27,6 +48,29 @@ const pathname = Astro.url.pathname
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates && (
+      <>
+        <link rel="alternate" hreflang="en" href={alternates.en} />
+        <link rel="alternate" hreflang="de" href={alternates.de} />
+        <link rel="alternate" hreflang="x-default" href={alternates.en} />
+      </>
+    )}
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content={lang === "de" ? "de_DE" : "en_US"} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
