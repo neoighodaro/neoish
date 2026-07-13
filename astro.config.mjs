@@ -14,7 +14,9 @@ const translatedSlugs = new Set(
     .filter((f) => f.endsWith(".md"))
     .filter((f) => {
       const frontmatter = readFileSync(join(DE_DIR, f), "utf8").split(/^---$/m)[1] ?? ""
-      return !/^draft:\s*true\s*$/m.test(frontmatter)
+      // YAML (js-yaml 4, core schema) parses draft as boolean true for any of
+      // these three casings — match them all, not just lowercase "true".
+      return !/^draft:\s*(true|True|TRUE)\s*$/m.test(frontmatter)
     })
     .map((f) => f.replace(/\.md$/, "")),
 )
