@@ -34,6 +34,8 @@ network:
   - "docs.astro.build"
   - '*.neoighodaro.com'
   - neoighodaro.com
+  - yulo.app
+  - '*.yulo.app'
 claude:
   plugins:
     marketplaces:
