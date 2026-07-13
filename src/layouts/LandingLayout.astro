@@ -12,6 +12,9 @@ const runtime = landingRuntime(lang)
 <!doctype html>
 <html lang={lang}>
   <head>
+    <script is:inline>
+      document.documentElement.classList.add("js", "is-loading")
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{copy.meta.title}</title>
