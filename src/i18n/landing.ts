@@ -72,7 +72,7 @@ export type LandingRuntime = {
 
 const en: LandingCopy = {
   meta: {
-    title: "Neo Ighodaro — Midnight Pressing",
+    title: "Neo Ighodaro — Engineer, Founder & Music Maker",
     description: "Neo Ighodaro — founder, engineer and music maker. Software, open source and the b l v c k record.",
   },
   nav: { blog: "Blog" },
@@ -168,7 +168,7 @@ const en: LandingCopy = {
 
 const de: LandingCopy = {
   meta: {
-    title: "Neo Ighodaro — Midnight Pressing",
+    title: "Neo Ighodaro — Ingenieur, Gründer & Musikmacher",
     description: "Neo Ighodaro — Gründer, Ingenieur und Musikmacher. Software, Open Source und die b l v c k Platte.",
   },
   nav: { blog: "Blog" },

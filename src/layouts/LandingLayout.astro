@@ -7,6 +7,11 @@ interface Props {
 }
 const { lang, copy } = Astro.props
 const runtime = landingRuntime(lang)
+
+const canonical = new URL(Astro.url.pathname, Astro.site)
+const ogImage = new URL("/img/screenshot.png", Astro.site)
+const enUrl = new URL("/", Astro.site)
+const deUrl = new URL("/de/", Astro.site)
 ---
 
 <!doctype html>
@@ -19,6 +24,24 @@ const runtime = landingRuntime(lang)
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{copy.meta.title}</title>
     <meta name="description" content={copy.meta.description} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="de" href={deUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={copy.meta.title} />
+    <meta property="og:description" content={copy.meta.description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === "de" ? "de_DE" : "en_US"} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={copy.meta.title} />
+    <meta name="twitter:description" content={copy.meta.description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
