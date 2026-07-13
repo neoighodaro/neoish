@@ -10,7 +10,7 @@ const DE_DIR = "./src/content/blog/de"
 // not appear in the sitemap — Google's guidance is to list only canonical URLs, and
 // scripts/indexnow.mjs scrapes <loc> straight out of the sitemap.
 const translatedSlugs = new Set(
-  readdirSync(DE_DIR)
+  readdirSync(DE_DIR, { recursive: true })
     .filter((f) => f.endsWith(".md"))
     .filter((f) => {
       const frontmatter = readFileSync(join(DE_DIR, f), "utf8").split(/^---$/m)[1] ?? ""
@@ -34,7 +34,7 @@ export default defineConfig({
       // pairs, including for the fallback URLs this filter removes. Page-level
       // hreflang in BlogLayout is the single source of truth.
       filter: (page) => {
-        const m = new URL(page).pathname.match(/^\/de\/blog\/([^/]+)\/?$/)
+        const m = new URL(page).pathname.match(/^\/de\/blog\/(.+?)\/?$/)
         return !m || translatedSlugs.has(m[1])
       },
     }),
