@@ -7,7 +7,7 @@
 <h1 align="center">Neo</h1>
 
 <p align="center">
-  <i>Source for my website, <a href="https://neoi.sh">neoi.sh</a>. See <a href="./LICENSE.md">LICENSE</a> for usage.</i>
+  <i>Source for my website, <a href="https://neoighodaro.com">neoighodaro.com</a>. See <a href="./LICENSE.md">LICENSE</a> for usage.</i>
 </p>
 
 ## Develop
