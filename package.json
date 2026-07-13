@@ -6,10 +6,11 @@
   "packageManager": "pnpm@11.12.0",
   "scripts": {
     "dev": "astro dev --port 4321",
-    "build": "astro build && node scripts/indexnow.mjs",
+    "build": "astro build && node scripts/seo-check.mjs && node scripts/indexnow.mjs",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "biome check --write ."
+    "lint": "biome check --write .",
+    "seo:check": "node scripts/seo-check.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",

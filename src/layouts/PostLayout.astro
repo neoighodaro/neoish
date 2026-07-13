@@ -1,8 +1,8 @@
 ---
-import type { CollectionEntry } from "astro:content"
+import { type CollectionEntry, getEntry } from "astro:content"
 import { useTranslations } from "../i18n/ui"
 import { categoryFor, fmtDate, prettyTag, tagList } from "../lib/format"
-import type { Lang } from "../lib/i18n"
+import { type Lang, parsePostId } from "../lib/i18n"
 import BlogLayout from "./BlogLayout.astro"
 
 interface Props {
@@ -19,9 +19,51 @@ const tags = tagList(d.tags)
 const category = categoryFor(d)
 const blogHref = lang === "de" ? "/de/blog" : "/blog"
 const homeHref = lang === "de" ? "/de/" : "/"
+
+// On the /de/ fallback route, `post` is the ENGLISH entry while `lang` is "de".
+// That mismatch is exactly what we key off: it means we are serving English content
+// at a German URL, so all signals must point back at the English original.
+// A draft German translation does not count — getStaticPaths filters drafts, so the
+// /de/ route falls back to English in that case too.
+const { slug } = parsePostId(post.id)
+const deEntry = await getEntry("blog", `de/${slug}`)
+const hasDe = Boolean(deEntry && !deEntry.data.draft)
+
+const enUrl = new URL(`/blog/${slug}/`, Astro.site)
+const deUrl = new URL(`/de/blog/${slug}/`, Astro.site)
+const canonical = lang === "de" && hasDe ? deUrl : enUrl
+const alternates = hasDe ? { en: enUrl, de: deUrl } : null
+
+const seoTitle = d.seo_title ?? `${d.title} — Neo Ighodaro`
+// Frontmatter carries both absolute S3 URLs and site-relative paths; URL() handles both.
+const ogImage = d.image ? new URL(d.image, Astro.site) : new URL("/img/og.png", Astro.site)
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: d.title,
+  description: d.description,
+  datePublished: d.date.toISOString(),
+  author: { "@type": "Person", name: "Neo Ighodaro", url: "https://neoighodaro.com" },
+  // The resolved canonical, not the current URL — otherwise the fallback page's
+  // structured data would contradict its own canonical tag.
+  mainEntityOfPage: canonical.href,
+  ...(d.image && { image: ogImage.href }),
+}
 ---
 
-<BlogLayout title={d.seo_title ?? `${d.title} — Neo Ighodaro`} description={d.description} progress={true} lang={lang}>
+<BlogLayout
+  title={seoTitle}
+  description={d.description}
+  progress={true}
+  lang={lang}
+  canonical={canonical}
+  alternates={alternates}
+  image={ogImage}
+  ogType="article"
+  publishedTime={d.date}
+  jsonLd={jsonLd}
+>
   <a slot="head-right" data-fade href={blogHref}>&larr; {t("post.backShort")}</a>
 
   <article class="article">
