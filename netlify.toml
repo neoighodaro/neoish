@@ -1,0 +1,14 @@
+# Deploys this Astro static site. Netlify builds from the repo root and
+# publishes the static output in ./dist.
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[[plugins]]
+package = "netlify-plugin-image-optim"
+
+[[plugins]]
+package = "netlify-plugin-minify-html"
+
+[build.environment]
+  NODE_VERSION = "22"

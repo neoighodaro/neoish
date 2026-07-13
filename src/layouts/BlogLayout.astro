@@ -1,0 +1,102 @@
+---
+import "../styles/blog.css"
+import LangSwitcher from "../components/LangSwitcher.astro"
+import { useTranslations } from "../i18n/ui"
+import type { Lang } from "../lib/i18n"
+
+interface Props {
+  title: string
+  description?: string
+  progress?: boolean
+  lang?: Lang
+}
+
+const { title, description = "", progress = false, lang = "en" } = Astro.props
+const t = useTranslations(lang)
+const pathname = Astro.url.pathname
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline defer src="https://stats.ckx.sh/script.js" data-website-id="7a68588b-7669-4443-9414-dcfdcc78e0e2"></script>
+  </head>
+  <body>
+    {progress && <div class="progress" aria-hidden="true"></div>}
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"></div>
+
+    <header class="site-head">
+      <a data-fade href="/">Neo Ighodaro</a>
+      <div class="head-right">
+        <slot name="head-right"><span data-fade>{t("head.writing")}</span></slot>
+        <LangSwitcher lang={lang} pathname={pathname} />
+      </div>
+    </header>
+
+    <slot />
+
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+      integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc"
+      crossorigin="anonymous"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"
+      integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh"
+      crossorigin="anonymous"></script>
+    <script is:inline>
+      document.documentElement.classList.add("js")
+      const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches
+
+      if (REDUCED || !window.gsap || !window.ScrollTrigger) {
+        document.documentElement.classList.add("static")
+      } else {
+        gsap.registerPlugin(ScrollTrigger)
+
+        if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          const cursor = document.querySelector(".cursor")
+          const cx = gsap.quickTo(cursor, "x", { duration: 0.18, ease: "power3.out" })
+          const cy = gsap.quickTo(cursor, "y", { duration: 0.18, ease: "power3.out" })
+          addEventListener("pointermove", (e) => { cx(e.clientX); cy(e.clientY) })
+          document.querySelectorAll("a, button").forEach((el) => {
+            el.addEventListener("pointerenter", () => gsap.to(cursor, { scale: 3.2, duration: 0.3 }))
+            el.addEventListener("pointerleave", () => gsap.to(cursor, { scale: 1, duration: 0.3 }))
+          })
+        }
+
+        const progressBar = document.querySelector(".progress")
+        if (progressBar) {
+          gsap.to(progressBar, { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3 } })
+        }
+
+        // Load reveal: site-head, then the page hero (masthead or article head)
+        const hero = gsap.utils.toArray(".masthead [data-fade], .art-head [data-fade]")
+        gsap.set(hero, { y: 28 })
+        gsap.timeline()
+          .to(".site-head [data-fade]", { opacity: 1, duration: 0.7, stagger: 0.08 })
+          .to(hero, { opacity: 1, y: 0, duration: 0.9, stagger: 0.09, ease: "power3.out" }, "-=0.4")
+
+        // Everything else fades up on scroll
+        document.querySelectorAll("[data-fade]").forEach((el) => {
+          if (el.closest(".masthead") || el.closest(".art-head") || el.closest(".site-head")) return
+          gsap.fromTo(el, { opacity: 0, y: 32 }, {
+            opacity: 1, y: 0, duration: 0.9, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 90%" },
+          })
+        })
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+---
+import { languages } from "../i18n/ui"
+import { type Lang, toLocalePath } from "../lib/i18n"
+
+interface Props {
+  lang: Lang
+  pathname: string
+}
+const { lang, pathname } = Astro.props
+const other: Lang = lang === "en" ? "de" : "en"
+const href = toLocalePath(pathname, other)
+const language = languages[other]
+---
+
+<a
+  class="lang-switch"
+  data-fade
+  data-set-lang={other}
+  href={href}
+  hreflang={other}
+  aria-label={`Switch to ${language}`}
+>
+  {other.toUpperCase()}
+</a>
+
+<script>
+  document.querySelectorAll("a[data-set-lang]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const target = el.getAttribute("data-set-lang")
+      if (target) document.cookie = `nf_lang=${target};path=/;max-age=31536000;samesite=lax`
+    })
+  })
+</script>

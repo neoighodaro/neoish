@@ -1,0 +1,48 @@
+---
+import { type LandingCopy, landingRuntime } from "../i18n/landing"
+
+interface Props {
+  lang: "en" | "de"
+  copy: LandingCopy
+}
+const { lang, copy } = Astro.props
+const runtime = landingRuntime(lang)
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{copy.meta.title}</title>
+    <meta name="description" content={copy.meta.description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:opsz,wght@9..144,100..900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://stats.ckx.sh/script.js"
+      data-website-id="7a68588b-7669-4443-9414-dcfdcc78e0e2"></script>
+    <link rel="stylesheet" href="/styles/landing.css" />
+    <script is:inline define:vars={{ runtime }}>
+      window.__LANDING_I18N__ = runtime
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+      integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc"
+      crossorigin="anonymous"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"
+      integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh"
+      crossorigin="anonymous"></script>
+    <script is:inline src="/js/landing.js"></script>
+  </body>
+</html>

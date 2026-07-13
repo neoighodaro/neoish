@@ -1,0 +1,413 @@
+---
+import { landing } from "../i18n/landing"
+import LandingLayout from "../layouts/LandingLayout.astro"
+import LangSwitcher from "./LangSwitcher.astro"
+
+interface Props {
+  lang: "en" | "de"
+}
+const { lang } = Astro.props
+const copy = landing[lang]
+---
+
+<LandingLayout lang={lang} copy={copy}>
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader-panel"></div>
+    <div class="preloader-panel"></div>
+    <p class="preloader-count">000</p>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <header class="site-head">
+    <span data-fade>Neo Ighodaro</span>
+    <a data-fade href="/blog">{copy.nav.blog}</a>
+    <LangSwitcher lang={lang} pathname={Astro.url.pathname} />
+  </header>
+
+  <!-- ambient b l v c k loop, revealed from Side A's flip onward -->
+  <button
+    type="button"
+    id="mute-btn"
+    class="mute-btn"
+    aria-pressed="false"
+    aria-label={copy.audio.ariaInitial}
+  >
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="mute-label">{copy.audio.soundOff}</span>
+  </button>
+  <audio id="bg-audio" src="/audio/blvck-loop.mp3" loop preload="auto"></audio>
+
+  <main>
+    <section class="hero" aria-label="Introduction">
+      <h1 class="sr-only">{copy.hero.srHeading}</h1>
+      <div class="hero-lines" aria-hidden="true">
+        <div class="hero-mask"><span class="hero-line">{copy.hero.founder}</span></div>
+        <div class="hero-mask">
+          <span class="hero-line" data-scramble={copy.hero.engineer}>{copy.hero.engineer}</span>
+        </div>
+        <div class="hero-mask">
+          <span class="hero-line">{copy.hero.musicMaker}</span>
+          <span class="hero-kinda" aria-hidden="true">{copy.hero.kinda}</span>
+        </div>
+      </div>
+      <div class="hero-figure" aria-hidden="true">
+        <img src="/img/neo-sketch.png" alt="" width="560" height="1494" />
+      </div>
+      <div class="hero-bottom">
+        <span class="status" data-fade><span class="status-dot"></span>{copy.hero.status}</span>
+        <span class="scroll-hint" data-fade>{copy.hero.scroll}</span>
+      </div>
+    </section>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee-row" data-marquee="-0.5">
+          <div class="marquee-track">
+            <span class="marquee-chunk"
+              >PHP • Laravel • Kubernetes • Swift • Python • Docker • Linux • Git • PostgreSQL • MySQL
+              • Redis • Kotlin • Ansible • </span
+            >
+            <span class="marquee-chunk"
+              >PHP • Laravel • Kubernetes • Swift • Python • Docker • Linux • Git • PostgreSQL • MySQL
+              • Redis • Kotlin • Ansible • </span
+            >
+            <span class="marquee-chunk"
+              >PHP • Laravel • Kubernetes • Swift • Python • Docker • Linux • Git • PostgreSQL • MySQL
+              • Redis • Kotlin • Ansible • </span
+            >
+            <span class="marquee-chunk"
+              >PHP • Laravel • Kubernetes • Swift • Python • Docker • Linux • Git • PostgreSQL • MySQL
+              • Redis • Kotlin • Ansible • </span
+            >
+          </div>
+        </div>
+        <div class="marquee-row" data-marquee="0.5">
+          <div class="marquee-track">
+            <span class="marquee-chunk">Typescript • React • Next.js • Tailwind • Vue • Figma • </span>
+            <span class="marquee-chunk">Typescript • React • Next.js • Tailwind • Vue • Figma • </span>
+            <span class="marquee-chunk">Typescript • React • Next.js • Tailwind • Vue • Figma • </span>
+            <span class="marquee-chunk">Typescript • React • Next.js • Tailwind • Vue • Figma • </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="manifesto" id="about" aria-label="About Neo">
+      <div class="manifesto-pin">
+        <span class="manifesto-note" aria-hidden="true" set:html={copy.manifesto.note}></span>
+        <p class="manifesto-copy" set:html={copy.manifesto.copyHtml}></p>
+      </div>
+    </section>
+
+    <section class="brain" aria-label="What fills my brain">
+      <div class="brain-pin">
+        <div class="brain-bg" aria-hidden="true">
+          <video muted loop playsinline autoplay preload="none">
+            <source src="/vids/got.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <canvas class="brain-matrix" aria-hidden="true"></canvas>
+        <div class="brain-artbg" aria-hidden="true"></div>
+        <div class="brain-grid">
+          <div class="brain-card" data-brain="engineering">
+            <img class="brain-art" src="/img/brain.svg#left-top" alt="" />
+            <div class="brain-body">
+              <h3>{copy.brain.engineering.title}</h3>
+              <p class="brain-sub">{copy.brain.engineering.sub}</p>
+              <p>{copy.brain.engineering.body}</p>
+            </div>
+          </div>
+          <div class="brain-card" data-brain="design">
+            <img class="brain-art" src="/img/brain.svg#right-top" alt="" />
+            <div class="brain-body">
+              <h3 set:html={copy.brain.design.title}></h3>
+              <p class="brain-sub" set:html={copy.brain.design.sub}></p>
+              <p>{copy.brain.design.body}</p>
+            </div>
+          </div>
+          <div class="brain-card" data-brain="gaming">
+            <img class="brain-art" src="/img/brain.svg#left-bottom" alt="" />
+            <div class="brain-body">
+              <h3>{copy.brain.gaming.title}</h3>
+              <p class="brain-sub" set:html={copy.brain.gaming.sub}></p>
+              <p>{copy.brain.gaming.body}</p>
+            </div>
+          </div>
+          <div class="brain-card" data-brain="music">
+            <video
+              class="brain-dancer"
+              muted
+              loop
+              playsinline
+              autoplay
+              preload="none"
+              aria-hidden="true"
+            >
+              <source src="/vids/neo-dancing.mp4" type="video/mp4" />
+            </video>
+            <img class="brain-art" src="/img/brain.svg#right-bottom" alt="" />
+            <div class="brain-body">
+              <h3>{copy.brain.music.title}</h3>
+              <p class="brain-sub">{copy.brain.music.sub}</p>
+              <p set:html={copy.brain.music.body}></p>
+            </div>
+            <div class="brain-viz" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Software">
+      <header class="reel" data-fade>
+        <span class="reel-no">{copy.software.reelNo}</span>
+        <h2 class="reel-title">{copy.software.title}</h2>
+        <span class="reel-note" set:html={copy.software.note}></span>
+      </header>
+
+      <a class="sw-row" href="https://yulo.app" target="_blank" rel="noreferrer">
+        <div class="sw-inner sw-clip">
+          <span class="sw-name">yulo</span>
+          <p class="sw-desc">{copy.software.yulo}</p>
+          <span class="sw-meta">Web <span class="sw-arrow" data-magnetic>↗</span></span>
+        </div>
+      </a>
+      <a
+        class="sw-row"
+        href="https://apps.apple.com/de/app/mnml-audiobook-player/id6781309940"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <div class="sw-inner sw-clip">
+          <span class="sw-name">mnml</span>
+          <p class="sw-desc">{copy.software.mnml}</p>
+          <span class="sw-meta">iOS &middot; iPadOS &middot; macOS <span class="sw-arrow" data-magnetic>↗</span></span>
+        </div>
+      </a>
+      <a
+        class="sw-row"
+        href="https://apps.apple.com/de/app/void-pi-hole-manager/id6756923137"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <div class="sw-inner sw-clip">
+          <span class="sw-name">void</span>
+          <p class="sw-desc">{copy.software.voidApp}</p>
+          <span class="sw-meta">iOS <span class="sw-arrow" data-magnetic>↗</span></span>
+        </div>
+      </a>
+    </section>
+
+    <section aria-label="Open source">
+      <header class="reel" data-fade>
+        <span class="reel-no">{copy.oss.reelNo}</span>
+        <h2 class="reel-title">{copy.oss.title}</h2>
+        <span class="reel-note">{copy.oss.note}</span>
+      </header>
+      <div class="repo-grid">
+        <a
+          class="repo-card"
+          data-fade
+          href="https://github.com/neoighodaro/dotfiles"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="repo-top"><span class="repo-name">dotfiles</span><span class="repo-stars"
+              >★ 7</span
+            ></div>
+          <p class="repo-desc">{copy.oss.dotfiles}</p>
+          <span class="repo-lang">Shell</span>
+        </a>
+        <a
+          class="repo-card"
+          data-fade
+          href="https://github.com/neoighodaro/little-sail"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="repo-top"><span class="repo-name">little-sail</span><span class="repo-stars"
+              >★ 37</span
+            ></div>
+          <p class="repo-desc">{copy.oss.littleSail}</p>
+          <span class="repo-lang">Dockerfile</span>
+        </a>
+        <a
+          class="repo-card"
+          data-fade
+          href="https://github.com/neoighodaro/blvckhole"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="repo-top"><span class="repo-name">blvckhole</span><span class="repo-stars"
+              >★ 2</span
+            ></div>
+          <p class="repo-desc">{copy.oss.blvckhole}</p>
+          <span class="repo-lang">Go</span>
+        </a>
+        <a
+          class="repo-card"
+          data-fade
+          href="https://github.com/neoighodaro/laravel-early-access"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="repo-top"><span class="repo-name">laravel-early-access</span><span
+              class="repo-stars">★ 178</span
+            ></div>
+          <p class="repo-desc">{copy.oss.earlyAccess}</p>
+          <span class="repo-lang">PHP</span>
+        </a>
+        <a
+          class="repo-card"
+          data-fade
+          href="https://github.com/neoighodaro/zellij-bookmarks"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="repo-top"><span class="repo-name">zellij-bookmarks</span><span
+              class="repo-stars">★ 0</span
+            ></div>
+          <p class="repo-desc">{copy.oss.zellijBookmarks}</p>
+          <span class="repo-lang">Rust</span>
+        </a>
+        <a
+          class="repo-card"
+          data-fade
+          href="https://github.com/neoighodaro/zjstatus-hints"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="repo-top"><span class="repo-name">zjstatus-hints</span><span class="repo-stars"
+              >★ 0</span
+            ></div>
+          <p class="repo-desc">{copy.oss.zjstatusHints}</p>
+          <span class="repo-lang">Rust</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="flip-stage" id="flip" aria-label="Flip to the music side">
+      <p class="flip-caption">{copy.flip.captionBefore}</p>
+      <div class="cassette3d" id="cassette3d" aria-hidden="true">
+        <div class="face front">
+          <div class="face-label">
+            <span class="t" set:html={copy.flip.frontLabel}></span><span class="s">Side A</span>
+          </div>
+          <div class="face-window">
+            <span class="hole"></span><span class="band"></span><span class="hole"></span>
+          </div>
+          <div class="face-foot"><span>90 min</span><span set:html={copy.flip.frontFoot}></span></div>
+        </div>
+        <div class="face back">
+          <div class="face-label">
+            <span class="t" set:html={copy.flip.backLabel}></span><span class="s">Side B</span>
+          </div>
+          <div class="face-window">
+            <span class="hole"></span><span class="band"></span><span class="hole"></span>
+          </div>
+          <div class="face-foot"><span set:html={copy.flip.backFoot}></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracklist" id="tracklist" aria-label="The music — Side B">
+      <div class="tracklist-inner">
+        <div class="tracklist-head">
+          <h2 data-fade>{copy.tracklist.heading}</h2>
+          <span class="sub" data-fade>{copy.tracklist.sub}</span>
+        </div>
+        <p class="tracklist-note" data-fade>{copy.tracklist.note}</p>
+
+        <div class="player-grid">
+          <div class="art-window" data-fade>
+            <div class="disc">
+              <img
+                src="https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b27320d0878a0e4c1c553cabfe01"
+                alt={copy.tracklist.albumAlt}
+                loading="lazy"
+                onerror="this.remove()"
+              />
+              <span class="disc-grooves" aria-hidden="true"></span>
+              <span class="disc-hole" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div>
+            <div class="tl-stack">
+              <article class="player" id="trk-0">
+                <div class="player-head">
+                  <h3 class="player-name">schr&ouml;dingers immigrant</h3>
+                  <span class="player-len">3:59</span>
+                </div>
+                <p class="player-credits">feat. Beyta &amp; Gamah</p>
+                <details class="player-note" open>
+                  <summary>{copy.tracklist.storySummary} <span class="pn-ind" aria-hidden="true"
+                      >+</span
+                    ></summary>
+                  <p>{copy.tracklist.trk0Story}</p>
+                </details>
+                <div class="deck">
+                  <button
+                    type="button"
+                    class="play-clip"
+                    id="clip-btn"
+                    aria-label={copy.tracklist.trk0AriaPlay}>&#9654;</button
+                  >
+                  <a
+                    class="lbl"
+                    href="https://open.spotify.com/track/0WdXri5VSgx65Zi7tQSiel"
+                    target="_blank"
+                    rel="noreferrer">{copy.tracklist.spotify}</a
+                  >
+                  <audio id="clip-audio" src="/audio/schrodingers-immigrant-clip.mp3" preload="none"
+                  ></audio>
+                </div>
+              </article>
+
+              <article class="player" id="trk-1">
+                <div class="player-head">
+                  <h3 class="player-name">undone</h3>
+                  <span class="player-len">4:00</span>
+                </div>
+                <p class="player-credits">feat. Beyta</p>
+                <div class="deck">
+                  <button
+                    type="button"
+                    class="play-clip"
+                    disabled
+                    aria-label={copy.tracklist.trk1AriaDisabled}
+                    title={copy.tracklist.trk1TitleDisabled}>&#9654;</button
+                  >
+                  <a
+                    class="lbl"
+                    href="https://open.spotify.com/track/4jj1M67wweEd822ssAESC8"
+                    target="_blank"
+                    rel="noreferrer">{copy.tracklist.spotify}</a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer aria-label="Contact">
+      <p class="credits-eyebrow" data-fade>{copy.footer.sayHi}</p>
+      <a class="email-line" data-fade href="mailto:neo@ck.team">
+        neo@ck.team
+        <span class="fill" aria-hidden="true">neo@ck.team</span>
+      </a>
+      <div class="footer-grid" data-fade>
+        <div class="footer-links">
+          <a href="https://github.com/neoighodaro" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/neoighodaro/" target="_blank" rel="noreferrer"
+            >LinkedIn</a
+          >
+        </div>
+        <span set:html={copy.footer.madeWithHtml}></span>
+      </div>
+    </footer>
+  </main>
+</LandingLayout>

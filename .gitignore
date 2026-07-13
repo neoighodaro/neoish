@@ -1,0 +1,11 @@
+node_modules
+.pnpm-store
+
+# astro
+dist/
+.astro/
+.env
+.env.production
+
+# blvckhole
+.config/blvckhole/.kit/

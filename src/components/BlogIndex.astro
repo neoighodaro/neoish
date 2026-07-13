@@ -1,0 +1,128 @@
+---
+import { getCollection } from "astro:content"
+import { useTranslations } from "../i18n/ui"
+import BlogLayout from "../layouts/BlogLayout.astro"
+import { categoryFor, fmtDate, tagList } from "../lib/format"
+import { type Lang, parsePostId } from "../lib/i18n"
+
+interface Props {
+  lang: Lang
+  title: string
+  description: string
+}
+const { lang, title, description } = Astro.props
+const t = useTranslations(lang)
+const base = lang === "en" ? "" : `/${lang}`
+
+const all = await getCollection("blog", ({ data }) => !data.draft)
+const en = all.filter((p) => parsePostId(p.id).lang === "en")
+const bySlug = new Map(all.filter((p) => parsePostId(p.id).lang === lang).map((p) => [parsePostId(p.id).slug, p]))
+
+const items = en
+  .map((enPost) => {
+    const slug = parsePostId(enPost.id).slug
+    const entry = bySlug.get(slug) ?? enPost
+    return { slug, data: entry.data }
+  })
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+const featured = items.find((p) => p.data.featured) ?? items[0]
+const rest = items.filter((p) => p.slug !== featured?.slug)
+
+const dayMonth = (d: Date) => fmtDate(d, lang, { month: "short", day: "numeric" })
+const fullDate = (d: Date) => fmtDate(d, lang, { year: "numeric", month: "short", day: "numeric" })
+const updated = items[0] ? fmtDate(items[0].data.date, lang, { month: "short", year: "numeric" }) : ""
+
+const covers = [
+  `<svg class="cov" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#131316"/><line x1="46" y1="212" x2="354" y2="212" stroke="rgba(242,237,228,0.14)" stroke-width="1"/><rect x="66" y="150" width="32" height="62" fill="#FFAF00"/><rect x="112" y="120" width="32" height="92" fill="rgba(242,237,228,0.18)"/><rect x="158" y="92" width="32" height="120" fill="#FFAF00"/><rect x="204" y="64" width="32" height="148" fill="rgba(242,237,228,0.18)"/><rect x="250" y="42" width="32" height="170" fill="#FFAF00"/><rect x="296" y="96" width="32" height="116" fill="rgba(242,237,228,0.18)"/></svg>`,
+  `<svg class="cov" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#131316"/><g stroke="rgba(242,237,228,0.16)" stroke-width="1"><line x1="90" y1="80" x2="200" y2="140"/><line x1="200" y1="140" x2="310" y2="72"/><line x1="200" y1="140" x2="150" y2="205"/><line x1="200" y1="140" x2="285" y2="196"/></g><g fill="rgba(242,237,228,0.2)"><circle cx="90" cy="80" r="9"/><circle cx="310" cy="72" r="9"/><circle cx="150" cy="205" r="9"/><circle cx="285" cy="196" r="9"/></g><circle cx="200" cy="140" r="14" fill="#FFAF00"/></svg>`,
+  `<svg class="cov" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#131316"/><g stroke="rgba(242,237,228,0.1)" stroke-width="1"><line x1="0" y1="65" x2="400" y2="65"/><line x1="0" y1="130" x2="400" y2="130"/><line x1="0" y1="195" x2="400" y2="195"/><line x1="100" y1="0" x2="100" y2="260"/><line x1="200" y1="0" x2="200" y2="260"/><line x1="300" y1="0" x2="300" y2="260"/></g><rect x="200" y="65" width="100" height="65" fill="#FFAF00" fill-opacity="0.9"/></svg>`,
+  `<svg class="cov" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="260" fill="#131316"/><text x="200" y="176" text-anchor="middle" font-family="Anton, sans-serif" font-size="150" fill="rgba(242,237,228,0.14)">{ }</text><text x="200" y="164" text-anchor="middle" font-family="Anton, sans-serif" font-size="60" fill="#FFAF00">&lt;/&gt;</text></svg>`,
+]
+---
+
+<BlogLayout title={title} description={description} lang={lang}>
+  <main>
+    <section class="masthead" aria-label={t("masthead.title")}>
+      <p class="eyebrow" data-fade>{t("masthead.eyebrow")}</p>
+      <h1 data-fade>{t("masthead.title")}</h1>
+      <p class="dek" data-fade><slot /></p>
+      <div class="runtime" data-fade>
+        <span><b>{String(items.length).padStart(2, "0")}</b> {items.length === 1 ? t("runtime.post") : t("runtime.posts")}</span>
+        {updated && <span>{t("runtime.updated")} <b>{updated}</b></span>}
+        <span>{t("runtime.tagline")}</span>
+      </div>
+    </section>
+
+    {featured && (
+      <a class="feature" data-fade href={`${base}/blog/${featured.slug}`}>
+        <div class="cover">
+          {featured.data.image ? (
+            <img src={featured.data.image} alt="" loading="eager" onerror="this.remove()" />
+          ) : (
+            <Fragment set:html={covers[0]} />
+          )}
+          <div class="scrim" aria-hidden="true"></div>
+          <span class="flag">{t("feature.latest")}</span>
+        </div>
+        <div class="cap">
+          <span class="cat">{categoryFor(featured.data)}</span>
+          <h2 set:html={featured.data.title} />
+          <div class="meta">
+            <span class="date">{fullDate(featured.data.date)}</span>
+            {featured.data.reading_minutes && <span class="rt">{featured.data.reading_minutes} {t("card.minRead")}</span>}
+            {featured.data.tags && <span class="tags">{tagList(featured.data.tags).map((x) => x.toLowerCase()).join(" · ")}</span>}
+          </div>
+          <span class="read">{t("feature.read")} <span class="arw" aria-hidden="true">&rarr;</span></span>
+        </div>
+      </a>
+    )}
+
+    <div class="index-head" data-fade>
+      <span>{t("index.archive")}</span>
+      <span>{new Date().getFullYear()}</span>
+    </div>
+
+    {rest.length > 0 ? (
+      <div class="grid">
+        {rest.map((p, i) => (
+          <a class="card" data-fade href={`${base}/blog/${p.slug}`}>
+            <div class="cover">
+              {p.data.image ? (
+                <img src={p.data.image} alt="" loading="lazy" onerror="this.remove()" />
+              ) : (
+                <Fragment set:html={covers[i % covers.length]} />
+              )}
+            </div>
+            <span class="cat">{categoryFor(p.data)}</span>
+            <h3 set:html={p.data.title} />
+            <div class="meta">
+              <span>{dayMonth(p.data.date)}</span>
+              {p.data.reading_minutes && <span class="rt">{p.data.reading_minutes} {t("card.min")}</span>}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="archive-empty" data-fade>{t("archive.empty")}</p>
+    )}
+
+    <footer class="site-foot" aria-label="Site">
+      <div class="foot-top" data-fade>
+        <div>
+          <p class="foot-mark"><span class="sq" aria-hidden="true"></span>{t("foot.mark")}</p>
+          <p class="foot-line">{t("foot.line")}</p>
+        </div>
+        <a class="foot-say" href="mailto:neo@ck.team">{t("foot.say")} <span class="u">neo@ck.team</span> &rarr;</a>
+      </div>
+      <div class="foot-bottom" data-fade>
+        <nav class="foot-nav" aria-label="Elsewhere">
+          <a href={`${base}/`}>{t("nav.home")}</a>
+          <a href="https://github.com/neoighodaro" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/neoighodaro/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+        <span>&copy;&nbsp;2026 · {t("foot.made")} <a class="made" href="http://ck.team" target="_blank" rel="noreferrer">CreativityKills</a></span>
+      </div>
+    </footer>
+  </main>
+</BlogLayout>

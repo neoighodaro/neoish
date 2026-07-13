@@ -1,0 +1,57 @@
+# blvckhole sandbox configuration
+# Docs: https://github.com/neoighodaro/blvckhole
+
+name: neoish
+agent: claude-code
+workspace: /workspace
+zellij:
+  display_name: neoish
+packages:
+  - ripgrep
+  - eza
+  - xz-utils
+runtimes:
+  node: "24.16.0"
+  pnpm: "11.12.0"
+env:
+  ASTRO_TELEMETRY_DISABLED: "1"
+env_file: []
+scripts:
+  on_create:
+    - "curl -fsSL https://github.com/max-sixty/worktrunk/releases/latest/download/worktrunk-installer.sh | bash"
+    - "source $HOME/.cargo/env && wt config shell install -y"
+    - "pnpm install"
+  on_start: []
+shell:
+  directory: /workspace
+  aliases:
+    clr: "clear"
+    g: "git"
+network:
+  - "*.npmjs.org"
+  - "registry.yarnpkg.com"
+  - "api.github.com"
+  - "docs.astro.build"
+claude:
+  plugins:
+    marketplaces:
+      - anthropics/claude-plugins-official
+      - uppinote20/claude-dashboard
+    install:
+      - superpowers@claude-plugins-official
+      - frontend-design@claude-plugins-official
+      - claude-dashboard@claude-dashboard
+  settings:
+    model: "claude-opus-4-8[1m]"
+    tui: default
+    feedbackSurveyRate: 0
+    attribution:
+      commit: ""
+      pr: ""
+    env:
+      CLAUDE_CODE_ENABLE_TELEMETRY: "0"
+      CLAUDE_CODE_DISABLE_1M_CONTEXT: "1"
+
+# Instructions injected into the agent's memory file (CLAUDE.md)
+# memory: |
+#   Project-specific instructions here.
