@@ -132,25 +132,28 @@ and `scripts/indexnow.mjs` scrapes `<loc>` values straight out of `dist/sitemap*
 one filter fixes both surfaces.
 
 ```js
-import { readdirSync } from "node:fs"
-
-const deSlugs = new Set(
-  readdirSync("./src/content/blog/de")
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => f.replace(/\.md$/, "")),
-)
-
 sitemap({
+  // No `i18n` option: it emits its own xhtml:link hreflang pairs, which would advertise
+  // the very fallback URLs this filter removes. Page-level hreflang is the sole source of truth.
   filter: (page) => {
     const m = new URL(page).pathname.match(/^\/de\/blog\/([^/]+)\/?$/)
-    return !m || deSlugs.has(m[1])
+    return !m || translatedSlugs.has(m[1])
   },
-  i18n: { defaultLocale: "en", locales: { en: "en", de: "de" } },
 })
 ```
 
-Draft posts are already excluded upstream by `getStaticPaths`, so they never reach the sitemap and
-need no handling here.
+`translatedSlugs` is built by reading `src/content/blog/de/*.md` at config time and **excluding any
+file whose frontmatter carries `draft: true`** — a draft translation is not a translation, and
+`getStaticPaths` already falls back to English content in that case.
+
+Dropping the sitemap's `i18n` option is a deliberate change from the obvious approach. Keeping it
+would leave two independent hreflang emitters (sitemap and page head) that must agree; the sitemap's
+is generated before our filter runs and would keep pointing at removed URLs. Page-level `hreflang`
+is a complete, standalone signal per Google's documentation, so we keep exactly one emitter.
+
+Note the canonical URLs must carry a **trailing slash** (`/blog/<slug>/`): the build uses Astro's
+default directory format and the sitemap emits `<loc>…/blog/<slug>/</loc>`. A canonical without one
+would not match its own sitemap entry.
 
 Config runs at build time in Node, so `readdirSync` is safe. The directory is guaranteed to exist
 (12 posts live there); if that ever changes, the build should fail loudly rather than silently
