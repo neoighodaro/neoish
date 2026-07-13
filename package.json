@@ -9,7 +9,8 @@
     "build": "astro build && node scripts/indexnow.mjs",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "biome check --write ."
+    "lint": "biome check --write .",
+    "seo:check": "node scripts/seo-check.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
