@@ -24,8 +24,25 @@ const urlFor = (file) => `${SITE}${file.slice(DIST.length).replace(/index\.html$
 
 const isPost = (file) => /^dist\/(de\/)?blog\/[^/]+\/index\.html$/.test(file)
 
+// Given a page URL, the URL of its cross-language counterpart (same content,
+// other language), or null if the URL isn't one of the shapes we pair up.
+// "/" <-> "/de/", "/blog/" <-> "/de/blog/", "/blog/<slug>/" <-> "/de/blog/<slug>/".
+function counterpartUrl(loc) {
+  const path = loc.slice(SITE.length)
+  if (path === "/") return `${SITE}/de/`
+  if (path === "/de/") return `${SITE}/`
+  if (path === "/blog/") return `${SITE}/de/blog/`
+  if (path === "/de/blog/") return `${SITE}/blog/`
+  const de = path.match(/^\/de\/blog\/(.+)\/$/)
+  if (de) return `${SITE}/blog/${de[1]}/`
+  const en = path.match(/^\/blog\/(.+)\/$/)
+  if (en) return `${SITE}/de/blog/${en[1]}/`
+  return null
+}
+
 const pages = htmlFiles(DIST)
 const byUrl = new Map()
+const htmlByUrl = new Map()
 
 for (const file of pages) {
   const html = readFileSync(file, "utf8")
@@ -37,6 +54,7 @@ for (const file of pages) {
   }
   const canonical = canonicals[0]
   byUrl.set(urlFor(file), canonical)
+  htmlByUrl.set(urlFor(file), html)
 
   if (!canonical.startsWith(SITE)) fail(file, `canonical is not absolute on ${SITE}: ${canonical}`)
   if (!canonical.endsWith("/")) fail(file, `canonical must end in a trailing slash: ${canonical}`)
@@ -76,6 +94,8 @@ for (const file of pages) {
 const sitemap = readFileSync(join(DIST, "sitemap-0.xml"), "utf8")
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
 
+const locSet = new Set(locs)
+
 for (const loc of locs) {
   const canonical = byUrl.get(loc)
   if (!canonical) {
@@ -83,10 +103,23 @@ for (const loc of locs) {
   } else if (canonical !== loc) {
     fail("sitemap-0.xml", `non-canonical URL listed: ${loc} canonicals to ${canonical}`)
   }
+
+  // If a page and its cross-language counterpart are BOTH in the sitemap, both
+  // are genuinely translated and both must emit the full en/de/x-default
+  // hreflang set — otherwise the pair loses its only hreflang annotation and
+  // search engines have no signal connecting the two languages.
+  const partner = counterpartUrl(loc)
+  if (partner && locSet.has(partner)) {
+    const html = htmlByUrl.get(loc)
+    for (const hreflang of ["en", "de", "x-default"]) {
+      if (!html?.includes(`<link rel="alternate" hreflang="${hreflang}"`)) {
+        fail(loc, `translated pair with ${partner} in sitemap but missing hreflang="${hreflang}"`)
+      }
+    }
+  }
 }
 
 // Sitemap must not reference filtered-out URLs via hreflang alternates either.
-const locSet = new Set(locs)
 for (const [, href] of sitemap.matchAll(/<xhtml:link[^>]+href="([^"]+)"/g)) {
   if (!locSet.has(href)) fail("sitemap-0.xml", `xhtml:link alternate points at a URL absent from the sitemap: ${href}`)
 }

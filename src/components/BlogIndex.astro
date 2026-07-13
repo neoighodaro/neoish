@@ -14,6 +14,14 @@ const { lang, title, description } = Astro.props
 const t = useTranslations(lang)
 const base = lang === "en" ? "" : `/${lang}`
 
+// Both index pages always exist in both languages, so the pairing is
+// unconditional here — unlike PostLayout, there's no "does a translation
+// exist" check to make.
+const enUrl = new URL("/blog/", Astro.site)
+const deUrl = new URL("/de/blog/", Astro.site)
+const canonical = lang === "de" ? deUrl : enUrl
+const alternates = { en: enUrl, de: deUrl }
+
 const all = await getCollection("blog", ({ data }) => !data.draft)
 const en = all.filter((p) => parsePostId(p.id).lang === "en")
 const bySlug = new Map(all.filter((p) => parsePostId(p.id).lang === lang).map((p) => [parsePostId(p.id).slug, p]))
@@ -41,7 +49,7 @@ const covers = [
 ]
 ---
 
-<BlogLayout title={title} description={description} lang={lang}>
+<BlogLayout title={title} description={description} lang={lang} canonical={canonical} alternates={alternates}>
   <main>
     <section class="masthead" aria-label={t("masthead.title")}>
       <p class="eyebrow" data-fade>{t("masthead.eyebrow")}</p>
