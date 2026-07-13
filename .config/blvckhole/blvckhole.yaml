@@ -32,6 +32,8 @@ network:
   - "registry.yarnpkg.com"
   - "api.github.com"
   - "docs.astro.build"
+  - '*.neoighodaro.com'
+  - neoighodaro.com
 claude:
   plugins:
     marketplaces:
