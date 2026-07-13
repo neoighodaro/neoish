@@ -9,7 +9,7 @@ const { lang, copy } = Astro.props
 const runtime = landingRuntime(lang)
 
 const canonical = new URL(Astro.url.pathname, Astro.site)
-const ogImage = new URL("/img/screenshot.png", Astro.site)
+const ogImage = new URL("/img/og.png", Astro.site)
 const enUrl = new URL("/", Astro.site)
 const deUrl = new URL("/de/", Astro.site)
 ---

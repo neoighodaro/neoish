@@ -1,3 +1,7 @@
+# Serve the Astro-generated sitemap at the conventional /sitemap.xml path.
+# Must precede the language catch-all so crawlers aren't bounced to /de/.
+/sitemap.xml   /sitemap-index.xml   200
+
 # German pages serve as-is; first-match-wins shields them from the catch-all below.
 /de/*   /de/:splat   200
 
