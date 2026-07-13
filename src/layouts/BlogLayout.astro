@@ -21,6 +21,9 @@ interface Props {
 // so the canonical has to carry one too or it won't match its own <loc>.
 const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`)
 
+// Escape < as < so </script> in JSON values doesn't close the script tag early
+const escapeJsonChars = (json: string) => json.replace(/</g, "\\u003c")
+
 const {
   title,
   description = "",
@@ -70,7 +73,7 @@ const pathname = Astro.url.pathname
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
+    {jsonLd && <script type="application/ld+json" is:inline set:html={escapeJsonChars(JSON.stringify(jsonLd))} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
