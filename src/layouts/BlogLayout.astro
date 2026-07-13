@@ -21,7 +21,8 @@ interface Props {
 // so the canonical has to carry one too or it won't match its own <loc>.
 const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`)
 
-// Escape < as < so </script> in JSON values doesn't close the script tag early
+// A post title carrying </script> would close the JSON-LD block early. Escaping
+// every "<" to its JSON unicode form defuses that; JSON.parse decodes it back.
 const escapeJsonChars = (json: string) => json.replace(/</g, "\\u003c")
 
 const {
