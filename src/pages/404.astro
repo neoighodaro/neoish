@@ -1,0 +1,38 @@
+---
+import BlogLayout from "../layouts/BlogLayout.astro"
+---
+
+<BlogLayout title="404 — Neo Ighodaro" description="This page couldn't be found.">
+  <main>
+    <section class="masthead notfound">
+      <p class="eyebrow" data-fade>Error 404</p>
+      <h1 data-fade>Lost the<br />thread.</h1>
+      <p class="dek" data-fade>
+        This page slipped off the record. The link may be broken, or the page
+        has <em>moved on</em>.
+      </p>
+      <p class="runtime" data-fade>
+        <a href="/">Back home</a>
+        <a href="/blog/">Read the writing</a>
+      </p>
+    </section>
+  </main>
+</BlogLayout>
+
+<style>
+  .notfound {
+    min-height: 70vh;
+  }
+  .notfound .runtime a {
+    color: var(--bone);
+    text-decoration: none;
+    letter-spacing: 0.26em;
+    transition: color 0.2s ease;
+  }
+  .notfound .runtime a:first-child {
+    color: var(--signal);
+  }
+  .notfound .runtime a:hover {
+    color: var(--signal);
+  }
+</style>
