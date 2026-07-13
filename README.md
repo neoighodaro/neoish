@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://neoi.sh" target="_blank">
-    <img src="https://user-images.githubusercontent.com/807318/109376537-6ac33300-78c5-11eb-854f-eaa130114161.png">
+    <img src="./public/img/screenshot.png" alt="neoi.sh">
   </a>
 </p>
 
