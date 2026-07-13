@@ -22,22 +22,18 @@ function htmlFiles(dir) {
 // dist/blog/foo/index.html -> https://neoighodaro.com/blog/foo/
 const urlFor = (file) => `${SITE}${file.slice(DIST.length).replace(/index\.html$/, "")}`
 
-const isPost = (file) => /^dist\/(de\/)?blog\/[^/]+\/index\.html$/.test(file)
+const isPost = (file) => /^dist\/(de\/)?blog\/.+\/index\.html$/.test(file)
 
 // Given a page URL, the URL of its cross-language counterpart (same content,
-// other language), or null if the URL isn't one of the shapes we pair up.
-// "/" <-> "/de/", "/blog/" <-> "/de/blog/", "/blog/<slug>/" <-> "/de/blog/<slug>/".
+// other language), or null if the URL isn't a page under this site at all
+// (e.g. dist/404.html -> SITE/404.html has no /de/ counterpart worth pairing).
+// General mapping: "/de/<rest>" <-> "/<rest>" — covers "/" <-> "/de/",
+// "/blog/" <-> "/de/blog/", "/blog/<slug>/" <-> "/de/blog/<slug>/" (including
+// nested slugs), and any future translated page type for free.
 function counterpartUrl(loc) {
   const path = loc.slice(SITE.length)
-  if (path === "/") return `${SITE}/de/`
-  if (path === "/de/") return `${SITE}/`
-  if (path === "/blog/") return `${SITE}/de/blog/`
-  if (path === "/de/blog/") return `${SITE}/blog/`
-  const de = path.match(/^\/de\/blog\/(.+)\/$/)
-  if (de) return `${SITE}/blog/${de[1]}/`
-  const en = path.match(/^\/blog\/(.+)\/$/)
-  if (en) return `${SITE}/de/blog/${en[1]}/`
-  return null
+  if (!path.endsWith("/")) return null
+  return path.startsWith("/de/") ? `${SITE}${path.slice(3)}` : `${SITE}/de${path}`
 }
 
 const pages = htmlFiles(DIST)
@@ -106,16 +102,39 @@ for (const loc of locs) {
 
   // If a page and its cross-language counterpart are BOTH in the sitemap, both
   // are genuinely translated and both must emit the full en/de/x-default
-  // hreflang set — otherwise the pair loses its only hreflang annotation and
-  // search engines have no signal connecting the two languages.
+  // hreflang set, each pointing at the RIGHT target — presence alone isn't
+  // enough, an inverted pair (en tag pointing at the German URL, or vice
+  // versa) would still pass a presence-only check.
   const partner = counterpartUrl(loc)
   if (partner && locSet.has(partner)) {
-    const html = htmlByUrl.get(loc)
-    for (const hreflang of ["en", "de", "x-default"]) {
-      if (!html?.includes(`<link rel="alternate" hreflang="${hreflang}"`)) {
-        fail(loc, `translated pair with ${partner} in sitemap but missing hreflang="${hreflang}"`)
+    const html = htmlByUrl.get(loc) ?? ""
+    const alts = new Map(
+      [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]),
+    )
+    const en = loc.includes("/de/") ? partner : loc
+    const de = loc.includes("/de/") ? loc : partner
+    for (const [hreflang, want] of [
+      ["en", en],
+      ["de", de],
+      ["x-default", en],
+    ]) {
+      if (alts.get(hreflang) !== want) {
+        fail(loc, `hreflang="${hreflang}" is ${alts.get(hreflang) ?? "missing"}, want ${want}`)
       }
     }
+  }
+}
+
+// The inverse of the sitemap-canonical check above: every page that canonicals
+// to itself must appear in the sitemap, so an over-broad filter (or any other
+// bug) can't silently drop a real, canonical page out of the sitemap without
+// failing the build. Pages that canonical elsewhere (the /de/ English-fallback
+// pages) correctly canonical !== url and are skipped. 404.html is excluded
+// explicitly — it is intentionally not part of the sitemap.
+for (const [url, canonical] of byUrl) {
+  if (url === `${SITE}/404.html`) continue
+  if (canonical === url && !locSet.has(url)) {
+    fail(url, "canonicals to itself but is missing from the sitemap")
   }
 }
 

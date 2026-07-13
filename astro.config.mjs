@@ -11,6 +11,11 @@ const DE_DIR = "./src/content/blog/de"
 // scripts/indexnow.mjs scrapes <loc> straight out of the sitemap.
 const translatedSlugs = new Set(
   readdirSync(DE_DIR, { recursive: true })
+    // recursive: true joins nested entries with the platform separator, so on
+    // Windows a nested file would key as "2026\foo" and never match the
+    // filter regex's "2026/foo" capture below — normalise to "/" so the key
+    // shape is platform-independent.
+    .map((f) => f.replaceAll("\\", "/"))
     .filter((f) => f.endsWith(".md"))
     .filter((f) => {
       const frontmatter = readFileSync(join(DE_DIR, f), "utf8").split(/^---$/m)[1] ?? ""
