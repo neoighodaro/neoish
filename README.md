@@ -1,8 +1,15 @@
-# neoish
-
-Neo's personal site — the cinematic landing page plus a markdown blog. Static
-output (Astro), no server runtime. Deployed to Netlify from the repo root
-(`netlify.toml`).
+<p align="center">
+  <a href="https://neoi.sh" target="_blank">
+    <img src="https://user-images.githubusercontent.com/807318/109376537-6ac33300-78c5-11eb-854f-eaa130114161.png">
+  </a>
+  <p align="center">
+    <h1 align="center">Neo</h1>
+    <p align="center">
+      <i>This is the source code to my website, <a href="https://neoi.sh">neoi.sh</a>. Look at the LICENSE page for information on usage.</i>
+    </p>
+  </p>
+  <p>&nbsp;</p>
+</p>
 
 ## Develop
 
