@@ -2,9 +2,9 @@
 slug: "12-changing-xcode-header-comment-templates-fileheader"
 title: "Den Xcode Datei-Header-Kommentar ändern"
 seo_title: "Den Xcode Datei-Header-Kommentar ändern"
-image: "https://neoighodaro.com/posts/12-xcode-file.png"
-image_width: 3024
-image_height: 1138
+image: "/img/blog/xcode.webp"
+image_width: 1400
+image_height: 527
 description: "Den Datei-Header-Kommentar für Swift-Dateien in Xcode anpassen – über die FILEHEADER-Variable in den Templates"
 date: "2023-08-23 10:48:00"
 reading_minutes: 1
