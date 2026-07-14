@@ -12,6 +12,9 @@ interface Props {
   canonical?: URL
   alternates?: { en: URL; de: URL } | null
   image?: URL
+  imageWidth?: number
+  imageHeight?: number
+  imageAlt?: string
   ogType?: "website" | "article"
   publishedTime?: Date
   jsonLd?: object
@@ -33,6 +36,11 @@ const {
   canonical = new URL(withSlash(Astro.url.pathname), Astro.site),
   alternates = null,
   image = new URL("/img/og.png", Astro.site),
+  // Dimensions/alt of the DEFAULT card above. Callers passing a custom image
+  // must pass its real dimensions too, or scrapers get lied to about the crop.
+  imageWidth = 1200,
+  imageHeight = 630,
+  imageAlt = "Founder. Engineer. Music maker (kinda.) — Neo Ighodaro's blog at neoighodaro.com",
   ogType = "website",
   publishedTime,
   jsonLd,
@@ -62,10 +70,14 @@ const pathname = Astro.url.pathname
     )}
 
     <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Neo Ighodaro" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+    <meta property="og:image:alt" content={imageAlt} />
     <meta property="og:locale" content={lang === "de" ? "de_DE" : "en_US"} />
     {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
 
@@ -73,6 +85,7 @@ const pathname = Astro.url.pathname
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     {jsonLd && <script type="application/ld+json" is:inline set:html={escapeJsonChars(JSON.stringify(jsonLd))} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />

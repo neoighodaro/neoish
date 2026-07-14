@@ -5,7 +5,7 @@ seo_title: "How to manually update oh-my-zsh"
 image: "https://user-images.githubusercontent.com/807318/164072756-f31f4233-c1ef-40b4-87fb-9a755b4de2d8.png"
 image_width: 1000
 image_height: 587
-description: "If you use Oh-My-Zsh, you might have missed the update notification at some point and wondered how to manually trigger this update process. This article shows how."
+description: "If you use Oh-My-Zsh, you may have missed the update notification and wondered how to trigger the update manually. This quick guide shows you how."
 date: "2021-11-15 12:03:00"
 reading_minutes: 1
 tags: oh-my-zsh, zsh, terminal, mac

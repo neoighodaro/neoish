@@ -36,7 +36,14 @@ const alternates = hasDe ? { en: enUrl, de: deUrl } : null
 
 const seoTitle = d.seo_title ?? `${d.title} — Neo Ighodaro`
 // Frontmatter carries both absolute S3 URLs and site-relative paths; URL() handles both.
+// When the post has no image of its own, leave the dimension props undefined so
+// BlogLayout's defaults (which describe the fallback card) apply.
 const ogImage = d.image ? new URL(d.image, Astro.site) : new URL("/img/og.png", Astro.site)
+const ogImageWidth = d.image ? d.image_width : undefined
+const ogImageHeight = d.image ? d.image_height : undefined
+// Older posts carry an image but no alt; the post title beats inheriting the
+// fallback card's alt text, which describes a different image entirely.
+const ogImageAlt = d.image ? (d.image_alt ?? d.title) : undefined
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -60,6 +67,9 @@ const jsonLd = {
   canonical={canonical}
   alternates={alternates}
   image={ogImage}
+  imageWidth={ogImageWidth}
+  imageHeight={ogImageHeight}
+  imageAlt={ogImageAlt}
   ogType="article"
   publishedTime={d.date}
   jsonLd={jsonLd}
