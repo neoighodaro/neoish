@@ -1,12 +1,15 @@
 ---
-title: Teaching My AI Agents to Update Dependencies Without Getting Me Owned
+title: Claude Code Skills for safe PHP and JS package updates
 seo_title: 'Safe Dependency Updates with AI Agents: Claude Code Skills for safe PHP and JS package updates'
-description: I wanted my agents to handle the most boring chore in software — dependency updates — without walking me into a supply chain attack. So I wrote a rulebook.
+description: I wanted my agents to handle dependency updates without walking me into a supply chain attack. So I wrote some skills.
 date: 2026-07-14 10:00:00
 tags: claude code, ai agents, supply chain security, composer, npm, pnpm, skills
 reading_minutes: 5
+image: https://cdn.yulo.app/blog/14-07-2026/supply-chain.png
+image_alt: supply chain attack claude php javascript
+image_caption: supply chain attack claude php javascript
 slug: 14-teaching-my-ai-agents-to-update-dependencies-safely
-featured: false
+featured: true
 ---
 
 It's not abnormal for projects to go weeks, or dare I say months, between dependency updates. And when people finally do update, they do it in full force: everything at once, without checking anything. 
@@ -77,4 +80,6 @@ The skills forbid updating everything at once. Each package — or ecosystem gro
 
 Here's the thing that surprised me: the agent following these skills does updates *more* safely than I ever did by hand. I skipped changelogs when I was tired. I never once checked a package's release date before installing it. I definitely ran `composer update` with scripts enabled my entire career.
 
-The skill doesn't skip steps, because skipping steps isn't in the file. Delegation didn't lower the safety bar — writing the rulebook forced me to raise it, and the agent holds it there. The updates happen every week now, and someone else checks them for poison first.
+The skill doesn't skip steps, because skipping steps isn't in the file. My updates happen every week now, and now the checks for attacks are delegated.
+
+You can check out the [skills](https://github.com/neoighodaro/claude-skills) here.

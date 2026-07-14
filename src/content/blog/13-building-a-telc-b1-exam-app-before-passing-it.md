@@ -1,16 +1,16 @@
 ---
-slug: "13-building-a-telc-b1-exam-app-before-passing-it"
-title: "I'm Building a telc B1 Exam App Before Passing the Exam Myself"
-seo_title: "Building a German telc B1 Exam Practice App Before Passing It Myself"
-image: "https://cdn.yulo.app/blog/covers/01KX6S0A86285XQDRK70SE5VGN.jpg"
-image_alt: "Working on Yulo, the telc B1 exam app I'm building while preparing for the exam myself"
+title: I'm Building a telc B1 Exam App Before Passing the Exam Myself
+seo_title: Building a German telc B1 Exam Practice App Before Passing It Myself
+description: 'I froze on a German medical hotline, booked the telc B1 for August, and then did the only logical thing: started building an exam prep app instead of studying.'
+date: 2026-07-13 10:00:00
+tags: german, telc b1, yulo, side projects, building in public
+reading_minutes: 4
+image: https://cdn.yulo.app/blog/covers/01KX6S0A86285XQDRK70SE5VGN.jpg
+image_alt: Working on Yulo, the telc B1 exam app I'm building while preparing for the exam myself
 image_width: 4032
 image_height: 3024
-description: "I froze on a German medical hotline, booked the telc B1 for August, and then did the only logical thing: started building an exam prep app instead of studying."
-date: "2026-07-13 10:00:00"
-reading_minutes: 4
-tags: german, telc b1, yulo, side projects, building in public
-featured: true
+slug: 13-building-a-telc-b1-exam-app-before-passing-it
+featured: false
 ---
 
 A few weeks ago I came off my eBike and fractured the radial head in my elbow. It's a small bone you never think about until it's broken, and it's the improbable reason I'm now building a telc B1 exam app. In Germany, an injury like that means calling **116117**, the medical on-call line for things that are wrong but not 112-level wrong. I've lived in Hamburg for years. I can read a rental contract and roughly understand which rights I'm signing away. I knew exactly what I needed to say.
