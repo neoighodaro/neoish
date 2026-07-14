@@ -36,6 +36,8 @@ network:
   - neoighodaro.com
   - yulo.app
   - '*.yulo.app'
+  - medium.com
+  - dev.to
 claude:
   plugins:
     marketplaces:
