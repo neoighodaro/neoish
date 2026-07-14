@@ -8,7 +8,7 @@ reading_minutes: 5
 image: https://cdn.yulo.app/blog/14-07-2026/supply-chain.png
 image_alt: supply chain attack claude php javascript
 image_caption: supply chain attack claude php javascript
-slug: 14-teaching-my-ai-agents-to-update-dependencies-safely
+slug: 14-claude-skill-for-safe-dependency-updates-php-javascript-typescript
 featured: true
 ---
 
