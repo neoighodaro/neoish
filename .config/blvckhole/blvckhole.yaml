@@ -38,6 +38,7 @@ network:
   - '*.yulo.app'
   - medium.com
   - dev.to
+  - '*.medium.com'
 claude:
   plugins:
     marketplaces:

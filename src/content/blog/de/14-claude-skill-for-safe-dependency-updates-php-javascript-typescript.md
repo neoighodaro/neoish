@@ -1,12 +1,15 @@
 ---
-slug: "14-teaching-my-ai-agents-to-update-dependencies-safely"
-title: "Wie ich meinen KI-Agenten beibringe, Dependencies zu aktualisieren, ohne mich zu ruinieren"
+slug: "14-claude-skill-for-safe-dependency-updates-php-javascript-typescript"
+title: "Claude Code Skills für sichere PHP- und JS-Paket-Updates"
 seo_title: "Sichere Dependency-Updates mit KI-Agenten: Claude Code Skills für sichere PHP- und JS-Paket-Updates"
 description: "Meine Agenten sollen Dependency-Updates übernehmen, ohne mich in einen Supply-Chain-Angriff zu führen. Also habe ich ihnen ein Regelwerk geschrieben."
 date: "2026-07-14 10:00:00"
 reading_minutes: 5
+image: "https://cdn.yulo.app/blog/14-07-2026/supply-chain.png"
+image_alt: "Supply-Chain-Angriff Claude PHP JavaScript"
+image_caption: "Supply-Chain-Angriff Claude PHP JavaScript"
 tags: claude code, ki-agenten, supply chain security, composer, npm, pnpm, skills
-featured: false
+featured: true
 ---
 
 Es ist nicht ungewöhnlich, dass bei Projekten Wochen oder sogar Monate zwischen Dependency-Updates vergehen. Und wenn dann doch aktualisiert wird, dann mit voller Wucht: alles auf einmal, ohne irgendetwas zu prüfen.

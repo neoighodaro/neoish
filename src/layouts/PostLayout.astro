@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getEntry } from "astro:content"
 import { useTranslations } from "../i18n/ui"
-import { categoryFor, fmtDate, prettyTag, tagList } from "../lib/format"
+import { categoryFor, fmtDate, prettyTag, publisherName, tagList } from "../lib/format"
 import { type Lang, parsePostId } from "../lib/i18n"
 import BlogLayout from "./BlogLayout.astro"
 
@@ -114,7 +114,7 @@ const jsonLd = {
       {external && (
         <p class="syndicated" data-fade>
           {t("post.syndicated")}{" "}
-          <a href={external.href} target="_blank" rel="noreferrer">{external.host.replace(/^www\./, "")}</a>
+          <a href={external.href} target="_blank" rel="noreferrer">{publisherName(external)}</a>
         </p>
       )}
     </header>

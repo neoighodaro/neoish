@@ -51,6 +51,18 @@ export function tagList(tags?: string): string[] {
     .filter(Boolean)
 }
 
+// The name of the place a syndicated post was first published, for the
+// "Originally published on ___" line. Falls back to the bare host, which reads
+// fine for a normal blog (blog.pusher.com), but Medium serves one publication
+// from several hosts — medium.com/@neo and neo.medium.com are the same place —
+// so the host alone would give it a different name on every post. Add a case
+// here for any other publisher whose host isn't its name.
+export function publisherName(url: URL): string {
+  const host = url.host.replace(/^www\./, "")
+  if (host === "medium.com" || host.endsWith(".medium.com")) return "Medium"
+  return host
+}
+
 export function categoryFor(data: { category?: string; tags?: string }): string {
   if (data.category) return data.category
   const first = tagList(data.tags)[0]
