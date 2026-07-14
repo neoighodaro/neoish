@@ -27,6 +27,7 @@ export const ui = {
     "post.back": "Back to Writing",
     "post.backShort": "Writing",
     "post.minRead": "min read",
+    "post.syndicated": "Originally published on",
   },
   de: {
     "nav.writing": "Schreiben",
@@ -52,6 +53,7 @@ export const ui = {
     "post.back": "Zurück zum Schreiben",
     "post.backShort": "Schreiben",
     "post.minRead": "Min. Lesezeit",
+    "post.syndicated": "Ursprünglich veröffentlicht auf",
   },
 } as const
 

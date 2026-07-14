@@ -37,6 +37,13 @@ const blog = defineCollection({
     // Original URL slug from the source posts (kept for reference; the
     // filename is what actually drives the route).
     slug: z.string().optional(),
+    // Set when the post was first published somewhere else (a client blog, a
+    // publication) and this is the copy. That URL becomes the page's canonical,
+    // so the post drops out of the sitemap and stops advertising hreflang —
+    // search engines credit the original. scripts/posts.mjs parses this same
+    // field out of the raw front-matter for the sitemap filter and SEO check,
+    // and that parser only understands a plain one-line scalar.
+    canonical: z.string().url().optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
   }),

@@ -10,6 +10,7 @@ image_alt: Working on Yulo, the telc B1 exam app I'm building while preparing fo
 image_width: 4032
 image_height: 3024
 slug: 13-building-a-telc-b1-exam-app-before-passing-it
+canonical: https://neo.medium.com/im-building-a-telc-b1-german-mock-exam-app-ed2baa9bcd83
 featured: false
 ---
 

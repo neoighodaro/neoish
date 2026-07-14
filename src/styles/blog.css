@@ -497,6 +497,30 @@ main {
   border-radius: 999px;
 }
 
+.syndicated {
+  margin-top: 2.5vh;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--dim);
+}
+.syndicated a {
+  color: var(--bone);
+  border-bottom: 1px solid var(--faint);
+  padding-bottom: 1px;
+  font-style: normal;
+  font-family: var(--body);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition:
+    color 0.25s,
+    border-color 0.25s;
+}
+.syndicated a:hover {
+  color: var(--signal);
+  border-color: var(--signal);
+}
+
 /* header image */
 .art-hero {
   max-width: 1120px;

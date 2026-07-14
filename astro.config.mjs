@@ -1,30 +1,6 @@
-import { readdirSync, readFileSync } from "node:fs"
-import { join } from "node:path"
 import sitemap from "@astrojs/sitemap"
 import { defineConfig } from "astro/config"
-
-const DE_DIR = "./src/content/blog/de"
-
-// Slugs that have a REAL (non-draft) German translation. Any other /de/blog/<slug>/
-// route serves English fallback content and canonicals back to English, so it must
-// not appear in the sitemap — Google's guidance is to list only canonical URLs, and
-// scripts/indexnow.mjs scrapes <loc> straight out of the sitemap.
-const translatedSlugs = new Set(
-  readdirSync(DE_DIR, { recursive: true })
-    // recursive: true joins nested entries with the platform separator, so on
-    // Windows a nested file would key as "2026\foo" and never match the
-    // filter regex's "2026/foo" capture below — normalise to "/" so the key
-    // shape is platform-independent.
-    .map((f) => f.replaceAll("\\", "/"))
-    .filter((f) => f.endsWith(".md"))
-    .filter((f) => {
-      const frontmatter = readFileSync(join(DE_DIR, f), "utf8").split(/^---$/m)[1] ?? ""
-      // YAML (js-yaml 4, core schema) parses draft as boolean true for any of
-      // these three casings — match them all, not just lowercase "true".
-      return !/^draft:\s*(true|True|TRUE)\s*$/m.test(frontmatter)
-    })
-    .map((f) => f.replace(/\.md$/, "")),
-)
+import { externalCanonicals, postIdForPath } from "./scripts/posts.mjs"
 
 export default defineConfig({
   site: "https://neoighodaro.com",
@@ -38,9 +14,19 @@ export default defineConfig({
       // No `i18n` option here on purpose: it would emit its own xhtml:link hreflang
       // pairs, including for the fallback URLs this filter removes. Page-level
       // hreflang in BlogLayout is the single source of truth.
+      //
+      // A sitemap must list only canonical URLs, so drop every post page whose
+      // canonical points somewhere else. Two ways that happens; scripts/seo-check.mjs
+      // fails the build if this filter and the emitted <link rel="canonical"> ever
+      // drift apart.
       filter: (page) => {
-        const m = new URL(page).pathname.match(/^\/de\/blog\/(.+?)\/?$/)
-        return !m || translatedSlugs.has(m[1])
+        const pathname = new URL(page).pathname
+        const id = postIdForPath(pathname)
+        if (!id) return true
+        // A German URL serving the English entry as a fallback: canonicals to English.
+        if (pathname.startsWith("/de/") && !id.startsWith("de/")) return false
+        // First published elsewhere: canonicals off-site.
+        return !externalCanonicals.has(id)
       },
     }),
   ],

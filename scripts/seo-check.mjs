@@ -2,6 +2,7 @@
 // Run after `astro build`. Exits non-zero with one line per violation.
 import { readdirSync, readFileSync, statSync } from "node:fs"
 import { join } from "node:path"
+import { externalCanonicals, postIdForPath } from "./posts.mjs"
 
 const DIST = "dist"
 const SITE = "https://neoighodaro.com"
@@ -49,11 +50,28 @@ for (const file of pages) {
     continue
   }
   const canonical = canonicals[0]
-  byUrl.set(urlFor(file), canonical)
-  htmlByUrl.set(urlFor(file), html)
+  const url = urlFor(file)
+  byUrl.set(url, canonical)
+  htmlByUrl.set(url, html)
 
-  if (!canonical.startsWith(SITE)) fail(file, `canonical is not absolute on ${SITE}: ${canonical}`)
-  if (!canonical.endsWith("/")) fail(file, `canonical must end in a trailing slash: ${canonical}`)
+  // A post that declares `canonical:` in its front-matter was first published
+  // elsewhere and must point at that original — everything else must point at
+  // itself on this site. Reading the declaration back from source is what stops
+  // an off-site canonical from ever being a silent accident: a page that emits
+  // one without declaring it fails the "not absolute on SITE" check below, and a
+  // page that declares one but emits its own URL fails the mismatch check.
+  const external = externalCanonicals.get(postIdForPath(url.slice(SITE.length)) ?? "") ?? null
+
+  if (external) {
+    if (canonical !== external) fail(file, `canonical is ${canonical}, but front-matter declares ${external}`)
+    // The page is a copy of the original, not an equal alternate of anything.
+    if (html.includes('rel="alternate" hreflang=')) {
+      fail(file, `defers to an external canonical (${external}) but still advertises hreflang alternates`)
+    }
+  } else {
+    if (!canonical.startsWith(SITE)) fail(file, `canonical is not absolute on ${SITE}: ${canonical}`)
+    if (!canonical.endsWith("/")) fail(file, `canonical must end in a trailing slash: ${canonical}`)
+  }
 
   if (!isPost(file)) continue
 

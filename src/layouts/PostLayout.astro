@@ -26,13 +26,24 @@ const homeHref = lang === "de" ? "/de/" : "/"
 // A draft German translation does not count — getStaticPaths filters drafts, so the
 // /de/ route falls back to English in that case too.
 const { slug } = parsePostId(post.id)
+const enEntry = await getEntry("blog", slug)
 const deEntry = await getEntry("blog", `de/${slug}`)
 const hasDe = Boolean(deEntry && !deEntry.data.draft)
 
 const enUrl = new URL(`/blog/${slug}/`, Astro.site)
 const deUrl = new URL(`/de/blog/${slug}/`, Astro.site)
-const canonical = lang === "de" && hasDe ? deUrl : enUrl
-const alternates = hasDe ? { en: enUrl, de: deUrl } : null
+
+// `canonical: <url>` in the front-matter means the post was first published there
+// and this page is the copy, so it defers: the external URL is the canonical, and
+// astro.config.mjs keeps the page out of the sitemap to match.
+const external = d.canonical ? new URL(d.canonical) : null
+const canonical = external ?? (lang === "de" && hasDe ? deUrl : enUrl)
+
+// hreflang pairs two URLs as equal alternates of each other, which is only true
+// when both canonical to themselves. If EITHER language defers to an external
+// original, one half of the pair canonicals off-site — so advertise nothing.
+const syndicated = Boolean(enEntry?.data.canonical || deEntry?.data.canonical)
+const alternates = hasDe && !syndicated ? { en: enUrl, de: deUrl } : null
 
 const seoTitle = d.seo_title ?? `${d.title} — Neo Ighodaro`
 // Frontmatter carries both absolute S3 URLs and site-relative paths; URL() handles both.
@@ -99,6 +110,13 @@ const jsonLd = {
           </>
         )}
       </div>
+
+      {external && (
+        <p class="syndicated" data-fade>
+          {t("post.syndicated")}{" "}
+          <a href={external.href} target="_blank" rel="noreferrer">{external.host.replace(/^www\./, "")}</a>
+        </p>
+      )}
     </header>
 
     {d.image && (
