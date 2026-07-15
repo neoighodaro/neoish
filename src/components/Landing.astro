@@ -112,7 +112,7 @@ const copy = landing[lang]
         <div class="brain-artbg" aria-hidden="true"></div>
         <div class="brain-grid">
           <div class="brain-card" data-brain="engineering">
-            <img class="brain-art" src="/img/brain.svg#left-top" alt="" />
+            <div class="brain-art" aria-hidden="true"></div>
             <div class="brain-body">
               <h3>{copy.brain.engineering.title}</h3>
               <p class="brain-sub">{copy.brain.engineering.sub}</p>
@@ -120,7 +120,7 @@ const copy = landing[lang]
             </div>
           </div>
           <div class="brain-card" data-brain="design">
-            <img class="brain-art" src="/img/brain.svg#right-top" alt="" />
+            <div class="brain-art" aria-hidden="true"></div>
             <div class="brain-body">
               <h3 set:html={copy.brain.design.title}></h3>
               <p class="brain-sub" set:html={copy.brain.design.sub}></p>
@@ -128,7 +128,7 @@ const copy = landing[lang]
             </div>
           </div>
           <div class="brain-card" data-brain="gaming">
-            <img class="brain-art" src="/img/brain.svg#left-bottom" alt="" />
+            <div class="brain-art" aria-hidden="true"></div>
             <div class="brain-body">
               <h3>{copy.brain.gaming.title}</h3>
               <p class="brain-sub" set:html={copy.brain.gaming.sub}></p>
@@ -147,7 +147,7 @@ const copy = landing[lang]
             >
               <source src="/vids/neo-dancing.mp4" type="video/mp4" />
             </video>
-            <img class="brain-art" src="/img/brain.svg#right-bottom" alt="" />
+            <div class="brain-art" aria-hidden="true"></div>
             <div class="brain-body">
               <h3>{copy.brain.music.title}</h3>
               <p class="brain-sub">{copy.brain.music.sub}</p>

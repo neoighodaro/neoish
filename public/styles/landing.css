@@ -305,11 +305,19 @@
     position: absolute; inset: 0; z-index: 1;
     width: 100%; height: 100%; object-fit: cover; opacity: 0;
   }
-  .brain-art { position: absolute; z-index: 1; width: 130px; height: auto; }
-  .brain-card:nth-child(1) .brain-art { right: 0; bottom: 0; }
-  .brain-card:nth-child(2) .brain-art { left: 0; bottom: 0; }
-  .brain-card:nth-child(3) .brain-art { right: 0; top: 0; }
-  .brain-card:nth-child(4) .brain-art { left: 0; top: 0; }
+  /* One brain.svg (1245x1600) windowed into four quadrants via background-position.
+     Replaces SVG #view fragments in <img>, which Chromium/WebKit don't honor. */
+  .brain-art {
+    position: absolute; z-index: 1;
+    width: 130px; aspect-ratio: 621 / 800;
+    background-image: url(/img/brain.svg);
+    background-repeat: no-repeat;
+    background-size: 200% 200%;
+  }
+  .brain-card:nth-child(1) .brain-art { right: 0; bottom: 0; background-position: 0% 0%; }     /* left-top */
+  .brain-card:nth-child(2) .brain-art { left: 0; bottom: 0; background-position: 100% 0%; }    /* right-top */
+  .brain-card:nth-child(3) .brain-art { right: 0; top: 0; background-position: 0% 100%; }      /* left-bottom */
+  .brain-card:nth-child(4) .brain-art { left: 0; top: 0; background-position: 100% 100%; }     /* right-bottom */
   .brain-body { position: relative; z-index: 2; }
   @media (min-width: 1024px) {
     .brain-card:nth-child(1) .brain-body { padding-right: 208px; }
