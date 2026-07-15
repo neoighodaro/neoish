@@ -20,6 +20,7 @@ const deUrl = new URL("/de/", Astro.site)
   <head>
     <script is:inline>
       document.documentElement.classList.add("js", "is-loading")
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual"
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
