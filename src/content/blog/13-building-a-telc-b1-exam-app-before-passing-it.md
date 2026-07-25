@@ -5,10 +5,10 @@ description: 'I froze on a German medical hotline, booked the telc B1 for August
 date: 2026-07-13 10:00:00
 tags: german, telc b1, yulo, side projects, building in public
 reading_minutes: 4
-image: https://cdn.yulo.app/blog/covers/01KX6S0A86285XQDRK70SE5VGN.jpg
+image: https://cdn.yulo.app/blog/covers/01KVDQEF0PDDF84EB6CHA20TBV.png
 image_alt: Working on Yulo, the telc B1 exam app I'm building while preparing for the exam myself
-image_width: 4032
-image_height: 3024
+image_width: 2936
+image_height: 1730
 slug: 13-building-a-telc-b1-exam-app-before-passing-it
 featured: false
 ---
