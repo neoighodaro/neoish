@@ -680,9 +680,9 @@ main {
 /* article footer nav */
 .art-nav {
   max-width: 760px;
-  margin: 0 auto;
+  margin: 3rem auto 0;
   border-top: 1px solid var(--faint);
-  padding: 8vh 0 2vh;
+  padding: 3.5rem 0 2vh;
   display: grid;
   gap: 5vh;
 }
