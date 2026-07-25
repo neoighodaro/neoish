@@ -5,7 +5,7 @@ description: I wanted my agents to handle dependency updates without walking me 
 date: 2026-07-14 10:00:00
 tags: claude code, ai agents, supply chain security, composer, npm, pnpm, skills
 reading_minutes: 5
-image: https://cdn.yulo.app/blog/14-07-2026/supply-chain.png
+image: https://cdn.yulo.app/blog/25-07-2026/claude-code-skills-php-javascript.avif
 image_alt: supply chain attack claude php javascript
 image_caption: supply chain attack claude php javascript
 slug: 14-claude-skill-for-safe-dependency-updates-php-javascript-typescript
