@@ -637,10 +637,11 @@ main {
   background: none;
   border: 0;
   padding: 0;
-  color: rgba(242, 237, 228, 0.9);
 }
-.prose pre code .k {
-  color: var(--signal);
+/* Shiki emits an inline background on the <pre>; pin it to the site token so every
+   code block stays the same near-black regardless of the theme's own background. */
+.prose pre.astro-code {
+  background: var(--ink-2) !important;
 }
 
 /* inline content figure */

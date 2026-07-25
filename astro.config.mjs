@@ -31,6 +31,12 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    syntaxHighlight: false,
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      // Background pinned to --ink-2 in blog.css. github-dark is chosen for high
+      // contrast: every token color is light and reads clearly on near-black, so
+      // even mostly-plain shell blocks show visible comment/string/number colors.
+      theme: "github-dark",
+    },
   },
 })
