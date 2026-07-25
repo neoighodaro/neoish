@@ -161,4 +161,13 @@ const jsonLd = {
       <span>&copy;&nbsp;2026 · {t("foot.made")} <a class="made" href="http://ck.team" target="_blank" rel="noreferrer">CreativityKills</a></span>
     </div>
   </footer>
+
+  <script>
+    // External links in the post body open in a new tab. Scoped to .prose so it
+    // never touches in-site nav/footer links (which already set their own attrs).
+    for (const a of document.querySelectorAll('.prose a[href^="http"]')) {
+      a.setAttribute("target", "_blank")
+      a.setAttribute("rel", "noopener noreferrer")
+    }
+  </script>
 </BlogLayout>
