@@ -13,17 +13,12 @@ package = "netlify-plugin-minify-html"
 [build.environment]
   NODE_VERSION = "22"
 
-# Markdown content negotiation: on these routes, an `Accept: text/markdown`
-# request is answered with the page's pre-built index.md (see the function and
-# scripts/agent-files.mjs). Everything else — every browser — is untouched.
+# Markdown content negotiation: an `Accept: text/markdown` request to any page
+# is answered with that page's pre-built index.md (see the function and
+# scripts/agent-files.mjs). The function returns instantly for every other
+# request, so browsers are untouched. Static assets are excluded so the function
+# never runs on bundles, media, or the .md variants it would serve.
 [[edge_functions]]
   function = "markdown"
-  path = "/"
-
-[[edge_functions]]
-  function = "markdown"
-  path = "/blog/*"
-
-[[edge_functions]]
-  function = "markdown"
-  path = "/de/*"
+  path = "/*"
+  excludedPath = ["/_astro/*", "/img/*", "/audio/*", "/vids/*", "/js/*", "/styles/*", "*.md", "*.xml", "*.txt", "*.png", "*.svg", "*.ico"]
