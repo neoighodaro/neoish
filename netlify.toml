@@ -12,3 +12,18 @@ package = "netlify-plugin-minify-html"
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Markdown content negotiation: on these routes, an `Accept: text/markdown`
+# request is answered with the page's pre-built index.md (see the function and
+# scripts/agent-files.mjs). Everything else — every browser — is untouched.
+[[edge_functions]]
+  function = "markdown"
+  path = "/"
+
+[[edge_functions]]
+  function = "markdown"
+  path = "/blog/*"
+
+[[edge_functions]]
+  function = "markdown"
+  path = "/de/*"
