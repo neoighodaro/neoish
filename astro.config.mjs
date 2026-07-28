@@ -1,6 +1,6 @@
 import sitemap from "@astrojs/sitemap"
 import { defineConfig } from "astro/config"
-import { externalCanonicals, postIdForPath } from "./scripts/posts.mjs"
+import { externalCanonicals, lastmodById, latestLastmod, postIdForPath } from "./scripts/posts.mjs"
 
 export default defineConfig({
   site: "https://neoighodaro.com",
@@ -27,6 +27,17 @@ export default defineConfig({
         if (pathname.startsWith("/de/") && !id.startsWith("de/")) return false
         // First published elsewhere: canonicals off-site.
         return !externalCanonicals.has(id)
+      },
+      // Stamp <lastmod> so Google has an explicit freshness signal (the default
+      // sitemap carries none). A post uses its own updated/date; the listing and
+      // landing pages, whose content turns over as posts publish, use the newest
+      // post date. Only URLs that survived the filter reach here, so the de
+      // English-fallback pages never get a (misleading) lastmod.
+      serialize: (item) => {
+        const id = postIdForPath(new URL(item.url).pathname)
+        const lastmod = id ? lastmodById.get(id) : latestLastmod
+        if (lastmod) item.lastmod = lastmod
+        return item
       },
     }),
   ],

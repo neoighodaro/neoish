@@ -110,6 +110,15 @@ const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
 
 const locSet = new Set(locs)
 
+// Every sitemap entry must carry a <lastmod> — astro.config's serialize() stamps
+// one on every URL (posts from their own date, listings from the newest post),
+// so a missing one means a post's date failed to parse and the freshness signal
+// silently vanished. Count-based: the serializer never emits a bare <lastmod>.
+const lastmodCount = (sitemap.match(/<lastmod>/g) ?? []).length
+if (lastmodCount !== locs.length) {
+  fail("sitemap-0.xml", `${locs.length} <loc> but ${lastmodCount} <lastmod> — every URL should carry a lastmod`)
+}
+
 for (const loc of locs) {
   const canonical = byUrl.get(loc)
   if (!canonical) {

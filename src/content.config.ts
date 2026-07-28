@@ -22,6 +22,12 @@ const blog = defineCollection({
     seo_title: z.string().optional(),
     description: z.string(),
     date: z.coerce.date(),
+    // When the post's content was last meaningfully changed. Drives the
+    // sitemap <lastmod> (falling back to `date` when absent) so an edit can
+    // signal a recrawl. scripts/posts.mjs parses this same field out of the
+    // raw front-matter for the sitemap, and that parser only reads the leading
+    // YYYY-MM-DD, so a bare date or a full datetime both work.
+    updated: z.coerce.date().optional(),
     // Small eyebrow above the headline, e.g. "Engineering · Speaking".
     // Optional — templates fall back to the first tag when it's absent.
     category: z.string().optional(),
