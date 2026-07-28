@@ -63,7 +63,7 @@ const covers = [
     </section>
 
     {featured && (
-      <a class="feature" data-fade href={`${base}/blog/${featured.slug}`}>
+      <a class="feature" data-fade href={`${base}/blog/${featured.slug}/`}>
         <div class="cover">
           {featured.data.image ? (
             <img src={featured.data.image} alt="" loading="eager" onerror="this.remove()" />
@@ -94,7 +94,7 @@ const covers = [
     {rest.length > 0 ? (
       <div class="grid">
         {rest.map((p, i) => (
-          <a class="card" data-fade href={`${base}/blog/${p.slug}`}>
+          <a class="card" data-fade href={`${base}/blog/${p.slug}/`}>
             <div class="cover">
               {p.data.image ? (
                 <img src={p.data.image} alt="" loading="lazy" onerror="this.remove()" />
