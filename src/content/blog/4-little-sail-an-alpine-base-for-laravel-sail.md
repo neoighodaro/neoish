@@ -13,7 +13,7 @@ tags: laravel, docker, alpine, sail
 
 In my last article, it was clear I got the Apple M1 and I started using it for development. Laravel is my usual go to framework while developing and Laravel now has a little optional Docker development machine that can be added to it called [Sail](https://laravel.com/docs/sail).
 
-After [getting the M1 to work with Docker](https://neoighodaro.com/posts/3-running-laravel-and-docker-on-the-apple-mac-m1) I started using Sail and I quickly noticed the base image for the PHP runtime was over 600mb. As someone with a low storage Mac, I don't think I want to be giving Docker this much space to keep an image.
+After [getting the M1 to work with Docker](https://neoighodaro.com/blog/3-running-laravel-and-docker-on-the-apple-mac-m1/) I started using Sail and I quickly noticed the base image for the PHP runtime was over 600mb. As someone with a low storage Mac, I don't think I want to be giving Docker this much space to keep an image.
 
 ![Terminal Laravel Sail alpine](https://user-images.githubusercontent.com/807318/109423532-1365b580-79e0-11eb-955f-9cd51fe661f1.png)
 
