@@ -160,6 +160,18 @@
       const cx = gsap.quickTo(cursor, "x", { duration: 0.18, ease: "power3.out" })
       const cy = gsap.quickTo(cursor, "y", { duration: 0.18, ease: "power3.out" })
       addEventListener("pointermove", (e) => { cx(e.clientX); cy(e.clientY) })
+
+      // hero figure parallax: drifts toward the pointer, lagging behind it for depth
+      const figure = document.querySelector(".hero-figure")
+      if (figure) {
+        const fx = gsap.quickTo(figure, "x", { duration: 1.1, ease: "power3.out" })
+        const fy = gsap.quickTo(figure, "y", { duration: 1.1, ease: "power3.out" })
+        addEventListener("pointermove", (e) => {
+          fx((e.clientX / innerWidth - 0.5) * 36)
+          fy((e.clientY / innerHeight - 0.5) * 22)
+        })
+      }
+
       document.querySelectorAll("a, button").forEach((el) => {
         if (el.classList.contains("repo-card")) return
         el.addEventListener("pointerenter", () => gsap.to(cursor, { scale: 3.2, duration: 0.3 }))
