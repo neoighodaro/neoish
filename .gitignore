@@ -7,5 +7,5 @@ dist/
 .env
 .env.production
 
-# blvckhole
-.config/blvckhole/.kit/
+# lid
+.config/lid/.kit/
