@@ -2,32 +2,26 @@
 
 name: neoish
 agent: claude-code
-backend: sbx
-workspace: /workspace
+backend: nono
 zellij:
   display_name: neoish
-packages:
-  - ripgrep
-  - eza
-  - xz-utils
 runtimes:
   node: "24.16.0"
   pnpm: "11.12.0"
+ports:
+  - 4321
 env:
   ASTRO_TELEMETRY_DISABLED: "1"
 env_file: []
 scripts:
-  on_create:
-    - "curl -fsSL https://github.com/max-sixty/worktrunk/releases/latest/download/worktrunk-installer.sh | bash"
-    - "source $HOME/.cargo/env && wt config shell install -y"
-    - "pnpm install"
+  on_create: []
   on_start: []
 shell:
-  directory: /workspace
   aliases:
     clr: "clear"
     g: "git"
 network:
+  - localhost
   - "*.npmjs.org"
   - "registry.yarnpkg.com"
   - "api.github.com"
@@ -47,6 +41,20 @@ network:
   - audio-ssl.itunes.apple.com
   - '*.mzstatic.com'
   - music.youtube.com
+paths:
+  read:
+    - ~/Developer/dotfiles/configs/claude
+    - ~/Developer/dotfiles/configs/claude/hooks
+    - ~/Developer/dotfiles/configs/claude/skills
+  read_file:
+    - ~/.npmrc
+    - ~/.gitconfig.extended
+    - ~/.global-gitignore
+    - ~/.config/pnpm/config.yaml
+    - ~/Developer/dotfiles/configs/claude/CLAUDE.md
+  allow: []
+  deny:
+    - ~/.bash_history
 claude:
   plugins:
     marketplaces:
