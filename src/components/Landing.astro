@@ -9,7 +9,7 @@ interface Props {
 const { lang } = Astro.props
 const copy = landing[lang]
 
-// xoxo, black sheep — the full album, in order
+// xoxo, black sheep: the full album, in order
 const tracks = [
   {
     title: "schrödingers immigrant",
@@ -455,7 +455,7 @@ const albumLinks = {
                           href={t.links[sv.key]}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label={`${t.title} — ${sv.label}`}
+                          aria-label={copy.tracklist.trackOn.replace("{title}", t.title).replace("{service}", sv.label)}
                           title={sv.label}
                         >
                           <svg viewBox="0 0 24 24" aria-hidden="true"><path d={sv.icon} /></svg>

@@ -19,18 +19,22 @@
       if (spinTween) spinTween.kill()
       // ease the platter up to speed, then hold a steady infinite spin
       spinTween = gsap.timeline()
-      spinTween.fromTo(disc, { rotation: 0 }, { rotation: 360, duration: 2.4, ease: "power1.in" })
+      // spin up from wherever the disc is, so a play mid-settle doesn't snap back to 0
+      const from = (Number(gsap.getProperty(disc, "rotation")) || 0) % 360
+      spinTween.fromTo(disc, { rotation: from }, { rotation: from + 360, duration: 2.4, ease: "power1.in" })
         .to(disc, { rotation: "+=360", duration: 3.2, ease: "none", repeat: -1 })
     }
     const spinDown = () => {
       if (!artWindow) return
       if (!canSpin) { artWindow.classList.remove("spinning"); return }
-      if (spinTween) { spinTween.kill(); spinTween = null }
+      if (spinTween) spinTween.kill()
       const cur = Number(gsap.getProperty(disc, "rotation")) || 0
       const settle = Math.ceil(cur / 360) * 360
-      gsap.to(disc, {
+      // kept in spinTween so a play mid-settle (or a track switch, which fires
+      // pause → play) kills it before it can flip the art back to a square
+      spinTween = gsap.to(disc, {
         rotation: settle, duration: 0.9, ease: "power2.out",
-        onComplete() { artWindow.classList.remove("spinning"); gsap.set(disc, { rotation: 0 }) },
+        onComplete() { artWindow.classList.remove("spinning"); gsap.set(disc, { rotation: 0 }); spinTween = null },
       })
     }
 

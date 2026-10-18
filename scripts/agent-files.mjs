@@ -135,7 +135,7 @@ My latest album is **xoxo, black sheep**.
 - [Sitemap](${SITE}/sitemap.xml)
 
 ## Music
-- **xoxo, black sheep** (2026) — [Apple Music](${ALBUM.apple}) · [Spotify](${ALBUM.spotify}) · [YouTube Music](${ALBUM.youtube})
+- **xoxo, black sheep** (2026): [Apple Music](${ALBUM.apple}) · [Spotify](${ALBUM.spotify}) · [YouTube Music](${ALBUM.youtube})
 
 ## Software
 - **yulo** — AI practice for the Telc B1 German exam
@@ -167,7 +167,7 @@ iPad und mache Musik. Mein neuestes Album ist **xoxo, black sheep**.
 - [Sitemap](${SITE}/sitemap.xml)
 
 ## Musik
-- **xoxo, black sheep** (2026) — [Apple Music](${ALBUM.apple}) · [Spotify](${ALBUM.spotify}) · [YouTube Music](${ALBUM.youtube})
+- **xoxo, black sheep** (2026): [Apple Music](${ALBUM.apple}) · [Spotify](${ALBUM.spotify}) · [YouTube Music](${ALBUM.youtube})
 
 ## Aktuelle Beiträge
 ${recent(true)}

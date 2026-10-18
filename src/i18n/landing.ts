@@ -54,6 +54,7 @@ export interface LandingCopy {
     albumHeading: string
     clipAriaPlay: string
     clipAriaPause: string
+    trackOn: string
   }
   footer: { sayHi: string; madeWithHtml: string }
 }
@@ -149,7 +150,7 @@ const en: LandingCopy = {
   tracklist: {
     heading: "Side B",
     sub: "the music",
-    note: "xoxo, black sheep — out now.",
+    note: "xoxo, black sheep is out now.",
     albumAlt: "Album art for xoxo, black sheep by Neo",
     storySummary: "the story",
     trk0Story:
@@ -159,6 +160,7 @@ const en: LandingCopy = {
     albumHeading: "the full album",
     clipAriaPlay: "Play a preview of {title}",
     clipAriaPause: "Pause preview of {title}",
+    trackOn: "{title} on {service}",
   },
   footer: {
     sayHi: "Say Hi",
@@ -246,7 +248,7 @@ const de: LandingCopy = {
   tracklist: {
     heading: "Side B",
     sub: "die Musik",
-    note: "xoxo, black sheep — jetzt erhältlich.",
+    note: "xoxo, black sheep ist jetzt erhältlich.",
     albumAlt: "Albumcover für xoxo, black sheep von Neo",
     storySummary: "die Geschichte",
     trk0Story:
@@ -256,6 +258,7 @@ const de: LandingCopy = {
     albumHeading: "das ganze Album",
     clipAriaPlay: "Eine Vorschau von {title} abspielen",
     clipAriaPause: "Vorschau von {title} pausieren",
+    trackOn: "{title} auf {service}",
   },
   footer: {
     sayHi: "Sag Hallo",
