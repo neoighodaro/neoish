@@ -2,10 +2,10 @@
 
   document.documentElement.classList.add("js", "is-loading")
 
-  // preview clip for "schrödingers immigrant" (runs in every mode)
-  const clipBtn = document.getElementById("clip-btn")
+  // track preview clips (runs in every mode): every .play-clip shares one <audio>
+  const clipBtns = document.querySelectorAll(".tracklist .play-clip[data-clip]")
   const clipAudio = document.getElementById("clip-audio")
-  if (clipBtn && clipAudio) {
+  if (clipBtns.length && clipAudio) {
     const PLAY = "▶", PAUSE = "⏸"
     const artWindow = document.querySelector(".tracklist .art-window")
     const disc = artWindow && artWindow.querySelector(".disc")
@@ -34,20 +34,35 @@
       })
     }
 
-    clipBtn.addEventListener("click", () => {
-      if (clipAudio.paused) { clipAudio.currentTime = 0; clipAudio.play() }
-      else { clipAudio.pause() }
-    })
+    const label = (tpl, fallback, btn) => (tpl || fallback).replace("{title}", btn.dataset.title)
+    const setIdle = (btn) => {
+      btn.textContent = PLAY
+      btn.classList.remove("is-playing")
+      btn.setAttribute("aria-label", label(L.clipAriaPlay, "Play a preview of {title}", btn))
+    }
+    let current = null // the button whose clip is loaded
+
+    for (const btn of clipBtns) {
+      btn.addEventListener("click", () => {
+        if (btn === current && !clipAudio.paused) { clipAudio.pause(); return }
+        if (btn !== current) {
+          if (current) setIdle(current)
+          current = btn
+          clipAudio.src = btn.dataset.clip
+        }
+        clipAudio.currentTime = 0
+        clipAudio.play()
+      })
+    }
     clipAudio.addEventListener("play", () => {
-      clipBtn.textContent = PAUSE
-      clipBtn.classList.add("is-playing")
-      clipBtn.setAttribute("aria-label", L.clipAriaPause || "Pause preview of schrödingers immigrant")
+      if (!current) return
+      current.textContent = PAUSE
+      current.classList.add("is-playing")
+      current.setAttribute("aria-label", label(L.clipAriaPause, "Pause preview of {title}", current))
       spinUp()
     })
     const reset = () => {
-      clipBtn.textContent = PLAY
-      clipBtn.classList.remove("is-playing")
-      clipBtn.setAttribute("aria-label", L.clipAriaPlay || "Play a preview of schrödingers immigrant")
+      if (current) setIdle(current)
       spinDown()
     }
     clipAudio.addEventListener("pause", reset)
@@ -56,7 +71,7 @@
 
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches
 
-  // ---------- matrix decode on hover over the "engineer" jumbo line (from v0.x) ----------
+  // ---------- matrix decode on hover over the "tech lead" jumbo line (from v0.x) ----------
   ;(function () {
     const el = document.querySelector("[data-scramble]")
     if (!el || REDUCED) return
@@ -420,19 +435,22 @@
       },
     })
 
-    // ---------- tracklist (Side B): pin the screen, swap schrödingers → undone on scroll ----------
+    // ---------- tracklist (Side B): pin the screen, step through the highlights → full album on scroll ----------
     // Desktop only. Below the two-column breakpoint the pin + overlapping tracks
     // squeezes the tracklist off-screen, so there we fall back to normal stacked
     // flow (see the max-width: 959px block in landing.css).
     gsap.matchMedia().add("(min-width: 960px)", () => {
-      gsap.timeline({
+      const panels = gsap.utils.toArray("#tracklist .tl-stack > .player")
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: "#tracklist", start: "top top", end: "+=130%",
+          trigger: "#tracklist", start: "top top", end: `+=${(panels.length - 1) * 110}%`,
           pin: true, scrub: 1, anticipatePin: 1,
         },
       })
-        .to("#trk-0", { autoAlpha: 0, y: -40, duration: 0.7 }, 0.2)
-        .fromTo("#trk-1", { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.5)
+      panels.slice(1).forEach((panel, i) => {
+        tl.to(panels[i], { autoAlpha: 0, y: -40, duration: 0.7 }, i + 0.2)
+          .fromTo(panel, { autoAlpha: 0, y: 46 }, { autoAlpha: 1, y: 0, duration: 0.7 }, i + 0.5)
+      })
     })
 
     // darken the fixed header the whole time the yellow expanse is on screen
@@ -442,7 +460,7 @@
       onToggle(self) { siteHead.classList.toggle("on-light", self.isActive) },
     })
 
-    // ---------- ambient b l v c k loop (Side A flip → end), ducks under the preview clip ----------
+    // ---------- ambient album loop (Side A flip → end), ducks under the preview clip ----------
     const bgAudio = document.getElementById("bg-audio")
     const muteBtn = document.getElementById("mute-btn")
     if (bgAudio && muteBtn) {
@@ -464,7 +482,7 @@
         soundOn = on
         muteBtn.classList.toggle("is-on", on)
         muteBtn.setAttribute("aria-pressed", String(on))
-        muteBtn.setAttribute("aria-label", on ? (L.ariaMute || "Mute the b l v c k loop") : (L.ariaUnmute || "Unmute the b l v c k loop"))
+        muteBtn.setAttribute("aria-label", on ? (L.ariaMute || "Mute the xoxo, black sheep loop") : (L.ariaUnmute || "Unmute the xoxo, black sheep loop"))
         muteLabel.textContent = on ? (L.soundOn || "sound on") : (L.soundOff || "sound off")
         sync()
       }
@@ -485,7 +503,7 @@
         onLeave: reveal, // fallback if the flip range is skipped in one jump
       })
 
-      // duck: whenever the schrödingers immigrant preview plays, hold the loop so nothing overlaps
+      // duck: whenever a track preview plays, hold the loop so nothing overlaps
       const clipAudio = document.getElementById("clip-audio")
       if (clipAudio) {
         clipAudio.addEventListener("play", () => { ducked = true; sync() })

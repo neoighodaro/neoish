@@ -113,20 +113,29 @@ const recent = (de) =>
     .map((p) => postLink(p.url, p.id))
     .join("\n")
 
+const ALBUM = {
+  apple: "https://music.apple.com/us/album/xoxo-black-sheep-feat-gamah-gammah-beyta-delta/6812189101",
+  spotify: "https://open.spotify.com/album/3UgtUMSWtxw7wyJKPO8CeN",
+  youtube: "https://music.youtube.com/playlist?list=OLAK5uy_k3uN-vkiBmIAW1ad_usI0lgAihMo9QcBA",
+}
+
 const homeEn = `# Neo Ighodaro
 
-> Founder, engineer and music maker based in Berlin.
+> Founder, tech lead and music maker based in Berlin.
 
 I've been making things on the internet since 2004 — I started in design, fell in
 love with code, and never really picked a lane. These days I lead software
-engineering teams, build products end to end, draw on my iPad, and make music as
-**b l v c k**.
+engineering teams, build products end to end, draw on my iPad, and make music.
+My latest album is **xoxo, black sheep**.
 
 ## Explore
 
 - [Blog](${SITE}/blog/) — Laravel, PHP, JavaScript/TypeScript, AI agents, Docker and developer tooling
 - [llms.txt](${SITE}/llms.txt) — machine-readable index of this site
 - [Sitemap](${SITE}/sitemap.xml)
+
+## Music
+- **xoxo, black sheep** (2026) — [Apple Music](${ALBUM.apple}) · [Spotify](${ALBUM.spotify}) · [YouTube Music](${ALBUM.youtube})
 
 ## Software
 - **yulo** — AI practice for the Telc B1 German exam
@@ -144,18 +153,21 @@ ${recent(false)}
 
 const homeDe = `# Neo Ighodaro
 
-> Gründer, Ingenieur und Musikmacher mit Sitz in Berlin.
+> Gründer, Tech Lead und Musikmacher mit Sitz in Berlin.
 
 Ich baue seit 2004 Dinge im Internet — angefangen habe ich mit Design, habe mich
 in Code verliebt und mich nie wirklich für eine Richtung entschieden. Heute leite
 ich Software-Engineering-Teams, baue Produkte von A bis Z, zeichne auf meinem
-iPad und mache Musik als **b l v c k**.
+iPad und mache Musik. Mein neuestes Album ist **xoxo, black sheep**.
 
 ## Entdecken
 
 - [Blog](${SITE}/de/blog/) — Laravel, PHP, JavaScript/TypeScript, KI-Agenten, Docker und Entwickler-Tooling
 - [llms.txt](${SITE}/llms.txt) — maschinenlesbarer Index dieser Website
 - [Sitemap](${SITE}/sitemap.xml)
+
+## Musik
+- **xoxo, black sheep** (2026) — [Apple Music](${ALBUM.apple}) · [Spotify](${ALBUM.spotify}) · [YouTube Music](${ALBUM.youtube})
 
 ## Aktuelle Beiträge
 ${recent(true)}
@@ -172,7 +184,7 @@ for (const [dir, contents] of [
 // 4. /llms.txt — the machine-readable index of the whole site (English canon).
 const llms = `# Neo Ighodaro
 
-> Founder, engineer and music maker based in Berlin. Writing on Laravel, PHP,
+> Founder, tech lead and music maker based in Berlin. Writing on Laravel, PHP,
 > JavaScript/TypeScript, AI agents, Docker and developer tooling. A German (de)
 > translation of most content lives under /de/.
 

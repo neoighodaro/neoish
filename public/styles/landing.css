@@ -161,8 +161,11 @@
   }
   html.js:not(.static) .hero-line { transform: translateY(112%); }
   .hero-mask:nth-child(2) .hero-line { margin-left: 8vw; color: transparent; -webkit-text-stroke: 2px var(--bone); }
+  /* "Tech Lead" is wider than the other lines: a smaller indent, so only the edge of the D tucks behind the figure */
+  .hero-mask:nth-child(2) .hero-line { margin-left: 3vw; }
   .hero-line[data-scramble] { cursor: pointer; }
-  .hero-line[data-scramble].is-decoding { color: var(--signal); -webkit-text-stroke: 0; }
+  /* yellow while decoding, and it stays lit for as long as the line is hovered */
+  .hero-line[data-scramble].is-decoding, .hero-line[data-scramble]:hover { color: var(--signal); -webkit-text-stroke: 0; }
   .hero-mask:nth-child(3) .hero-line { font-size: clamp(66px, 16.8vw, 274px); }
   .hero-kinda {
     position: absolute; left: 50%; top: 50%; z-index: 6;
@@ -594,10 +597,12 @@
     padding: 4px 14px; border-radius: 4px;
   }
 
-  /* two tracks share one stacked frame; the pinned scrub swaps schrödingers → undone */
+  /* the highlights and the full album share one stacked frame; the pinned scrub steps through them */
   .tl-stack { position: relative; min-height: 44vh; }
-  html.js:not(.static) .tl-stack .player { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; }
-  html.js:not(.static) #trk-1 { opacity: 0; visibility: hidden; }
+  /* all panels share one grid cell, so the frame grows to the taller one */
+  html.js:not(.static) .tl-stack { display: grid; }
+  html.js:not(.static) .tl-stack .player { grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: center; }
+  html.js:not(.static) .tl-stack .player:not(#trk-0) { opacity: 0; visibility: hidden; }
   html.static .tl-stack { min-height: 0; display: flex; flex-direction: column; }
   html.static .tl-stack .player { display: flex; flex-direction: column; }
   html.static .tl-stack .player + .player { margin-top: 6vh; padding-top: 6vh; border-top: 1px solid rgba(10, 10, 12, 0.14); }
@@ -609,9 +614,10 @@
     .tracklist { min-height: 0; }
     .player-grid { margin-top: 6vh; }
     .art-window { max-width: 300px; margin: 0 auto; }
-    html.js:not(.static) .tl-stack { min-height: 0; }
-    html.js:not(.static) .tl-stack .player { position: static; inset: auto; justify-content: flex-start; }
-    html.js:not(.static) #trk-1 { opacity: 1; visibility: visible; }
+    .art-col { max-width: none; }
+    html.js:not(.static) .tl-stack { min-height: 0; display: block; }
+    html.js:not(.static) .tl-stack .player { justify-content: flex-start; }
+    html.js:not(.static) .tl-stack .player:not(#trk-0) { opacity: 1; visibility: visible; }
     html.js:not(.static) .tl-stack .player + .player {
       margin-top: 6vh; padding-top: 6vh;
       border-top: 1px solid rgba(10, 10, 12, 0.14);
@@ -639,7 +645,7 @@
   .player-note p { font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.5; color: rgba(10, 10, 12, 0.8); margin-top: 10px; }
 
   .deck { display: flex; gap: 10px; margin-top: 22px; align-items: center; flex-wrap: wrap; }
-  .deck a, .deck button {
+  .deck a, .deck button, .tl-row .play-clip {
     display: inline-grid; place-items: center;
     min-width: 52px; height: 44px; padding: 0 16px;
     background: var(--ink);
@@ -649,13 +655,29 @@
     cursor: pointer; font-family: inherit;
     transition: transform 0.14s ease, background 0.24s ease, color 0.24s ease;
   }
-  .deck a:hover, .deck button:hover { background: var(--bone); color: var(--ink); }
-  .deck a:active, .deck button:active { transform: translateY(2px); }
-  .deck .lbl { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; }
-  .deck .play-clip.is-playing { background: var(--bone); color: var(--ink); }
-  .deck button:disabled { opacity: 0.42; cursor: not-allowed; }
-  .deck button:disabled:hover { background: var(--ink); color: var(--bone); }
-  .deck button:disabled:active { transform: none; }
+  .deck a:hover, .deck button:hover, .tl-row .play-clip:hover { background: var(--bone); color: var(--ink); }
+  .deck a:active, .deck button:active, .tl-row .play-clip:active { transform: translateY(2px); }
+  .deck .svc { padding: 0; min-width: 44px; width: 44px; }
+  .deck .svc svg { width: 20px; height: 20px; fill: currentColor; }
+  .tracklist .play-clip.is-playing { background: var(--bone); color: var(--ink); }
+
+  /* album links sit under the art, always in view while Side B is pinned */
+  .art-col { max-width: 440px; }
+  .album-links { margin-top: 22px; justify-content: center; }
+
+  /* the full album: compact numbered rows */
+  .tl-rest-head { font-family: var(--serif); font-style: italic; font-size: 18px; color: rgba(10, 10, 12, 0.62); }
+  .tl-rows { list-style: none; margin: 10px 0 0; padding: 0; }
+  .tl-row {
+    display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto;
+    align-items: center; gap: 16px;
+    padding: 9px 0; border-bottom: 1px solid rgba(10, 10, 12, 0.14);
+  }
+  .tl-row .play-clip { min-width: 40px; height: 36px; padding: 0 12px; font-size: 13px; }
+  .tl-no { font-size: 12px; letter-spacing: 0.2em; color: rgba(10, 10, 12, 0.55); }
+  .tl-title { font-family: "Fraunces", serif; font-optical-sizing: auto; font-size: 1.5rem; line-height: 1.1; text-transform: lowercase; }
+  .tl-credits { display: block; font-family: var(--serif); font-style: italic; font-size: 15px; text-transform: none; color: rgba(10, 10, 12, 0.62); }
+  .tl-row .player-len { margin-left: 0; }
 
   .tracklist ::selection { background: var(--ink); color: var(--signal); }
   /* footer sits on the same yellow — keep selection legible (ink on signal would vanish) */

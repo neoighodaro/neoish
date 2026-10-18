@@ -8,6 +8,84 @@ interface Props {
 }
 const { lang } = Astro.props
 const copy = landing[lang]
+
+// xoxo, black sheep — the full album, in order
+const tracks = [
+  {
+    title: "schrödingers immigrant",
+    credits: "feat. Gamah & Beyta",
+    len: "4:00",
+    clip: "/audio/schrodingers-immigrant-clip.mp3",
+  },
+  { title: "Mama Africa", credits: "feat. Delta", len: "3:27", clip: "/audio/mama-africa-clip.mp3" },
+  { title: "Kleine Maus", credits: "feat. Beyta", len: "3:26", clip: "/audio/kleine-maus-clip.mp3" },
+  { title: "Coffeehouse", credits: "", len: "4:05", clip: "/audio/coffeehouse-clip.mp3" },
+  { title: "Bouge Encore", credits: "feat. Beyta", len: "2:31", clip: "/audio/bouge-encore-clip.mp3" },
+  { title: "Let me Pee", credits: "feat. Beyta", len: "3:21", clip: "/audio/let-me-pee-clip.mp3" },
+  { title: "O Daddy", credits: "feat. Delta", len: "2:46", clip: "/audio/o-daddy-clip.mp3" },
+  { title: "undone", credits: "feat. Beyta", len: "4:01", clip: "/audio/undone-clip.mp3" },
+  {
+    title: "Einmal um die Welt",
+    credits: "feat. Beyta & Gammah",
+    len: "4:25",
+    clip: "/audio/einmal-um-die-welt-clip.mp3",
+  },
+]
+// highlighted one at a time before the full album list; only some have a story
+const highlights = [
+  {
+    ...tracks[0],
+    story: copy.tracklist.trk0Story,
+    links: {
+      apple: "https://music.apple.com/us/album/6812189101?i=6812189111",
+      spotify: "https://open.spotify.com/track/589a1VfFMSBGsTGPgSNva6",
+      youtube: "https://music.youtube.com/watch?v=cld-Sapea7g",
+    },
+  },
+  {
+    ...tracks[1],
+    story: copy.tracklist.trk1Story,
+    links: {
+      apple: "https://music.apple.com/us/album/6812189101?i=6812189116",
+      spotify: "https://open.spotify.com/track/1kEKJjbaXqj0B1SQ4gmmiu",
+      youtube: "https://music.youtube.com/watch?v=tEVC4fNqB5A",
+    },
+  },
+  {
+    ...tracks[4],
+    story: "",
+    links: {
+      apple: "https://music.apple.com/us/album/6812189101?i=6812189389",
+      spotify: "https://open.spotify.com/track/7qqh6kBcn6ZJ0WVKUX1x7h",
+      youtube: "https://music.youtube.com/watch?v=oc5ehoWoYG8",
+    },
+  },
+]
+const clipLabel = (title: string) => copy.tracklist.clipAriaPlay.replace("{title}", title)
+
+// brand marks from Simple Icons (CC0), drawn in currentColor
+const services = [
+  {
+    key: "apple",
+    label: "Apple Music",
+    icon: "M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z",
+  },
+  {
+    key: "spotify",
+    label: "Spotify",
+    icon: "M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z",
+  },
+  {
+    key: "youtube",
+    label: "YouTube Music",
+    icon: "M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.54V8.46L15.816 12l-6.132 3.54z",
+  },
+] as const
+const albumLinks = {
+  apple: "https://music.apple.com/us/album/xoxo-black-sheep-feat-gamah-gammah-beyta-delta/6812189101",
+  spotify: "https://open.spotify.com/album/3UgtUMSWtxw7wyJKPO8CeN",
+  youtube: "https://music.youtube.com/playlist?list=OLAK5uy_k3uN-vkiBmIAW1ad_usI0lgAihMo9QcBA",
+}
 ---
 
 <LandingLayout lang={lang} copy={copy}>
@@ -26,7 +104,7 @@ const copy = landing[lang]
     <LangSwitcher lang={lang} pathname={Astro.url.pathname} />
   </header>
 
-  <!-- ambient b l v c k loop, revealed from Side A's flip onward -->
+  <!-- ambient album loop, revealed from Side A's flip onward -->
   <button
     type="button"
     id="mute-btn"
@@ -45,7 +123,7 @@ const copy = landing[lang]
       <div class="hero-lines" aria-hidden="true">
         <div class="hero-mask"><span class="hero-line">{copy.hero.founder}</span></div>
         <div class="hero-mask">
-          <span class="hero-line" data-scramble={copy.hero.engineer}>{copy.hero.engineer}</span>
+          <span class="hero-line" data-scramble={copy.hero.techLead}>{copy.hero.techLead}</span>
         </div>
         <div class="hero-mask">
           <span class="hero-line">{copy.hero.musicMaker}</span>
@@ -318,76 +396,104 @@ const copy = landing[lang]
           <span class="sub" data-fade>{copy.tracklist.sub}</span>
         </div>
         <p class="tracklist-note" data-fade>{copy.tracklist.note}</p>
-
         <div class="player-grid">
-          <div class="art-window" data-fade>
-            <div class="disc">
-              <img
-                src="https://image-cdn-fa.spotifycdn.com/image/ab67616d0000b27320d0878a0e4c1c553cabfe01"
-                alt={copy.tracklist.albumAlt}
-                loading="lazy"
-                onerror="this.remove()"
-              />
-              <span class="disc-grooves" aria-hidden="true"></span>
-              <span class="disc-hole" aria-hidden="true"></span>
+          <div class="art-col">
+            <div class="art-window" data-fade>
+              <div class="disc">
+                <img
+                  src="/images/xoxo-black-sheep.jpg"
+                  alt={copy.tracklist.albumAlt}
+                  loading="lazy"
+                  onerror="this.remove()"
+                />
+                <span class="disc-grooves" aria-hidden="true"></span>
+                <span class="disc-hole" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="deck album-links" data-fade>
+              {
+                services.map((sv) => (
+                  <a class="svc" href={albumLinks[sv.key]} target="_blank" rel="noreferrer" aria-label={sv.label} title={sv.label}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d={sv.icon} /></svg>
+                  </a>
+                ))
+              }
             </div>
           </div>
 
           <div>
             <div class="tl-stack">
-              <article class="player" id="trk-0">
-                <div class="player-head">
-                  <h3 class="player-name">schr&ouml;dingers immigrant</h3>
-                  <span class="player-len">3:59</span>
-                </div>
-                <p class="player-credits">feat. Beyta &amp; Gamah</p>
-                <details class="player-note" open>
-                  <summary>{copy.tracklist.storySummary} <span class="pn-ind" aria-hidden="true"
-                      >+</span
-                    ></summary>
-                  <p>{copy.tracklist.trk0Story}</p>
-                </details>
-                <div class="deck">
-                  <button
-                    type="button"
-                    class="play-clip"
-                    id="clip-btn"
-                    aria-label={copy.tracklist.trk0AriaPlay}>&#9654;</button
-                  >
-                  <a
-                    class="lbl"
-                    href="https://open.spotify.com/track/0WdXri5VSgx65Zi7tQSiel"
-                    target="_blank"
-                    rel="noreferrer">{copy.tracklist.spotify}</a
-                  >
-                  <audio id="clip-audio" src="/audio/schrodingers-immigrant-clip.mp3" preload="none"
-                  ></audio>
-                </div>
-              </article>
+              {
+                highlights.map((t, i) => (
+                  <article class="player" id={`trk-${i}`}>
+                    <div class="player-head">
+                      <h3 class="player-name">{t.title}</h3>
+                      <span class="player-len">{t.len}</span>
+                    </div>
+                    {t.credits && <p class="player-credits">{t.credits}</p>}
+                    {t.story && (
+                      <details class="player-note" open>
+                        <summary>
+                          {copy.tracklist.storySummary} <span class="pn-ind" aria-hidden="true">+</span>
+                        </summary>
+                        <p>{t.story}</p>
+                      </details>
+                    )}
+                    <div class="deck">
+                      <button
+                        type="button"
+                        class="play-clip"
+                        data-clip={t.clip}
+                        data-title={t.title}
+                        aria-label={clipLabel(t.title)}
+                      >
+                        &#9654;
+                      </button>
+                      {services.map((sv) => (
+                        <a
+                          class="svc"
+                          href={t.links[sv.key]}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${t.title} — ${sv.label}`}
+                          title={sv.label}
+                        >
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d={sv.icon} /></svg>
+                        </a>
+                      ))}
+                    </div>
+                  </article>
+                ))
+              }
 
-              <article class="player" id="trk-1">
-                <div class="player-head">
-                  <h3 class="player-name">undone</h3>
-                  <span class="player-len">4:00</span>
-                </div>
-                <p class="player-credits">feat. Beyta</p>
-                <div class="deck">
-                  <button
-                    type="button"
-                    class="play-clip"
-                    disabled
-                    aria-label={copy.tracklist.trk1AriaDisabled}
-                    title={copy.tracklist.trk1TitleDisabled}>&#9654;</button
-                  >
-                  <a
-                    class="lbl"
-                    href="https://open.spotify.com/track/4jj1M67wweEd822ssAESC8"
-                    target="_blank"
-                    rel="noreferrer">{copy.tracklist.spotify}</a
-                  >
-                </div>
+              <article class="player" id={`trk-${highlights.length}`}>
+                <p class="tl-rest-head">{copy.tracklist.albumHeading}</p>
+                <ol class="tl-rows">
+                  {
+                    tracks.map((t, i) => (
+                      <li class="tl-row">
+                        <button
+                          type="button"
+                          class="play-clip"
+                          data-clip={t.clip}
+                          data-title={t.title}
+                          aria-label={clipLabel(t.title)}
+                        >
+                          &#9654;
+                        </button>
+                        <span class="tl-no">{String(i + 1).padStart(2, "0")}</span>
+                        <span class="tl-title">
+                          {t.title}
+                          {t.credits && <span class="tl-credits">{t.credits}</span>}
+                        </span>
+                        <span class="player-len">{t.len}</span>
+                      </li>
+                    ))
+                  }
+                </ol>
               </article>
             </div>
+            <audio id="clip-audio" preload="none"></audio>
           </div>
         </div>
       </div>

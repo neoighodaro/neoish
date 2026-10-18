@@ -10,7 +10,7 @@ export interface LandingCopy {
   hero: {
     srHeading: string
     founder: string
-    engineer: string
+    techLead: string
     musicMaker: string
     kinda: string
     status: string
@@ -50,11 +50,10 @@ export interface LandingCopy {
     albumAlt: string
     storySummary: string
     trk0Story: string
-    trk0AriaPlay: string
-    trk0AriaPause: string
-    trk1AriaDisabled: string
-    trk1TitleDisabled: string
-    spotify: string
+    trk1Story: string
+    albumHeading: string
+    clipAriaPlay: string
+    clipAriaPause: string
   }
   footer: { sayHi: string; madeWithHtml: string }
 }
@@ -72,21 +71,22 @@ export type LandingRuntime = {
 
 const en: LandingCopy = {
   meta: {
-    title: "Neo Ighodaro — Engineer, Founder & Music Maker",
-    description: "Neo Ighodaro — founder, engineer and music maker. Software, open source and the b l v c k record.",
+    title: "Neo Ighodaro — Tech Lead, Founder & Music Maker",
+    description:
+      "Neo Ighodaro — founder, tech lead and music maker. Software, open source and the album xoxo, black sheep.",
   },
   nav: { blog: "Blog" },
   audio: {
     soundOff: "sound off",
     soundOn: "sound on",
-    ariaMute: "Mute the b l v c k loop",
-    ariaUnmute: "Unmute the b l v c k loop",
-    ariaInitial: "Unmute the b l v c k loop",
+    ariaMute: "Mute the xoxo, black sheep loop",
+    ariaUnmute: "Unmute the xoxo, black sheep loop",
+    ariaInitial: "Unmute the xoxo, black sheep loop",
   },
   hero: {
-    srHeading: "Neo Ighodaro — founder, engineer and music maker based in Berlin",
+    srHeading: "Neo Ighodaro — founder, tech lead and music maker based in Berlin",
     founder: "Founder",
-    engineer: "Engineer",
+    techLead: "Tech Lead",
     musicMaker: "Music Maker",
     kinda: "(kinda.)",
     status: "Open to select projects",
@@ -143,22 +143,22 @@ const en: LandingCopy = {
     captionAfter: "…now for the good part",
     frontLabel: "neo &mdash; the work",
     frontFoot: "low noise &middot; high output",
-    backLabel: "b l v c k &mdash; 2026",
+    backLabel: "xoxo, black sheep &mdash; 2026",
     backFoot: "play loud &middot; rewind often",
   },
   tracklist: {
     heading: "Side B",
     sub: "the music",
-    note: "The b l v c k sessions, recorded 2026.",
-    albumAlt: "Album art for b l v c k by Neo",
+    note: "xoxo, black sheep — out now.",
+    albumAlt: "Album art for xoxo, black sheep by Neo",
     storySummary: "the story",
     trk0Story:
       "This song encompasses the feelings I had moving from my hometown in Lagos to an entirely new country in Hamburg, and how I held conflicting feelings about it all at once.",
-    trk0AriaPlay: "Play a preview of schrödingers immigrant",
-    trk0AriaPause: "Pause preview of schrödingers immigrant",
-    trk1AriaDisabled: "Preview of undone isn't available yet",
-    trk1TitleDisabled: "No preview yet — listen on Spotify",
-    spotify: "Play on Spotify",
+    trk1Story:
+      "An extension of schrödingers immigrant, chasing the same feelings from a different perspective: how we lived back home in Africa, close to nature, set against the very capitalistic nature of the West.",
+    albumHeading: "the full album",
+    clipAriaPlay: "Play a preview of {title}",
+    clipAriaPause: "Pause preview of {title}",
   },
   footer: {
     sayHi: "Say Hi",
@@ -168,21 +168,22 @@ const en: LandingCopy = {
 
 const de: LandingCopy = {
   meta: {
-    title: "Neo Ighodaro — Ingenieur, Gründer & Musikmacher",
-    description: "Neo Ighodaro — Gründer, Ingenieur und Musikmacher. Software, Open Source und die b l v c k Platte.",
+    title: "Neo Ighodaro — Tech Lead, Gründer & Musikmacher",
+    description:
+      "Neo Ighodaro — Gründer, Tech Lead und Musikmacher. Software, Open Source und das Album xoxo, black sheep.",
   },
   nav: { blog: "Blog" },
   audio: {
     soundOff: "Ton aus",
     soundOn: "Ton an",
-    ariaMute: "Den b l v c k Loop stummschalten",
-    ariaUnmute: "Den b l v c k Loop einschalten",
-    ariaInitial: "Den b l v c k Loop einschalten",
+    ariaMute: "Den xoxo, black sheep Loop stummschalten",
+    ariaUnmute: "Den xoxo, black sheep Loop einschalten",
+    ariaInitial: "Den xoxo, black sheep Loop einschalten",
   },
   hero: {
-    srHeading: "Neo Ighodaro — Gründer, Ingenieur und Musikmacher mit Sitz in Berlin",
+    srHeading: "Neo Ighodaro — Gründer, Tech Lead und Musikmacher mit Sitz in Berlin",
     founder: "Gründer",
-    engineer: "Ingenieur",
+    techLead: "Tech Lead",
     musicMaker: "Musikmacher",
     kinda: "(so halb.)",
     status: "Offen für ausgewählte Projekte",
@@ -239,22 +240,22 @@ const de: LandingCopy = {
     captionAfter: "…jetzt kommt der gute Teil",
     frontLabel: "neo &mdash; die Arbeit",
     frontFoot: "wenig Rauschen &middot; hohe Leistung",
-    backLabel: "b l v c k &mdash; 2026",
+    backLabel: "xoxo, black sheep &mdash; 2026",
     backFoot: "laut spielen &middot; oft zurückspulen",
   },
   tracklist: {
     heading: "Side B",
     sub: "die Musik",
-    note: "Die b l v c k Sessions, aufgenommen 2026.",
-    albumAlt: "Albumcover für b l v c k von Neo",
+    note: "xoxo, black sheep — jetzt erhältlich.",
+    albumAlt: "Albumcover für xoxo, black sheep von Neo",
     storySummary: "die Geschichte",
     trk0Story:
       "Dieser Song fängt die Gefühle ein, die ich beim Umzug aus meiner Heimatstadt Lagos in ein völlig neues Land nach Hamburg hatte — und wie ich all diese widersprüchlichen Gefühle gleichzeitig empfand.",
-    trk0AriaPlay: "Eine Vorschau von schrödingers immigrant abspielen",
-    trk0AriaPause: "Vorschau von schrödingers immigrant pausieren",
-    trk1AriaDisabled: "Vorschau von undone ist noch nicht verfügbar",
-    trk1TitleDisabled: "Noch keine Vorschau — auf Spotify anhören",
-    spotify: "Auf Spotify anhören",
+    trk1Story:
+      "Eine Fortsetzung von schrödingers immigrant, die dieselben Gefühle aus einem anderen Blickwinkel einfängt: wie wir zu Hause in Afrika im Einklang mit der Natur gelebt haben, im Gegensatz zur sehr kapitalistischen Art des Westens.",
+    albumHeading: "das ganze Album",
+    clipAriaPlay: "Eine Vorschau von {title} abspielen",
+    clipAriaPause: "Vorschau von {title} pausieren",
   },
   footer: {
     sayHi: "Sag Hallo",
@@ -274,7 +275,7 @@ export function landingRuntime(lang: "en" | "de"): LandingRuntime {
     ariaUnmute: c.audio.ariaUnmute,
     flipBefore: c.flip.captionBefore,
     flipAfter: c.flip.captionAfter,
-    clipAriaPlay: c.tracklist.trk0AriaPlay,
-    clipAriaPause: c.tracklist.trk0AriaPause,
+    clipAriaPlay: c.tracklist.clipAriaPlay,
+    clipAriaPause: c.tracklist.clipAriaPause,
   }
 }

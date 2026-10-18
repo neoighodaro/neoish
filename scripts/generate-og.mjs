@@ -36,7 +36,7 @@ const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http
 
   <!-- masthead -->
   <text x="66" y="253" font-family="Anton" font-size="132" fill="${BONE}" letter-spacing="2">FOUNDER.</text>
-  <text x="66" y="388" font-family="Anton" font-size="132" fill="none" stroke="${BONE}" stroke-width="2.5" letter-spacing="2">ENGINEER.</text>
+  <text x="66" y="388" font-family="Anton" font-size="132" fill="none" stroke="${BONE}" stroke-width="2.5" letter-spacing="2">TECH LEAD.</text>
   <text x="66" y="523" font-family="Anton" font-size="132" fill="${BONE}" letter-spacing="2">MUSIC MAKER</text>
   <text x="920" y="523" font-family="Instrument Serif" font-style="italic" font-size="72" fill="${SIGNAL}">(kinda.)</text>
 

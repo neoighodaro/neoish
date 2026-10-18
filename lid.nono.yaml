@@ -33,6 +33,14 @@ network:
   - medium.com
   - dev.to
   - '*.medium.com'
+  - open.spotify.com
+  - i.scdn.co
+  - '*.spotifycdn.com'
+  - music.apple.com
+  - itunes.apple.com
+  - audio-ssl.itunes.apple.com
+  - '*.mzstatic.com'
+  - music.youtube.com
 paths:
   read:
     - ~/Developer/dotfiles/configs/claude
