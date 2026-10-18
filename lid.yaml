@@ -7,7 +7,7 @@ zellij:
   display_name: neoish
 runtimes:
   node: "24.16.0"
-  pnpm: "11.12.0"
+  pnpm: "12.12.1"
 ports:
   - 4321
 env:
