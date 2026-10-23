@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@12.12.1",
+  "packageManager": "pnpm@12.14.0",
   "scripts": {
     "dev": "astro dev --port 4321",
     "build": "astro build && node scripts/seo-check.mjs && node scripts/agent-files.mjs && node scripts/indexnow.mjs",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
-    "astro": "7.3.8"
+    "astro": "7.4.0"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
