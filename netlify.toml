@@ -11,7 +11,7 @@ package = "netlify-plugin-image-optim"
 package = "netlify-plugin-minify-html"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "22.23.4"
 
 # Markdown content negotiation: an `Accept: text/markdown` request to any page
 # is answered with that page's pre-built index.md (see the function and
